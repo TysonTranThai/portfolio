@@ -11,10 +11,16 @@ import {
   Copy,
   Activity,
   ShieldCheck,
+  Sparkles,
+  Waves,
+  Boxes,
+  Binary,
+  Dot,
+  Eye,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { HeroBackground } from "@/components/3d/HeroBackground";
+import { HeroBackground, BackgroundVisualMode } from "@/components/3d/HeroBackground";
 import { useToast } from "@/components/ui/Toast";
 
 type CommandKey = "whoami" | "capabilities" | "telemetry" | "stack" | "contact";
@@ -54,8 +60,17 @@ const commandOutputs: Record<CommandKey, string[]> = {
   ],
 };
 
+const bgModes: { id: BackgroundVisualMode; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
+  { id: "wave", label: "3D Wave Mesh", icon: Waves },
+  { id: "geometry", label: "Holo Geometry", icon: Boxes },
+  { id: "matrix", label: "Data Streams", icon: Binary },
+  { id: "particles", label: "Neural Nodes", icon: Dot },
+  { id: "minimal", label: "Clean Minimal", icon: Sparkles },
+];
+
 export function HeroSection() {
   const [activeCommand, setActiveCommand] = React.useState<CommandKey>("whoami");
+  const [bgMode, setBgMode] = React.useState<BackgroundVisualMode>("wave");
   const [typedOutput, setTypedOutput] = React.useState("");
   const [isTyping, setIsTyping] = React.useState(false);
   const { showToast } = useToast();
@@ -85,14 +100,47 @@ export function HeroSection() {
     showToast("Telemetry copied to clipboard!");
   };
 
+  const handleBgModeChange = (mode: BackgroundVisualMode) => {
+    setBgMode(mode);
+    const modeLabel = bgModes.find((m) => m.id === mode)?.label;
+    showToast(`Background switched to: ${modeLabel}`);
+  };
+
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden bg-computational-grid ambient-lab-glow">
-      {/* 3D WebGL Neural Background Canvas */}
-      <HeroBackground />
+      {/* 3D WebGL Neural / Geometric / Wave Background Canvas */}
+      <HeroBackground mode={bgMode} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        {/* Background Visualizer Demo Selector Pill */}
+        <div className="flex items-center justify-center mb-6 no-print">
+          <div className="inline-flex items-center gap-1.5 p-1.5 rounded-full bg-slate-950/90 border border-emerald-500/30 backdrop-blur-2xl shadow-xl font-mono text-xs">
+            <div className="px-2.5 py-1 text-[10px] text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1">
+              <Eye className="w-3 h-3" />
+              <span>BG_CANVAS_DEMO:</span>
+            </div>
+            {bgModes.map((item) => {
+              const Icon = item.icon;
+              const isSelected = bgMode === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleBgModeChange(item.id)}
+                  className={`px-3 py-1 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 select-none ${
+                    isSelected
+                      ? "bg-emerald-500 text-black font-bold shadow-md scale-105"
+                      : "text-slate-400 hover:text-white hover:bg-white/10"
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          
           {/* Left Column: Bold Editorial Headline & Positioning (from Option C) */}
           <div className="lg:col-span-7 space-y-6 text-left">
             {/* Status Beacon Bar */}
