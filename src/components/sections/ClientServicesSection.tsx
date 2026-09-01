@@ -17,9 +17,7 @@ import {
 } from "lucide-react";
 import { servicesData } from "@/data/services";
 import { ClientService } from "@/types";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 
@@ -95,13 +93,21 @@ export function ClientServicesSection() {
   };
 
   return (
-    <section id="services" className="py-24 md:py-32 relative bg-computational-grid">
+    <section id="services" className="py-24 md:py-32 relative bg-[#07080c] text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Client Engineering"
-          title="What I Do For Clients"
-          subtitle="Hire me to architect customized AI agents, automate manual operations, deploy private model infrastructure, or build production-ready web software."
-        />
+        
+        {/* Editorial Section Header */}
+        <div className="space-y-4 mb-16 max-w-3xl">
+          <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
+            SERVICES // CLIENT ENGINEERING &amp; CAPABILITIES
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white font-sans">
+            Tailored Engineering &amp; AI Systems.
+          </h2>
+          <p className="text-sm sm:text-base text-slate-300">
+            Hire me to architect customized AI agents, automate manual operations, deploy private model infrastructure, or build production-ready web software.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {servicesData.map((service, idx) => {
@@ -111,7 +117,7 @@ export function ClientServicesSection() {
               <TiltCard
                 key={service.id}
                 glowColor={config.glow}
-                className="flex flex-col justify-between p-7 bg-slate-950/80 dark:bg-surface-100/80 border border-white/10"
+                className="flex flex-col justify-between p-7 bg-slate-950/90 border border-white/10 rounded-3xl transition-all duration-300 hover:border-white/30"
               >
                 <div className="space-y-4">
                   {/* Top Number & Tag */}
@@ -119,9 +125,9 @@ export function ClientServicesSection() {
                     <span className="text-2xl font-black font-mono text-emerald-400">
                       {config.number}
                     </span>
-                    <Badge variant="subtle" size="sm" className="font-mono text-[10px]">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-white/5 border border-white/10 text-slate-300">
                       {service.category}
-                    </Badge>
+                    </span>
                   </div>
 
                   <div>
@@ -163,7 +169,7 @@ export function ClientServicesSection() {
                     variant="primary"
                     size="sm"
                     href="#contact"
-                    className="font-mono text-xs font-bold uppercase rounded-xl"
+                    className="font-mono text-xs font-bold uppercase rounded-full bg-white text-black hover:bg-slate-200"
                   >
                     Inquire
                   </Button>

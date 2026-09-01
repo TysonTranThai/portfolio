@@ -11,9 +11,7 @@ import { GithubIcon } from "@/components/ui/Icons";
 import { projectsData } from "@/data/projects";
 import { caseStudiesData } from "@/data/caseStudies";
 import { ProjectCategory } from "@/types";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Tabs, TabItem } from "@/components/ui/Tabs";
 import { Modal } from "@/components/ui/Modal";
@@ -51,21 +49,31 @@ export function ProjectsSection() {
   );
 
   return (
-    <section id="projects" className="py-24 md:py-32 relative bg-computational-grid">
+    <section id="projects" className="py-24 md:py-32 relative bg-black text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Portfolio & Systems"
-          title="Featured Projects & Architecture"
-          subtitle="Explore selected applications, multi-agent frameworks, model routing layers, and infrastructure systems I have designed and engineered."
-        />
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="space-y-3 max-w-2xl">
+            <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
+              PORTFOLIO // SELECTED SYSTEMS &amp; PRODUCTS
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white font-sans">
+              Featured Work &amp; Architecture.
+            </h2>
+            <p className="text-sm sm:text-base text-slate-300">
+              Applications, multi-agent frameworks, model routing infrastructure, and automation platforms I have engineered.
+            </p>
+          </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex justify-center mb-12">
-          <Tabs
-            tabs={categoryTabs}
-            activeTab={activeCategory}
-            onChange={(tabId) => setActiveCategory(tabId as ProjectCategory)}
-          />
+          {/* Category Filter Tabs */}
+          <div className="shrink-0">
+            <Tabs
+              tabs={categoryTabs}
+              activeTab={activeCategory}
+              onChange={(tabId) => setActiveCategory(tabId as ProjectCategory)}
+            />
+          </div>
         </div>
 
         {/* Projects Showcase Grid */}
@@ -73,16 +81,10 @@ export function ProjectsSection() {
           {filteredProjects.map((project, idx) => (
             <TiltCard
               key={project.id}
-              glowColor={
-                project.category.includes("AI")
-                  ? "rgba(16, 185, 129, 0.25)"
-                  : project.category.includes("Infrastructure")
-                  ? "rgba(6, 182, 212, 0.25)"
-                  : "rgba(204, 255, 0, 0.25)"
-              }
-              className="flex flex-col justify-between p-8 bg-slate-950/80 dark:bg-surface-100/80 border border-white/10"
+              glowColor="rgba(16, 185, 129, 0.15)"
+              className="flex flex-col justify-between p-8 sm:p-10 bg-slate-950/90 border border-white/10 rounded-3xl shadow-2xl transition-all duration-300 hover:border-white/30"
             >
-              <div className="space-y-5">
+              <div className="space-y-6">
                 {/* Top Number & Status Row */}
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">
                   <div className="flex items-center gap-3">
@@ -91,43 +93,38 @@ export function ProjectsSection() {
                     </span>
                     <div className="flex items-center gap-1.5 flex-wrap">
                       {project.category.map((cat) => (
-                        <Badge key={cat} variant="subtle" size="sm" className="font-mono text-[10px]">
+                        <span
+                          key={cat}
+                          className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-white/5 border border-white/10 text-slate-300"
+                        >
                           {cat}
-                        </Badge>
+                        </span>
                       ))}
                     </div>
                   </div>
 
-                  <Badge
-                    variant={
-                      project.status === "Active" || project.status === "Completed"
-                        ? "success"
-                        : "cyan"
-                    }
-                    size="sm"
-                    className="font-mono text-[10px]"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-current" />
+                  <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span>{project.status}</span>
-                  </Badge>
+                  </span>
                 </div>
 
                 {/* Title & Tagline */}
                 <div>
-                  <h3 className="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors font-sans">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white group-hover:text-emerald-400 transition-colors font-sans tracking-tight">
                     {project.title}
                   </h3>
-                  <div className="text-xs font-mono text-emerald-400 mt-1">
+                  <div className="text-xs font-mono text-emerald-400 mt-1 font-semibold">
                     {project.role} {"//"} {project.year}
                   </div>
-                  <p className="text-sm text-slate-300 mt-2.5 leading-relaxed font-sans">
+                  <p className="text-sm text-slate-300 mt-3 leading-relaxed font-sans">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Problem & Solution Preview */}
                 {project.problem && project.solution && (
-                  <div className="p-4 rounded-2xl bg-black/60 border border-white/10 space-y-2.5 text-xs font-sans">
+                  <div className="p-5 rounded-2xl bg-black border border-white/10 space-y-2.5 text-xs font-sans">
                     <div>
                       <span className="font-bold text-white font-mono text-emerald-400">PROBLEM: </span>
                       <span className="text-slate-300">{project.problem}</span>
@@ -152,11 +149,11 @@ export function ProjectsSection() {
                 )}
 
                 {/* Tech stack chips */}
-                <div className="flex flex-wrap gap-1.5 pt-2">
+                <div className="flex flex-wrap gap-1.5 pt-2 font-mono">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 text-[11px] font-mono bg-white/5 text-slate-300 rounded-lg border border-white/10"
+                      className="px-2.5 py-1 text-[11px] bg-white/5 text-slate-300 rounded-lg border border-white/10"
                     >
                       {tech}
                     </span>
@@ -196,14 +193,14 @@ export function ProjectsSection() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-950 hover:bg-slate-200 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-white text-black hover:bg-slate-200 transition-colors shadow-md"
                     >
                       <span>LIVE_DEMO</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   ) : (
                     <span className="text-[11px] font-mono text-slate-500">
-                      [PROD_CLIENT_BUILD]
+                      [PROD_CLIENT_SYSTEM]
                     </span>
                   )}
                 </div>
