@@ -86,21 +86,21 @@ export function ClientServicesSection() {
   };
 
   return (
-    <section id="services" className="py-28 md:py-36 relative bg-[#06080e] text-white border-t border-white/15 atmosphere-amber">
-      <div className="max-w-7xl mx-auto px-6 sm:px-16 relative z-10">
+    <section id="services" className="py-20 sm:py-28 lg:py-36 relative bg-[#06080e] text-white border-t border-white/15 atmosphere-amber">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 relative z-10">
         
         {/* Section Header */}
-        <div className="space-y-4 mb-16 max-w-3xl">
+        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-16 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">
-            <Building2 className="w-4 h-4 text-amber-400" />
+            <Building2 className="w-4 h-4 text-amber-400 shrink-0" />
             <span>{t("// FOR BUSINESSES · SERVICES & ADVISORY", "// DÀNH CHO DOANH NGHIỆP · DỊCH VỤ & TƯ VẤN THỰC CHIẾN")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+          <h2 className="section-headline-fluid font-serif text-white">
             {t("Practical AI solutions tailored to your business.", "Giải pháp AI thực tế may đo riêng cho doanh nghiệp.")}
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-sans leading-relaxed">
             {t(
               "I help businesses figure out where AI actually makes sense and then build the solution: autonomous agents, automated operations, sovereign infrastructure, and full-stack software.",
               "Mình hỗ trợ doanh nghiệp tìm ra chính xác vị trí AI tạo ra đòn bẩy thực tế và trực tiếp xây dựng giải pháp: tác tử tự hành, tự động hóa quy trình, hạ tầng máy chủ riêng và phần mềm full-stack."
@@ -111,48 +111,48 @@ export function ClientServicesSection() {
         {/* ---------------------------------------------------- */}
         {/* BUSINESS-TO-AI VALUE ASSEMBLY PIPELINE */}
         {/* ---------------------------------------------------- */}
-        <div className="mb-16 p-6 sm:p-8 bg-black/85 border border-amber-500/30 rounded-sm shadow-2xl relative overflow-hidden">
+        <div className="mb-12 sm:mb-16 p-5 sm:p-8 bg-black/85 border border-amber-500/30 rounded-sm shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-amber-500 via-rose-500 to-cyan-400 opacity-60 animate-neon-shimmer" />
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/15 pb-4 mb-6 gap-2 font-mono">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/15 pb-3 sm:pb-4 mb-4 sm:mb-6 gap-2 font-mono">
             <div className="text-xs text-amber-400 font-bold uppercase tracking-widest flex items-center gap-2">
-              <Zap className="w-4 h-4 text-amber-400" />
+              <Zap className="w-4 h-4 text-amber-400 shrink-0" />
               <span>{t("// BUSINESS-TO-AI VALUE ASSEMBLY PIPELINE", "// QUY TRÌNH CHUYỂN ĐỔI GIÁ TRỊ DOANH NGHIỆP")}</span>
             </div>
-            <span className="text-[10px] text-emerald-400 font-mono font-bold tracking-wider">
+            <span className="text-[10px] sm:text-[11px] text-emerald-400 font-mono font-bold tracking-wider">
               {t("CLEAR ROI · ZERO FLUFF", "HIỆU QUẢ THỰC · KHÔNG CƯỜNG ĐIỆU")}
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono">
-            <div className="p-4 bg-amber-950/20 border border-amber-500/30 rounded-sm space-y-2 relative">
-              <div className="text-[10px] text-amber-400 font-bold">STAGE 01</div>
-              <div className="text-sm font-serif font-bold text-white">{t("1. Real Problem", "1. Chẩn Đoán Vấn Đề")}</div>
-              <p className="text-[11px] font-sans text-slate-400">{t("Identify bottlenecks where AI delivers measurable leverage.", "Xác định điểm nghẽn nơi AI thực sự tạo ra đột phá.")}</p>
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 font-mono">
+            <div className="p-3.5 sm:p-4 bg-amber-950/20 border border-amber-500/30 rounded-sm space-y-1.5 sm:space-y-2 relative">
+              <div className="text-[9px] sm:text-[10px] text-amber-400 font-bold">STAGE 01</div>
+              <div className="text-xs sm:text-sm font-serif font-bold text-white">{t("1. Real Problem", "1. Chẩn Đoán Vấn Đề")}</div>
+              <p className="text-[10px] sm:text-[11px] font-sans text-slate-400 leading-tight">{t("Identify bottlenecks where AI delivers measurable leverage.", "Xác định điểm nghẽn nơi AI thực sự tạo ra đột phá.")}</p>
             </div>
 
-            <div className="p-4 bg-violet-950/20 border border-violet-500/30 rounded-sm space-y-2 relative">
-              <div className="text-[10px] text-violet-400 font-bold">STAGE 02</div>
-              <div className="text-sm font-serif font-bold text-white">{t("2. Custom AI Agent", "2. May Đo AI Agent")}</div>
-              <p className="text-[11px] font-sans text-slate-400">{t("Engineer autonomous agents tailored to your team's workflow.", "Lập trình tác tử tự hành tương thích với quy trình sẵn có.")}</p>
+            <div className="p-3.5 sm:p-4 bg-violet-950/20 border border-violet-500/30 rounded-sm space-y-1.5 sm:space-y-2 relative">
+              <div className="text-[9px] sm:text-[10px] text-violet-400 font-bold">STAGE 02</div>
+              <div className="text-xs sm:text-sm font-serif font-bold text-white">{t("2. Custom AI Agent", "2. May Đo AI Agent")}</div>
+              <p className="text-[10px] sm:text-[11px] font-sans text-slate-400 leading-tight">{t("Engineer autonomous agents tailored to your team's workflow.", "Lập trình tác tử tự hành tương thích với quy trình sẵn có.")}</p>
             </div>
 
-            <div className="p-4 bg-cyan-950/20 border border-cyan-500/30 rounded-sm space-y-2 relative">
-              <div className="text-[10px] text-cyan-400 font-bold">STAGE 03</div>
-              <div className="text-sm font-serif font-bold text-white">{t("3. Self-Hosted Infra", "3. Triển Khai Hạ Tầng")}</div>
-              <p className="text-[11px] font-sans text-slate-400">{t("Host on sovereign GPU/VPS with zero vendor lock-in.", "Vận hành trên máy chủ riêng biệt, an toàn dữ liệu 100%.")}</p>
+            <div className="p-3.5 sm:p-4 bg-cyan-950/20 border border-cyan-500/30 rounded-sm space-y-1.5 sm:space-y-2 relative">
+              <div className="text-[9px] sm:text-[10px] text-cyan-400 font-bold">STAGE 03</div>
+              <div className="text-xs sm:text-sm font-serif font-bold text-white">{t("3. Self-Hosted Infra", "3. Triển Khai Hạ Tầng")}</div>
+              <p className="text-[10px] sm:text-[11px] font-sans text-slate-400 leading-tight">{t("Host on sovereign GPU/VPS with zero vendor lock-in.", "Vận hành trên máy chủ riêng biệt, an toàn dữ liệu 100%.")}</p>
             </div>
 
-            <div className="p-4 bg-emerald-950/20 border border-emerald-500/30 rounded-sm space-y-2 relative">
-              <div className="text-[10px] text-emerald-400 font-bold">STAGE 04</div>
-              <div className="text-sm font-serif font-bold text-white">{t("4. Verified ROI", "4. Bàn Giao & Đo Lường")}</div>
-              <p className="text-[11px] font-sans text-slate-400">{t("Cut hours of manual toil and scale operations nonstop.", "Cắt giảm hàng chục giờ thủ công và tự động hóa 24/7.")}</p>
+            <div className="p-3.5 sm:p-4 bg-emerald-950/20 border border-emerald-500/30 rounded-sm space-y-1.5 sm:space-y-2 relative">
+              <div className="text-[9px] sm:text-[10px] text-emerald-400 font-bold">STAGE 04</div>
+              <div className="text-xs sm:text-sm font-serif font-bold text-white">{t("4. Verified ROI", "4. Bàn Giao & Đo Lường")}</div>
+              <p className="text-[10px] sm:text-[11px] font-sans text-slate-400 leading-tight">{t("Cut hours of manual toil and scale operations nonstop.", "Cắt giảm hàng chục giờ thủ công và tự động hóa 24/7.")}</p>
             </div>
           </div>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {servicesData.map((service, idx) => {
             const config = getServiceConfig(service.id, idx);
             const Icon = config.icon;
@@ -164,23 +164,23 @@ export function ClientServicesSection() {
             return (
               <div
                 key={service.id}
-                className="flex flex-col justify-between p-8 bg-black/70 border border-amber-500/20 hover:border-amber-400/50 rounded-sm shadow-xl transition-all duration-300 group"
+                className="flex flex-col justify-between p-6 sm:p-8 bg-black/70 border border-amber-500/20 hover:border-amber-400/50 rounded-sm shadow-xl transition-all duration-300 group"
               >
-                <div className="space-y-4">
+                <div className="space-y-3.5 sm:space-y-4">
                   {/* Top Number & Tag */}
                   <div className="flex items-center justify-between border-b border-white/15 pb-3">
-                    <span className="text-2xl font-serif font-bold text-amber-400 font-mono">
+                    <span className="text-xl sm:text-2xl font-serif font-bold text-amber-400 font-mono">
                       {config.number}
                     </span>
-                    <span className="text-[10px] font-mono tracking-widest px-2.5 py-0.5 bg-white/5 border border-white/10 text-slate-300 uppercase">
+                    <span className="text-[9px] sm:text-[10px] font-mono tracking-widest px-2.5 py-0.5 bg-white/5 border border-white/10 text-slate-300 uppercase">
                       {category}
                     </span>
                   </div>
 
                   <div>
                     <div className="flex items-center gap-2 mb-1.5">
-                      <Icon className={`w-4 h-4 ${config.color}`} />
-                      <h3 className="text-lg font-serif font-bold text-white group-hover:text-amber-300 transition-colors">
+                      <Icon className={`w-4 h-4 ${config.color} shrink-0`} />
+                      <h3 className="text-base sm:text-lg font-serif font-bold text-white group-hover:text-amber-300 transition-colors">
                         {title}
                       </h3>
                     </div>
@@ -190,7 +190,7 @@ export function ClientServicesSection() {
                   </div>
 
                   <div className="space-y-1.5 pt-1 font-mono">
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-amber-400">
+                    <div className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-amber-400">
                       {t("KEY DELIVERABLES:", "BÀN GIAO CHÍNH:")}
                     </div>
                     <ul className="space-y-1 text-xs text-slate-300 font-sans">
@@ -204,17 +204,17 @@ export function ClientServicesSection() {
                   </div>
                 </div>
 
-                <div className="pt-5 mt-4 border-t border-white/15 flex items-center justify-between font-mono text-xs">
+                <div className="pt-4 sm:pt-5 mt-3 sm:mt-4 border-t border-white/15 flex items-center justify-between font-mono text-xs">
                   <button
                     onClick={() => setSelectedService(service)}
-                    className="font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider underline underline-offset-4"
+                    className="font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider underline underline-offset-4 touch-target"
                   >
                     {t("SPECS →", "CHI TIẾT →")}
                   </button>
 
                   <Link
                     href="#contact"
-                    className="px-3.5 py-1.5 bg-amber-400 hover:bg-amber-300 text-black font-bold uppercase tracking-wider text-[11px] rounded-sm transition-colors shadow-md"
+                    className="px-3.5 py-2 bg-amber-400 hover:bg-amber-300 text-black font-bold uppercase tracking-wider text-[10px] sm:text-[11px] rounded-sm transition-colors shadow-md touch-target"
                   >
                     {t("INQUIRE", "TƯ VẤN")}
                   </Link>

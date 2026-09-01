@@ -131,23 +131,23 @@ export function StorySection() {
   const coreMantras = (isVi && profileData.coreMantrasVi) ? profileData.coreMantrasVi : profileData.coreMantras;
 
   return (
-    <section id="intro" className="py-28 md:py-36 relative bg-[#06080e] text-white border-t border-white/15 atmosphere-blue">
-      <div className="max-w-7xl mx-auto px-6 sm:px-16 relative z-10">
+    <section id="intro" className="py-20 sm:py-28 lg:py-36 relative bg-[#06080e] text-white border-t border-white/15 atmosphere-blue">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 relative z-10">
         
         {/* ---------------------------------------------------- */}
         {/* 1. SHORT PERSONAL INTRODUCTION */}
         {/* ---------------------------------------------------- */}
-        <div className="mb-24 p-8 sm:p-14 bg-black/80 border border-blue-500/25 rounded-sm shadow-2xl space-y-6">
+        <div className="mb-16 sm:mb-24 p-6 sm:p-10 lg:p-14 bg-black/80 border border-blue-500/25 rounded-sm shadow-2xl space-y-5 sm:space-y-6">
           <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest">
-            <Compass className="w-4 h-4 text-cyan-400" />
+            <Compass className="w-4 h-4 text-cyan-400 shrink-0" />
             <span>{t("// WHO IS TYSON?", "// TYSON LÀ AI?")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
             {isVi && profileData.introLeadVi ? profileData.introLeadVi : profileData.introLead}
           </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-4 text-sm text-slate-300 font-sans leading-relaxed border-t border-white/15">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 pt-4 text-xs sm:text-sm text-slate-300 font-sans leading-relaxed border-t border-white/15">
             {bioParagraphs.map((para, idx) => (
               <p key={idx} className="space-y-2">
                 {para}
@@ -156,13 +156,13 @@ export function StorySection() {
           </div>
 
           {/* Core Mantra Ribbon */}
-          <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-slate-300">
-            <div className="flex items-center gap-3">
-              <span className="text-cyan-400 font-bold uppercase tracking-widest">{t("CORE MANTRA:", "PHƯƠNG CHÂM:")}</span>
-              <span className="text-white font-bold tracking-widest">{coreMantras.join("  //  ")}</span>
+          <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-xs text-slate-300">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <span className="text-cyan-400 font-bold uppercase tracking-widest text-[11px] sm:text-xs">{t("CORE MANTRA:", "PHƯƠNG CHÂM:")}</span>
+              <span className="text-white font-bold tracking-widest text-[11px] sm:text-xs">{coreMantras.join("  //  ")}</span>
             </div>
-            <div className="text-slate-400 text-[11px] flex items-center gap-2">
-              <BookOpen className="w-3.5 h-3.5 text-blue-400" />
+            <div className="text-slate-400 text-[10px] sm:text-[11px] flex items-center gap-2">
+              <BookOpen className="w-3.5 h-3.5 text-blue-400 shrink-0" />
               <span>{t("EDUCATION: SNA Marianapolis International School", "HỌC TẬP: Trường Quốc Tế SNA Marianapolis")}</span>
             </div>
           </div>
@@ -171,16 +171,16 @@ export function StorySection() {
         {/* ---------------------------------------------------- */}
         {/* 2. MY STORY: THE CHRONOLOGICAL JOURNEY */}
         {/* ---------------------------------------------------- */}
-        <div className="space-y-4 mb-16 max-w-3xl">
+        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-16 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-blue-400 font-bold uppercase tracking-widest">
             <span>{t("// THE STORY & EVOLUTION", "// CÂU CHUYỆN & HÀNH TRÌNH")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+          <h2 className="section-headline-fluid font-serif text-white">
             {t("How a kid with a computer became an AI Engineer & Developer.", "Từ cậu bé tò mò máy tính đến Kỹ sư AI & Lập trình viên Full-Stack.")}
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-sans leading-relaxed">
             {t(
               "The honest trajectory: early childhood computer curiosity, a sports and business detour, and a powerful reawakening through the modern AI revolution.",
               "Hành trình thực tế: niềm đam mê máy tính từ nhỏ, giai đoạn rèn luyện thể thao & kinh doanh, và bước chuyển mình mạnh mẽ cùng làn sóng AI hiện đại."
@@ -189,7 +189,7 @@ export function StorySection() {
         </div>
 
         {/* Timeline Stream */}
-        <div className="relative pl-6 sm:pl-10 space-y-12 before:absolute before:left-2 sm:before:left-3 before:top-4 before:bottom-4 before:w-[1px] before:bg-blue-500/20 mb-28">
+        <div className="relative pl-6 sm:pl-10 space-y-8 sm:space-y-12 before:absolute before:left-2 sm:before:left-3 before:top-4 before:bottom-4 before:w-[1px] before:bg-blue-500/20 mb-20 sm:mb-28">
           {storyData.map((milestone, idx) => {
             const era = isVi && milestone.eraVi ? milestone.eraVi : milestone.era;
             const yearOrGrade = isVi && milestone.yearOrGradeVi ? milestone.yearOrGradeVi : milestone.yearOrGrade;
@@ -202,13 +202,13 @@ export function StorySection() {
             return (
               <div key={idx} className="relative group">
                 {/* Node Mark with Pixel Era Icon */}
-                <div className="absolute -left-[36px] sm:-left-[46px] top-5 w-7 h-7 rounded-sm bg-black/90 border border-cyan-400/60 shadow-[0_0_12px_rgba(6,182,212,0.4)] flex items-center justify-center group-hover:scale-115 transition-transform z-10">
+                <div className="absolute -left-[32px] sm:-left-[46px] top-4 sm:top-5 w-6 h-6 sm:w-7 sm:h-7 rounded-sm bg-black/90 border border-cyan-400/60 shadow-[0_0_12px_rgba(6,182,212,0.4)] flex items-center justify-center group-hover:scale-115 transition-transform z-10">
                   {getEraPixelIcon(idx)}
                 </div>
 
-                <div className="p-8 sm:p-10 bg-black/70 border border-blue-500/20 hover:border-cyan-400/50 rounded-sm shadow-xl space-y-6 transition-all">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/15 pb-4 font-mono">
-                    <div className="flex items-center gap-3">
+                <div className="p-5 sm:p-8 lg:p-10 bg-black/70 border border-blue-500/20 hover:border-cyan-400/50 rounded-sm shadow-xl space-y-4 sm:space-y-6 transition-all">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/15 pb-3 sm:pb-4 font-mono">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                       <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
                         {era}
                       </span>
@@ -217,29 +217,29 @@ export function StorySection() {
                         {yearOrGrade}
                       </span>
                     </div>
-                    <span className="text-[10px] text-slate-400 px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm uppercase tracking-widest">
+                    <span className="text-[10px] text-slate-400 px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm uppercase tracking-widest self-start sm:self-auto">
                       {category}
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    <div className="md:col-span-8 space-y-4">
+                    <div className="md:col-span-8 space-y-3 sm:space-y-4">
                       <div>
-                        <h3 className="text-xl sm:text-2xl font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
+                        <h3 className="text-lg sm:text-2xl font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
                           {title}
                         </h3>
-                        <p className="text-xs font-mono text-cyan-400/80 mt-1 uppercase tracking-wider">
+                        <p className="text-[11px] sm:text-xs font-mono text-cyan-400/80 mt-1 uppercase tracking-wider">
                           {subtitle}
                         </p>
                       </div>
 
-                      <p className="text-sm text-slate-300 font-sans leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
                         {description}
                       </p>
                     </div>
 
                     {/* Tactile Physical Artifact Showcase for this Era */}
-                    <div className="md:col-span-4 flex items-center justify-center p-4 bg-white/[0.02] border border-white/10 rounded-sm shadow-inner relative overflow-hidden">
+                    <div className="md:col-span-4 flex items-center justify-center p-3 sm:p-4 bg-white/[0.02] border border-white/10 rounded-sm shadow-inner relative overflow-hidden">
                       <div className="absolute inset-0 bg-computational-grid opacity-20 pointer-events-none" />
                       <div className="relative z-10 flex items-center justify-center py-2">
                         {getEraPhysicalArtifact(idx)}
@@ -248,12 +248,12 @@ export function StorySection() {
                   </div>
 
                   <div className="pt-3 border-t border-white/10 space-y-2 font-mono text-xs">
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-cyan-400">
+                    <div className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-cyan-400">
                       {t("KEY REALIZATIONS & SKILLS:", "BÀI HỌC VÀ KỸ NĂNG CỐT LÕI:")}
                     </div>
-                    <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-slate-300 font-sans text-xs">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-slate-300 font-sans text-xs">
                       {keyLearnings.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 bg-white/5 p-2.5 rounded-sm border border-white/10">
+                        <li key={i} className="flex items-start gap-2 bg-white/5 p-2 sm:p-2.5 rounded-sm border border-white/10">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </li>
@@ -269,16 +269,16 @@ export function StorySection() {
         {/* ---------------------------------------------------- */}
         {/* 3. WHY WORK WITH TYSON? (UNIQUE VALUE PILLARS) */}
         {/* ---------------------------------------------------- */}
-        <div className="space-y-4 mb-16 max-w-3xl">
+        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-16 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest">
             <span>{t("// UNIQUE VALUE & APPROACH", "// GIÁ TRỊ KHÁC BIỆT")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+          <h2 className="section-headline-fluid font-serif text-white">
             {t("Why work with Tyson?", "Tại sao nên đồng hành cùng mình?")}
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-sans leading-relaxed">
             {t(
               "Combining deep hands-on AI implementation with commercial intuition, adaptability, and an unyielding commitment to builder independence.",
               "Kết hợp giữa năng lực lập trình AI thực chiến, tư duy kinh doanh thực tế, sự linh hoạt và cam kết đồng hành tối đa."
@@ -286,13 +286,13 @@ export function StorySection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {valuePillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
               <div
                 key={idx}
-                className="p-8 bg-black/70 border border-white/15 hover:border-cyan-400/50 rounded-sm shadow-xl space-y-4 transition-all duration-300 group"
+                className="p-6 sm:p-8 bg-black/70 border border-white/15 hover:border-cyan-400/50 rounded-sm shadow-xl space-y-3.5 sm:space-y-4 transition-all duration-300 group"
               >
                 <div className="flex items-center justify-between border-b border-white/15 pb-3">
                   <span className="text-xs font-serif font-bold text-cyan-400 font-mono">
@@ -303,7 +303,7 @@ export function StorySection() {
                   </div>
                 </div>
 
-                <h3 className="text-lg font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
+                <h3 className="text-base sm:text-lg font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
                   {pillar.title}
                 </h3>
 

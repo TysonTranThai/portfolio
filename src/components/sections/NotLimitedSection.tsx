@@ -49,21 +49,21 @@ export function NotLimitedSection() {
   ];
 
   return (
-    <section id="not-limited" className="py-28 md:py-36 relative bg-[#060a12] text-white border-t border-white/15 atmosphere-cyan">
-      <div className="max-w-7xl mx-auto px-6 sm:px-16 relative z-10">
+    <section id="not-limited" className="py-20 sm:py-28 lg:py-36 relative bg-[#060a12] text-white border-t border-white/15 atmosphere-cyan">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 relative z-10">
         
         {/* Section Header */}
-        <div className="space-y-4 mb-16 max-w-3xl">
+        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-16 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest">
-            <PixelHeart size={16} color="#ec4899" className="animate-pulse" />
+            <PixelHeart size={16} color="#ec4899" className="animate-pulse shrink-0" />
             <span>{t("// NOT LIMITED · COMMUNITY & TOOLS", "// NOT LIMITED · CỘNG ĐỒNG & CÔNG CỤ")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+          <h2 className="section-headline-fluid font-serif text-white">
             {t("Democratizing software building.", "Xóa bỏ rào cản kỹ thuật cho mọi người.")}
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-sans leading-relaxed">
             {t(
               "People shouldn't be prevented from pursuing their ideas simply because they don't know how to code, lack deep technical knowledge, or can't afford expensive tools.",
               "Không ai nên bị giới hạn khả năng hiện thực hóa ý tưởng chỉ vì chưa từng học lập trình, thiếu kiến thức kỹ thuật chuyên sâu hay không có ngân sách cho các công cụ đắt đỏ."
@@ -72,21 +72,21 @@ export function NotLimitedSection() {
         </div>
 
         {/* Honest Motivation Highlight Box */}
-        <div className="mb-16 p-8 sm:p-12 bg-black/80 border border-cyan-500/30 rounded-sm shadow-2xl space-y-6 relative overflow-hidden">
+        <div className="mb-12 sm:mb-16 p-5 sm:p-8 lg:p-12 bg-black/80 border border-cyan-500/30 rounded-sm shadow-2xl space-y-4 sm:space-y-6 relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-pink-500 via-cyan-400 to-amber-400 opacity-60 animate-neon-shimmer" />
 
-          <div className="flex items-center justify-between border-b border-white/15 pb-4 font-mono text-xs">
-            <span className="text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-2">
-              <PixelHeart size={14} color="#f472b6" />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/15 pb-3 sm:pb-4 font-mono text-xs gap-2">
+            <span className="text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-2 text-[11px] sm:text-xs">
+              <PixelHeart size={14} color="#f472b6" className="shrink-0" />
               <span>{t("THE HONEST STORY & MOTIVATION", "ĐỘNG LỰC & CÂU CHUYỆN CHÂN THẬT")}</span>
             </span>
-            <span className="text-emerald-400 flex items-center gap-1.5 font-mono text-[11px]">
-              <TrendingUp className="w-3.5 h-3.5" />
+            <span className="text-emerald-400 flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px]">
+              <TrendingUp className="w-3.5 h-3.5 shrink-0" />
               <span>{t("HELPING PEOPLE + SUSTAINABLE BUSINESS", "VÌ CỘNG ĐỒNG + KINH DOANH BỀN VỮNG")}</span>
             </span>
           </div>
 
-          <blockquote className="text-lg sm:text-xl font-serif italic text-white leading-relaxed">
+          <blockquote className="text-base sm:text-lg lg:text-xl font-serif italic text-white leading-relaxed">
             &ldquo;{t(
               "I wanted to build something that could help people, and I also wanted to build something sustainable as a business.",
               "Mình muốn tạo ra một thứ có thể giúp đỡ mọi người, đồng thời cũng muốn xây dựng một mô hình có thể tự duy trì và phát triển bền vững như một doanh nghiệp."
@@ -102,16 +102,16 @@ export function NotLimitedSection() {
         </div>
 
         {/* Ecosystem Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {initiatives.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="p-8 sm:p-10 bg-black/60 border border-cyan-500/20 hover:border-cyan-400/50 rounded-sm shadow-xl space-y-5 transition-all duration-300 group flex flex-col justify-between"
+                className="p-6 sm:p-8 lg:p-10 bg-black/60 border border-cyan-500/20 hover:border-cyan-400/50 rounded-sm shadow-xl space-y-4 sm:space-y-5 transition-all duration-300 group flex flex-col justify-between"
               >
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-white/15 pb-4 font-mono">
+                  <div className="flex items-center justify-between border-b border-white/15 pb-3 sm:pb-4 font-mono">
                     <span className="text-xs text-cyan-400 font-bold tracking-widest uppercase">
                       {item.status}
                     </span>
@@ -121,28 +121,28 @@ export function NotLimitedSection() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 rounded-sm group-hover:bg-cyan-400 group-hover:text-black transition-colors">
-                      <Icon className="w-5 h-5" />
+                    <div className="p-2 sm:p-2.5 bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 rounded-sm group-hover:bg-cyan-400 group-hover:text-black transition-colors shrink-0">
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      <h3 className="text-lg sm:text-xl font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
                         {item.title}
                       </h3>
-                      <p className="text-xs font-mono text-cyan-400/80">
+                      <p className="text-[11px] sm:text-xs font-mono text-cyan-400/80">
                         {item.tagline}
                       </p>
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans pt-2">
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans pt-1 sm:pt-2">
                     {item.desc}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+                <div className="pt-4 sm:pt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
                   <Link
                     href="#contact"
-                    className="inline-flex items-center gap-2 text-slate-300 hover:text-white font-bold group-hover:text-cyan-300 transition-colors uppercase tracking-widest text-[11px]"
+                    className="inline-flex items-center gap-2 text-slate-300 hover:text-white font-bold group-hover:text-cyan-300 transition-colors uppercase tracking-widest text-[11px] touch-target"
                   >
                     <span>{t("CONNECT WITH NOT LIMITED", "KẾT NỐI VỚI NOT LIMITED")}</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

@@ -76,21 +76,21 @@ export function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="py-28 md:py-36 relative bg-[#06080e] text-white border-t border-white/15 atmosphere-cyan">
-      <div className="max-w-7xl mx-auto px-6 sm:px-16 relative z-10">
+    <section id="projects" className="py-20 sm:py-28 lg:py-36 relative bg-[#06080e] text-white border-t border-white/15 atmosphere-cyan">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 relative z-10">
         
         {/* Section Header */}
-        <div className="space-y-4 mb-20 max-w-3xl">
+        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-16 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest">
-            <FolderGit2 className="w-4 h-4 text-cyan-400" />
+            <FolderGit2 className="w-4 h-4 text-cyan-400 shrink-0" />
             <span>{t("// THE WORK & SELECTED ARCHITECTURES", "// CÁC DỰ ÁN & HỆ THỐNG TIÊU BIỂU")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+          <h2 className="section-headline-fluid font-serif text-white">
             {t("Engineered for real-world impact.", "Kiến tạo vì giá trị thực tiễn.")}
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-sans leading-relaxed">
             {t(
               "Every project listed represents a production system built with rigorous interface specifications, deterministic error recovery, and measurable ROI.",
               "Mỗi dự án đều là một hệ thống thực chiến được xây dựng với đặc tả chuẩn mực, khả năng tự sửa lỗi và mang lại hiệu quả đo lường được."
@@ -99,7 +99,7 @@ export function ProjectsSection() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projectsData.map((project, idx) => {
             const title = isVi && project.titleVi ? project.titleVi : project.title;
             const role = isVi && project.roleVi ? project.roleVi : project.role;
@@ -111,37 +111,37 @@ export function ProjectsSection() {
             return (
               <div
                 key={project.id}
-                className="flex flex-col justify-between p-8 sm:p-10 bg-black/70 border border-cyan-500/20 hover:border-cyan-400/50 rounded-sm shadow-xl transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(6,182,212,0.2)]"
+                className="flex flex-col justify-between p-6 sm:p-8 lg:p-10 bg-black/70 border border-cyan-500/20 hover:border-cyan-400/50 rounded-sm shadow-xl transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(6,182,212,0.2)]"
               >
-                <div className="space-y-5">
+                <div className="space-y-4 sm:space-y-5">
                   {/* Header Plate */}
-                  <div className="flex items-center justify-between border-b border-white/15 pb-4">
+                  <div className="flex items-center justify-between border-b border-white/15 pb-3 sm:pb-4">
                     <div className="flex items-center gap-2">
-                      <div className="p-1 rounded-sm bg-white/5 border border-white/10">
+                      <div className="p-1 rounded-sm bg-white/5 border border-white/10 shrink-0">
                         {getProjectPixelIcon(project.id)}
                       </div>
                       <span className="text-xs font-serif font-bold text-cyan-400 font-mono">
                         N° 0{idx + 1}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono tracking-widest px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 uppercase">
+                    <span className="text-[9px] sm:text-[10px] font-mono tracking-widest px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 uppercase">
                       {status}
                     </span>
                   </div>
 
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start justify-between gap-3 sm:gap-4">
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      <h3 className="text-lg sm:text-2xl font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
                         {title}
                       </h3>
-                      <p className="text-xs font-mono text-cyan-400 mt-1 uppercase tracking-wider font-semibold">
+                      <p className="text-[11px] sm:text-xs font-mono text-cyan-400 mt-1 uppercase tracking-wider font-semibold">
                         {role} · {project.year}
                       </p>
                     </div>
 
                     {/* Tactile Physical Mini Artifact */}
                     {getProjectPhysicalArtifact(project.id) && (
-                      <div className="shrink-0 -my-2 opacity-85 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                      <div className="shrink-0 -my-2 opacity-85 group-hover:opacity-100 group-hover:scale-110 transition-all hidden xs:block">
                         {getProjectPhysicalArtifact(project.id)}
                       </div>
                     )}
@@ -154,8 +154,8 @@ export function ProjectsSection() {
                   {/* Problem Statement Tablet */}
                   {problem && (
                     <div className="space-y-2 text-xs font-sans border-t border-white/10 pt-3">
-                      <div className="p-3 rounded-sm bg-white/5 border border-white/10 space-y-1">
-                        <span className="font-mono text-[10px] text-cyan-400 font-bold uppercase tracking-wider block">
+                      <div className="p-2.5 sm:p-3 rounded-sm bg-white/5 border border-white/10 space-y-1">
+                        <span className="font-mono text-[9px] sm:text-[10px] text-cyan-400 font-bold uppercase tracking-wider block">
                           {t("PROBLEM STATEMENT:", "VẤN ĐỀ ĐẶT RA:")}
                         </span>
                         <p className="text-slate-300 leading-relaxed text-[11px]">
@@ -167,7 +167,7 @@ export function ProjectsSection() {
 
                   {/* Highlights */}
                   <div className="space-y-2 font-sans text-xs">
-                    <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400">
+                    <div className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400">
                       {t("DELIVERABLES & OUTCOMES:", "KẾT QUẢ & BÀN GIAO:")}
                     </div>
                     <ul className="space-y-1 text-slate-300">
@@ -182,14 +182,14 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Action Bar */}
-                <div className="pt-6 mt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+                <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
                   <div className="flex items-center gap-3">
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-slate-300 hover:text-white transition-colors uppercase text-[11px] font-bold"
+                        className="inline-flex items-center gap-1 text-slate-300 hover:text-white transition-colors uppercase text-[11px] font-bold py-1 touch-target"
                       >
                         <span>LIVE</span>
                         <ExternalLink className="w-3 h-3" />
@@ -201,7 +201,7 @@ export function ProjectsSection() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-cyan-300 hover:text-white transition-colors uppercase text-[11px] font-bold"
+                        className="inline-flex items-center gap-1 text-cyan-300 hover:text-white transition-colors uppercase text-[11px] font-bold py-1 touch-target"
                       >
                         <GithubIcon className="w-3.5 h-3.5" />
                         <span>CODE</span>
@@ -212,7 +212,7 @@ export function ProjectsSection() {
                   {project.caseStudyId && (
                     <button
                       onClick={() => handleOpenCaseStudy(project)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-slate-200 text-black font-bold uppercase text-[11px] rounded-sm transition-colors shadow-md"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-slate-200 text-black font-bold uppercase text-[10px] sm:text-[11px] rounded-sm transition-colors shadow-md touch-target"
                     >
                       <span>{t("CASE STUDY", "CHI TIẾT")}</span>
                       <ArrowRight className="w-3 h-3" />

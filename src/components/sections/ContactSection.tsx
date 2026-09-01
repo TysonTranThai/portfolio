@@ -170,27 +170,27 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-24 sm:py-32 relative bg-[#06080e] text-white border-t border-white/15 atmosphere-blue overflow-hidden">
+    <section id="contact" className="py-20 sm:py-28 lg:py-36 relative bg-[#06080e] text-white border-t border-white/15 atmosphere-blue overflow-hidden">
       {/* Decorative Grid Scanlines */}
       <div className="absolute inset-0 bg-computational-grid opacity-30 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 relative z-10 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 relative z-10 space-y-12 sm:space-y-16">
         
         {/* ---------------------------------------------------- */}
         {/* 1. SECTION HEADER + COMMS DISH */}
         {/* ---------------------------------------------------- */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8 space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+          <div className="lg:col-span-8 space-y-3 sm:space-y-4">
             <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest">
-              <PixelBot size={16} color="#06b6d4" className="animate-pulse" />
+              <PixelBot size={16} color="#06b6d4" className="animate-pulse shrink-0" />
               <span>{t("// DIRECT TRANSMISSION & CONTACT INFO", "// KÊNH LIÊN HỆ & THÔNG TIN KẾT NỐI")}</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+            <h2 className="section-headline-fluid font-serif text-white">
               {t("Let's build something extraordinary.", "Hãy cùng kiến tạo những điều tuyệt vời.")}
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-sans leading-relaxed">
               {t(
                 "No intermediaries, no bureaucratic delays. Reach out directly through any of the verified channels below — whether for engineering roles, client automation systems, or 1-on-1 mentorship.",
                 "Không qua trung gian, không thủ tục rườm rà. Kết nối trực tiếp với mình qua các kênh liên hệ chính thức bên dưới — dù bạn cần tuyển dụng kỹ sư, xây dựng giải pháp AI cho doanh nghiệp hay cố vấn học tập 1-on-1."
@@ -199,42 +199,42 @@ export function ContactSection() {
           </div>
 
           <div className="lg:col-span-4 flex items-center justify-center lg:justify-end">
-            <div className="p-4 rounded-sm bg-black/60 border border-cyan-500/30 shadow-2xl relative">
+            <div className="p-3 sm:p-4 rounded-sm bg-black/60 border border-cyan-500/30 shadow-2xl relative">
               <CommsAntenna className="transform hover:scale-110 transition-transform" />
             </div>
           </div>
         </div>
 
         {/* ---------------------------------------------------- */}
-        {/* 2. DIRECT COMMUNICATION CHANNELS (4 CARDS GRID) */}
+        {/* 2. DIRECT COMMUNICATION CHANNELS (6 CARDS GRID) */}
         {/* ---------------------------------------------------- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {directChannels.map((channel) => {
             const Icon = channel.icon;
             return (
               <div
                 key={channel.id}
-                className={`p-6 sm:p-8 rounded-sm border shadow-2xl space-y-5 transition-all duration-300 group flex flex-col justify-between ${channel.color}`}
+                className={`p-5 sm:p-8 rounded-sm border shadow-2xl space-y-4 sm:space-y-5 transition-all duration-300 group flex flex-col justify-between ${channel.color}`}
               >
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {/* Top Bar with Icon and Label */}
                   <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono">
-                    <div className="flex items-center gap-2.5">
-                      <div className="p-2 rounded-sm bg-white/5 border border-white/10 text-white">
+                    <div className="flex items-center gap-2 sm:gap-2.5">
+                      <div className="p-1.5 sm:p-2 rounded-sm bg-white/5 border border-white/10 text-white shrink-0">
                         <Icon className="w-4 h-4" />
                       </div>
-                      <span className="text-xs font-bold tracking-wider uppercase text-white">
+                      <span className="text-[11px] sm:text-xs font-bold tracking-wider uppercase text-white truncate">
                         {channel.label}
                       </span>
                     </div>
-                    <span className={`text-[10px] font-mono tracking-widest px-2 py-0.5 rounded-sm border ${channel.badgeColor} uppercase`}>
+                    <span className={`text-[9px] sm:text-[10px] font-mono tracking-widest px-2 py-0.5 rounded-sm border ${channel.badgeColor} uppercase shrink-0`}>
                       ACTIVE
                     </span>
                   </div>
 
                   {/* Channel Value */}
                   <div className="space-y-1">
-                    <div className="text-lg sm:text-xl font-mono font-bold text-white tracking-wide break-all select-all group-hover:text-cyan-300 transition-colors">
+                    <div className="text-base sm:text-xl font-mono font-bold text-white tracking-wide break-all select-all group-hover:text-cyan-300 transition-colors">
                       {channel.value}
                     </div>
                     <p className="text-xs text-slate-300 font-sans leading-relaxed">
@@ -244,10 +244,10 @@ export function ContactSection() {
                 </div>
 
                 {/* Actions Footer */}
-                <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+                <div className="pt-3 sm:pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 font-mono text-xs">
                   <button
                     onClick={channel.onAction}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/10 hover:bg-white/20 text-white font-bold uppercase rounded-sm border border-white/15 transition-all text-[11px]"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-white/10 hover:bg-white/20 text-white font-bold uppercase rounded-sm border border-white/15 transition-all text-[10px] sm:text-[11px] touch-target"
                   >
                     {channel.id === "email" && copiedEmail ? (
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
@@ -263,7 +263,7 @@ export function ContactSection() {
                     href={channel.linkUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-slate-300 hover:text-white font-bold transition-colors uppercase tracking-widest text-[11px]"
+                    className="inline-flex items-center gap-1 text-slate-300 hover:text-white font-bold transition-colors uppercase tracking-widest text-[10px] sm:text-[11px] touch-target"
                   >
                     <span>{channel.linkText}</span>
                   </a>
@@ -276,22 +276,22 @@ export function ContactSection() {
         {/* ---------------------------------------------------- */}
         {/* 3. OPERATIONAL SLA & WORKING LOGISTICS TABLET */}
         {/* ---------------------------------------------------- */}
-        <div className="p-8 sm:p-12 bg-black/85 border border-blue-500/30 rounded-sm shadow-2xl space-y-8 font-mono">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/15 pb-4 gap-2 text-xs">
-            <div className="flex items-center gap-2 text-cyan-400 font-bold uppercase tracking-widest">
-              <Terminal className="w-4 h-4 text-cyan-400" />
+        <div className="p-5 sm:p-8 lg:p-12 bg-black/85 border border-blue-500/30 rounded-sm shadow-2xl space-y-6 sm:space-y-8 font-mono">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/15 pb-3 sm:pb-4 gap-2 text-xs">
+            <div className="flex items-center gap-2 text-cyan-400 font-bold uppercase tracking-widest text-[11px] sm:text-xs">
+              <Terminal className="w-4 h-4 text-cyan-400 shrink-0" />
               <span>{t("OPERATIONAL SLA & DIRECT PROTOCOLS", "CAM KẾT VẬN HÀNH & NGUYÊN TẮC HỢP TÁC")}</span>
             </div>
-            <div className="flex items-center gap-2 text-emerald-400 font-bold text-[11px]">
+            <div className="flex items-center gap-2 text-emerald-400 font-bold text-[10px] sm:text-[11px]">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span>{t("STATUS: OPEN FOR NEW ENGAGEMENTS", "TRẠNG THÁI: SẴN SÀNG NHẬN DỰ ÁN")}</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs font-sans">
-            <div className="p-4 bg-white/5 border border-white/10 rounded-sm space-y-1.5">
-              <div className="flex items-center gap-2 text-blue-400 font-mono font-bold text-[11px] uppercase">
-                <Clock className="w-3.5 h-3.5" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-xs font-sans">
+            <div className="p-3.5 sm:p-4 bg-white/5 border border-white/10 rounded-sm space-y-1 sm:space-y-1.5">
+              <div className="flex items-center gap-2 text-blue-400 font-mono font-bold text-[10px] sm:text-[11px] uppercase">
+                <Clock className="w-3.5 h-3.5 shrink-0" />
                 <span>{t("RESPONSE SLA", "TỐC ĐỘ PHẢN HỒI")}</span>
               </div>
               <p className="text-slate-200 text-xs">
@@ -299,9 +299,9 @@ export function ContactSection() {
               </p>
             </div>
 
-            <div className="p-4 bg-white/5 border border-white/10 rounded-sm space-y-1.5">
-              <div className="flex items-center gap-2 text-cyan-400 font-mono font-bold text-[11px] uppercase">
-                <MapPin className="w-3.5 h-3.5" />
+            <div className="p-3.5 sm:p-4 bg-white/5 border border-white/10 rounded-sm space-y-1 sm:space-y-1.5">
+              <div className="flex items-center gap-2 text-cyan-400 font-mono font-bold text-[10px] sm:text-[11px] uppercase">
+                <MapPin className="w-3.5 h-3.5 shrink-0" />
                 <span>{t("LOCATION & TIME", "ĐỊA ĐIỂM & MÚI GIỜ")}</span>
               </div>
               <p className="text-slate-200 text-xs">
@@ -309,9 +309,9 @@ export function ContactSection() {
               </p>
             </div>
 
-            <div className="p-4 bg-white/5 border border-white/10 rounded-sm space-y-1.5">
-              <div className="flex items-center gap-2 text-emerald-400 font-mono font-bold text-[11px] uppercase">
-                <ShieldCheck className="w-3.5 h-3.5" />
+            <div className="p-3.5 sm:p-4 bg-white/5 border border-white/10 rounded-sm space-y-1 sm:space-y-1.5">
+              <div className="flex items-center gap-2 text-emerald-400 font-mono font-bold text-[10px] sm:text-[11px] uppercase">
+                <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
                 <span>{t("CONFIDENTIALITY", "BẢO MẬT DỮ LIỆU")}</span>
               </div>
               <p className="text-slate-200 text-xs">
@@ -319,9 +319,9 @@ export function ContactSection() {
               </p>
             </div>
 
-            <div className="p-4 bg-white/5 border border-white/10 rounded-sm space-y-1.5">
-              <div className="flex items-center gap-2 text-amber-400 font-mono font-bold text-[11px] uppercase">
-                <Zap className="w-3.5 h-3.5" />
+            <div className="p-3.5 sm:p-4 bg-white/5 border border-white/10 rounded-sm space-y-1 sm:space-y-1.5">
+              <div className="flex items-center gap-2 text-amber-400 font-mono font-bold text-[10px] sm:text-[11px] uppercase">
+                <Zap className="w-3.5 h-3.5 shrink-0" />
                 <span>{t("DELIVERY VELOCITY", "TỐC ĐỘ TRIỂN KHAI")}</span>
               </div>
               <p className="text-slate-200 text-xs">
@@ -334,25 +334,25 @@ export function ContactSection() {
         {/* ---------------------------------------------------- */}
         {/* 4. THREE WAYS TO COLLABORATE (INFO GUIDE) */}
         {/* ---------------------------------------------------- */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/15 pb-4 font-mono text-xs">
-            <span className="text-slate-400 font-bold uppercase tracking-widest">
+        <div className="space-y-4 sm:space-y-6">
+          <div className="flex items-center justify-between border-b border-white/15 pb-3 sm:pb-4 font-mono text-xs">
+            <span className="text-slate-400 font-bold uppercase tracking-widest text-[11px] sm:text-xs">
               {t("// TAILORED COLLABORATION PATHWAYS", "// CÁC HÌNH THỨC ĐỒNG HÀNH")}
             </span>
-            <span className="text-cyan-400 font-mono text-[11px]">SELECT YOUR PATH</span>
+            <span className="text-cyan-400 font-mono text-[10px] sm:text-[11px]">SELECT YOUR PATH</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {engagementPaths.map((path, idx) => {
               const Icon = path.icon;
               return (
                 <div
                   key={idx}
-                  className={`p-6 sm:p-8 bg-black/60 border rounded-sm shadow-xl space-y-3 font-sans ${path.accent}`}
+                  className={`p-5 sm:p-8 bg-black/60 border rounded-sm shadow-xl space-y-2.5 sm:space-y-3 font-sans ${path.accent}`}
                 >
                   <div className="flex items-center gap-2.5 font-mono text-xs font-bold text-white uppercase">
-                    <Icon className="w-4 h-4 text-cyan-400" />
-                    <span>{path.role}</span>
+                    <Icon className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <span className="truncate">{path.role}</span>
                   </div>
                   <p className="text-xs text-slate-300 leading-relaxed">
                     {path.desc}

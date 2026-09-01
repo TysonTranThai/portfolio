@@ -34,26 +34,26 @@ export default function CVPage() {
   const coreMantras = isVi && profileData.coreMantrasVi ? profileData.coreMantrasVi : profileData.coreMantras;
 
   return (
-    <div className="min-h-screen py-10 sm:py-16 bg-[#06080e] text-white transition-colors font-sans">
+    <div className="min-h-screen py-6 sm:py-12 lg:py-16 bg-[#06080e] text-white transition-colors font-sans">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top toolbar (hidden on print) */}
-        <div className="no-print mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-sm bg-black border border-white/20 shadow-xl font-mono text-xs">
+        <div className="no-print mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-sm bg-black border border-white/20 shadow-xl font-mono text-xs">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors touch-target"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{t("<- RETURN_TO_WEBSITE", "<- QUAY LẠI TRANG CHỦ")}</span>
           </Link>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <Button
               variant="outline"
               size="sm"
               onClick={handlePrint}
               leftIcon={<Printer className="w-4 h-4" />}
-              className="font-mono text-xs rounded-sm border-white/20 text-white hover:bg-white/10"
+              className="font-mono text-xs rounded-sm border-white/20 text-white hover:bg-white/10 touch-target"
             >
               {t("Print / Save as PDF", "In / Lưu Dưới Dạng PDF")}
             </Button>
@@ -62,7 +62,7 @@ export default function CVPage() {
               size="sm"
               href="/#contact"
               rightIcon={<Sparkles className="w-3.5 h-3.5" />}
-              className="font-mono text-xs font-bold uppercase rounded-sm bg-blue-500 text-white hover:bg-blue-600 shadow-md"
+              className="font-mono text-xs font-bold uppercase rounded-sm bg-blue-500 text-white hover:bg-blue-600 shadow-md touch-target"
             >
               {t("Work With Tyson", "Hợp Tác Cùng Mình")}
             </Button>
@@ -70,16 +70,16 @@ export default function CVPage() {
         </div>
 
         {/* Printable Paper Document (ATS-Friendly Structure) */}
-        <div className="cv-print-area p-8 sm:p-14 rounded-sm bg-black/90 border border-blue-500/30 shadow-2xl space-y-10 text-white">
+        <div className="cv-print-area p-5 sm:p-10 lg:p-14 rounded-sm bg-black/90 border border-blue-500/30 shadow-2xl space-y-8 sm:space-y-10 text-white">
           
           {/* Header */}
-          <div className="border-b border-white/15 pb-8 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="border-b border-white/15 pb-6 sm:pb-8 space-y-3 sm:space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
               <div>
-                <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
+                <h1 className="text-2xl sm:text-4xl font-serif font-bold text-white tracking-tight">
                   {profileData.fullName} ({profileData.preferredName})
                 </h1>
-                <div className="text-sm font-mono text-blue-400 mt-1 uppercase tracking-wider font-semibold">
+                <div className="text-xs sm:text-sm font-mono text-blue-400 mt-1 uppercase tracking-wider font-semibold">
                   {isVi && profileData.titleVi ? profileData.titleVi : profileData.title}
                 </div>
               </div>

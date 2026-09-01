@@ -161,21 +161,21 @@ export function WhatIDoSection() {
   ];
 
   return (
-    <section id="what-i-do" className="py-28 md:py-36 relative bg-[#06080e] text-white border-t border-white/15">
-      <div className="max-w-7xl mx-auto px-6 sm:px-16">
+    <section id="what-i-do" className="py-20 sm:py-28 lg:py-36 relative bg-[#06080e] text-white border-t border-white/15">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
         
         {/* Section Header */}
-        <div className="space-y-4 mb-20 max-w-3xl">
+        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-16 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest">
-            <PixelLightning size={16} color="#06b6d4" />
+            <PixelLightning size={16} color="#06b6d4" className="shrink-0" />
             <span>{t("// WHAT I DO · TECHNICAL CAPABILITIES & OUTCOMES", "// NĂNG LỰC CÔNG NGHỆ & KẾT QUẢ ĐẦU RA")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+          <h2 className="section-headline-fluid font-serif text-white">
             {t("What I build & how it works.", "Những gì mình xây dựng & cách vận hành.")}
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-sans leading-relaxed">
             {t(
               "I work across AI systems, full-stack software, infrastructure, consulting, and teaching — focusing on real outcomes rather than empty buzzwords.",
               "Mình làm việc trên các hệ thống AI, phần mềm full-stack, hạ tầng máy chủ, tư vấn và giảng dạy — tập trung vào kết quả thực tế thay vì thuật ngữ sáo rỗng."
@@ -186,29 +186,29 @@ export function WhatIDoSection() {
         {/* ---------------------------------------------------- */}
         {/* 1. VISUAL OUTCOME FLOWS */}
         {/* ---------------------------------------------------- */}
-        <div className="mb-24 space-y-6">
-          <div className="flex items-center justify-between border-b border-white/15 pb-4 font-mono text-xs">
-            <span className="text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-2">
-              <Zap className="w-4 h-4 text-cyan-400" />
+        <div className="mb-16 sm:mb-24 space-y-6">
+          <div className="flex items-center justify-between border-b border-white/15 pb-3 sm:pb-4 font-mono text-xs">
+            <span className="text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-2 text-[11px] sm:text-xs">
+              <Zap className="w-4 h-4 text-cyan-400 shrink-0" />
               <span>{t("// VISUAL SYSTEM FLOWS", "// SƠ ĐỒ LUỒNG VẬN HÀNH")}</span>
             </span>
-            <span className="text-slate-400 font-mono text-[11px]">ARCHITECTURE IN MOTION</span>
+            <span className="text-slate-400 font-mono text-[10px] sm:text-[11px]">ARCHITECTURE IN MOTION</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {visualStoryFlows.map((item, idx) => {
               const flowList = isVi ? item.flowVi : item.flow;
               return (
                 <div
                   key={idx}
-                  className={`p-8 bg-black/70 border rounded-sm shadow-xl space-y-5 transition-all group ${item.accent}`}
+                  className={`p-5 sm:p-8 bg-black/70 border rounded-sm shadow-xl space-y-4 sm:space-y-5 transition-all group ${item.accent}`}
                 >
                   <div className="flex items-center justify-between border-b border-white/15 pb-3">
                     <div>
-                      <h3 className="font-serif font-bold text-lg text-white group-hover:text-cyan-300 transition-colors">
+                      <h3 className="font-serif font-bold text-base sm:text-lg text-white group-hover:text-cyan-300 transition-colors">
                         {item.title}
                       </h3>
-                      <p className="text-xs font-mono text-slate-400">
+                      <p className="text-[11px] sm:text-xs font-mono text-slate-400">
                         {item.subtitle}
                       </p>
                     </div>
@@ -218,14 +218,14 @@ export function WhatIDoSection() {
                   </div>
 
                   {/* Flow Diagram Ribbon */}
-                  <div className="p-3.5 bg-black/60 border border-white/10 rounded-sm font-mono text-xs flex flex-wrap items-center gap-2 text-slate-200">
+                  <div className="p-3 sm:p-3.5 bg-black/60 border border-white/10 rounded-sm font-mono text-xs flex flex-wrap items-center gap-1.5 sm:gap-2 text-slate-200">
                     {flowList.map((node, nIdx) => (
                       <React.Fragment key={nIdx}>
-                        <span className="px-2.5 py-1 bg-white/5 border border-white/15 rounded-sm font-bold text-white text-[11px]">
+                        <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-white/5 border border-white/15 rounded-sm font-bold text-white text-[10px] sm:text-[11px]">
                           {node}
                         </span>
                         {nIdx < flowList.length - 1 && (
-                          <span className="text-cyan-400 font-bold">→</span>
+                          <span className="text-cyan-400 font-bold text-xs">→</span>
                         )}
                       </React.Fragment>
                     ))}
@@ -244,23 +244,23 @@ export function WhatIDoSection() {
         {/* 2. THE 5 CORE CAPABILITY DOMAINS */}
         {/* ---------------------------------------------------- */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/15 pb-4 font-mono text-xs">
-            <span className="text-cyan-400 font-bold uppercase tracking-widest">
+          <div className="flex items-center justify-between border-b border-white/15 pb-3 sm:pb-4 font-mono text-xs">
+            <span className="text-cyan-400 font-bold uppercase tracking-widest text-[11px] sm:text-xs">
               {t("// 5 CORE CAPABILITY DOMAINS", "// 5 LĨNH VỰC NĂNG LỰC CHUYÊN MÔN")}
             </span>
-            <span className="text-slate-400 font-mono text-[11px]">HANDS-ON SPECIALIZATIONS</span>
+            <span className="text-slate-400 font-mono text-[10px] sm:text-[11px]">HANDS-ON SPECIALIZATIONS</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {capabilityCategories.map((d) => {
               const Icon = d.icon;
               return (
                 <div
                   key={d.num}
-                  className="flex flex-col justify-between p-8 sm:p-10 bg-black/60 border border-white/15 hover:border-cyan-400/50 rounded-sm shadow-xl transition-all duration-300 group"
+                  className="flex flex-col justify-between p-6 sm:p-8 lg:p-10 bg-black/60 border border-white/15 hover:border-cyan-400/50 rounded-sm shadow-xl transition-all duration-300 group"
                 >
-                  <div className="space-y-5">
-                    <div className="flex items-center justify-between border-b border-white/15 pb-4">
+                  <div className="space-y-4 sm:space-y-5">
+                    <div className="flex items-center justify-between border-b border-white/15 pb-3 sm:pb-4">
                       <span className="text-xs font-serif font-bold text-cyan-400 font-mono">
                         {d.num}
                       </span>
@@ -271,10 +271,10 @@ export function WhatIDoSection() {
 
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-sm bg-white/5 border border-white/10 ${d.color} group-hover:bg-white/10 transition-colors`}>
+                        <div className={`p-2 rounded-sm bg-white/5 border border-white/10 ${d.color} group-hover:bg-white/10 transition-colors shrink-0`}>
                           <Icon className="w-4 h-4" />
                         </div>
-                        <h3 className="text-xl font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
+                        <h3 className="text-lg sm:text-xl font-serif font-bold text-white group-hover:text-cyan-300 transition-colors">
                           {d.title}
                         </h3>
                       </div>
@@ -298,10 +298,10 @@ export function WhatIDoSection() {
                     </div>
                   </div>
 
-                  <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+                  <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
                     <Link
                       href="#contact"
-                      className="inline-flex items-center gap-2 text-slate-300 hover:text-white font-bold group-hover:text-cyan-300 transition-colors uppercase tracking-widest text-[11px]"
+                      className="inline-flex items-center gap-2 text-slate-300 hover:text-white font-bold group-hover:text-cyan-300 transition-colors uppercase tracking-widest text-[11px] touch-target"
                     >
                       <span>{t("DISCUSS PROJECT", "THẢO LUẬN DỰ ÁN")}</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

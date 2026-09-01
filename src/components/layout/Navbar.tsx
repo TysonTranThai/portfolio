@@ -50,11 +50,11 @@ export function Navbar() {
         {/* Left: Brand Identity Box */}
         <Link
           href="/"
-          className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+          className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg shrink-0"
         >
-          <div className="w-10 h-10 sm:w-11 sm:h-11 bg-black border border-blue-500/30 flex items-center justify-center text-white shadow-xl group-hover:scale-105 transition-transform">
+          <div className="w-9 h-9 sm:w-11 sm:h-11 bg-black border border-blue-500/30 flex items-center justify-center text-white shadow-xl group-hover:scale-105 transition-transform shrink-0">
             <svg
-              className="w-5 h-5 text-cyan-400"
+              className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -66,17 +66,17 @@ export function Navbar() {
             </svg>
           </div>
           <div className="flex flex-col">
-            <span className="font-serif tracking-widest text-sm text-white font-bold uppercase">
+            <span className="font-serif tracking-wider text-xs sm:text-sm text-white font-bold uppercase">
               TYSON TRAN
             </span>
-            <span className="text-[9px] font-mono tracking-widest text-cyan-300 uppercase">
-              {t("AI ENGINEER · FULL-STACK DEV", "KỸ SƯ AI · FULL-STACK")}
+            <span className="text-[8px] sm:text-[9px] font-mono tracking-widest text-cyan-300 uppercase">
+              {t("AI ENGINEER · FULL-STACK", "KỸ SƯ AI · FULL-STACK")}
             </span>
           </div>
         </Link>
 
         {/* Center: Spaced Navigation */}
-        <nav className="hidden xl:flex items-center gap-6 text-[11px] font-mono tracking-widest text-slate-200">
+        <nav className="hidden xl:flex items-center gap-5 2xl:gap-6 text-[11px] font-mono tracking-widest text-slate-200">
           {classicalNavItems.map((item) => (
             <Link
               key={item.href}
@@ -89,36 +89,36 @@ export function Navbar() {
         </nav>
 
         {/* Right Utilities: Language Switcher + CTA Button */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           <LanguageToggle />
 
-          <div className="hidden sm:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <Link
               href="/#contact"
-              className="px-5 py-2.5 rounded-sm bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white text-[11px] font-mono tracking-widest uppercase font-bold shadow-lg shadow-blue-500/20 transition-all flex items-center gap-2"
+              className="px-4 lg:px-5 py-2 sm:py-2.5 rounded-sm bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white text-[10px] lg:text-[11px] font-mono tracking-widest uppercase font-bold shadow-lg shadow-blue-500/20 transition-all flex items-center gap-1.5 shrink-0"
             >
               <span>{t("WORK WITH ME", "HỢP TÁC")}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          {/* Mobile Toggle Button */}
+          {/* Mobile/Tablet Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
-            className="xl:hidden p-2 rounded-sm bg-black/80 border border-white/20 text-white"
+            className="xl:hidden w-10 h-10 flex items-center justify-center rounded-sm bg-black/80 border border-white/20 text-white touch-target hover:border-cyan-400/60 transition-colors"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile & Tablet Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden max-w-7xl mx-auto px-4 mt-3">
-          <div className="p-6 bg-black/95 border border-blue-500/30 rounded-md backdrop-blur-2xl space-y-4 font-mono text-xs tracking-widest text-slate-200">
+        <div className="xl:hidden max-w-7xl mx-auto px-4 mt-2 sm:mt-3">
+          <div className="p-5 sm:p-6 bg-black/95 border border-blue-500/30 rounded-md backdrop-blur-2xl space-y-3 font-mono text-xs tracking-widest text-slate-200 shadow-2xl max-h-[80vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              <span className="text-slate-400">{t("SELECT LANGUAGE", "CHỌN NGÔN NGỮ")}</span>
+              <span className="text-slate-400 text-[11px]">{t("SELECT LANGUAGE", "CHỌN NGÔN NGỮ")}</span>
               <LanguageToggle />
             </div>
 
@@ -127,7 +127,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block py-2 border-b border-white/10 hover:text-cyan-300"
+                className="flex items-center py-2.5 border-b border-white/10 hover:text-cyan-300 min-h-[44px]"
               >
                 {item.label}
               </Link>
@@ -136,7 +136,7 @@ export function Navbar() {
               <Link
                 href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block w-full py-3 text-center bg-blue-500 text-white font-bold uppercase rounded-sm shadow-lg"
+                className="flex items-center justify-center w-full py-3.5 text-center bg-blue-500 text-white font-bold uppercase rounded-sm shadow-lg text-xs tracking-widest min-h-[44px]"
               >
                 {t("WORK WITH TYSON →", "HỢP TÁC CÙNG MÌNH →")}
               </Link>

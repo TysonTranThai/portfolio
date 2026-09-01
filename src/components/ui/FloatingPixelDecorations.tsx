@@ -40,7 +40,7 @@ export function FloatingPixelDecorations() {
       </div>
 
       {/* Mid Left: Pixel Neural Brain (AI & LLMs) */}
-      <div className="absolute top-[32%] left-[1.5%] sm:left-[2.5%] opacity-65 animate-pixel-3 flex flex-col items-center gap-1">
+      <div className="absolute top-[32%] left-[1.5%] sm:left-[2.5%] opacity-65 animate-pixel-3 hidden sm:flex flex-col items-center gap-1">
         <div className="p-2 rounded-sm bg-violet-950/40 border border-violet-400/40 shadow-[0_0_15px_rgba(168,85,247,0.3)] backdrop-blur-md">
           <PixelBrain size={20} color="#c084fc" />
         </div>
@@ -50,8 +50,8 @@ export function FloatingPixelDecorations() {
       </div>
 
       {/* Mid Right: Pixel Terminal (Code & Vibe Coding) */}
-      <div className="absolute top-[36%] right-[1.5%] sm:right-[3%] opacity-65 animate-pixel-1 flex flex-col items-center gap-1">
-        <div className="p-2 rounded-sm bg-emerald-950/40 border border-emerald-400/40 shadow-[0_0_15px_rgba(16,185,129,0.3)] backdrop-blur-md">
+      <div className="absolute top-[36%] right-[1.5%] sm:right-[3%] opacity-65 animate-pixel-1 hidden sm:flex flex-col items-center gap-1">
+        <div className="p-2 rounded-sm bg-emerald-950/40 border border-emerald-400/40 shadow-[0_0_15px_rgba(160,185,129,0.3)] backdrop-blur-md">
           <PixelTerminal size={20} color="#34d399" />
         </div>
         <span className="text-[8px] font-mono text-emerald-300/80 tracking-widest uppercase bg-black/60 px-1.5 py-0.5 rounded-xs border border-emerald-500/20 hidden md:inline">
@@ -60,7 +60,7 @@ export function FloatingPixelDecorations() {
       </div>
 
       {/* Lower Left: Pixel Heart (Community / Not Limited) */}
-      <div className="absolute top-[58%] left-[2%] sm:left-[3.5%] opacity-70 animate-pixel-2 flex flex-col items-center gap-1">
+      <div className="absolute top-[58%] left-[2%] sm:left-[3.5%] opacity-70 animate-pixel-2 hidden md:flex flex-col items-center gap-1">
         <div className="p-2 rounded-sm bg-pink-950/40 border border-pink-400/40 shadow-[0_0_15px_rgba(236,72,153,0.3)] backdrop-blur-md">
           <PixelHeart size={20} color="#f472b6" />
         </div>
@@ -70,7 +70,7 @@ export function FloatingPixelDecorations() {
       </div>
 
       {/* Lower Right: Pixel Rocket (Rapid MVP Launch) */}
-      <div className="absolute top-[64%] right-[2%] sm:right-[3.5%] opacity-70 animate-pixel-3 flex flex-col items-center gap-1">
+      <div className="absolute top-[64%] right-[2%] sm:right-[3.5%] opacity-70 animate-pixel-3 hidden md:flex flex-col items-center gap-1">
         <div className="p-2 rounded-sm bg-blue-950/40 border border-blue-400/40 shadow-[0_0_15px_rgba(59,130,246,0.3)] backdrop-blur-md">
           <PixelRocket size={20} color="#60a5fa" />
         </div>
@@ -80,7 +80,7 @@ export function FloatingPixelDecorations() {
       </div>
 
       {/* Bottom Left: Pixel Gamepad (Discipline & Energy) */}
-      <div className="absolute top-[82%] left-[2.5%] sm:left-[4%] opacity-65 animate-pixel-1 flex flex-col items-center gap-1">
+      <div className="absolute top-[82%] left-[2.5%] sm:left-[4%] opacity-65 animate-pixel-1 hidden sm:flex flex-col items-center gap-1">
         <div className="p-2 rounded-sm bg-orange-950/40 border border-orange-400/40 shadow-[0_0_15px_rgba(249,115,22,0.3)] backdrop-blur-md">
           <PixelGamepad size={20} color="#fb923c" />
         </div>
@@ -90,7 +90,7 @@ export function FloatingPixelDecorations() {
       </div>
 
       {/* Bottom Right: Pixel Coffee (Builder Fuel) */}
-      <div className="absolute top-[86%] right-[2.5%] sm:right-[4%] opacity-65 animate-pixel-2 flex flex-col items-center gap-1">
+      <div className="absolute top-[86%] right-[2.5%] sm:right-[4%] opacity-65 animate-pixel-2 hidden sm:flex flex-col items-center gap-1">
         <div className="p-2 rounded-sm bg-amber-950/40 border border-amber-400/40 shadow-[0_0_15px_rgba(217,119,6,0.3)] backdrop-blur-md">
           <PixelCoffee size={20} color="#f59e0b" />
         </div>

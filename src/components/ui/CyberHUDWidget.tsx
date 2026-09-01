@@ -63,27 +63,27 @@ export function CyberHUDWidget() {
   return (
     <aside
       aria-label="Tyson System HUD"
-      className="fixed bottom-5 right-5 z-40 font-mono text-xs select-none no-print"
+      className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40 font-mono text-xs select-none no-print max-w-[calc(100vw-32px)]"
     >
       {/* Expanded Cyber Panel */}
       {isOpen ? (
-        <div className="w-[310px] sm:w-[360px] p-4 sm:p-5 rounded-md bg-[#090d16]/95 border border-cyan-500/40 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(6,182,212,0.2)] text-white space-y-4 animate-in fade-in slide-in-from-bottom-3 duration-200">
+        <div className="w-[calc(100vw-32px)] sm:w-[360px] max-w-[360px] p-4 sm:p-5 rounded-md bg-[#090d16]/95 border border-cyan-500/40 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(6,182,212,0.2)] text-white space-y-3.5 sm:space-y-4 animate-in fade-in slide-in-from-bottom-3 duration-200">
           
           {/* Header */}
           <div className="flex items-center justify-between border-b border-white/15 pb-2.5">
             <div className="flex items-center gap-2 text-cyan-400 font-bold">
-              <PixelBot size={18} color="#06b6d4" className="animate-pulse" />
-              <span className="text-[11px] tracking-wider uppercase">TYSON_SYS::TELEMETRY</span>
+              <PixelBot size={18} color="#06b6d4" className="animate-pulse shrink-0" />
+              <span className="text-[10px] sm:text-[11px] tracking-wider uppercase truncate">TYSON_SYS::TELEMETRY</span>
             </div>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 shrink-0">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 text-slate-400 hover:text-white transition-colors"
+                className="p-1.5 text-slate-400 hover:text-white transition-colors touch-target flex items-center justify-center"
                 aria-label="Minimize HUD"
               >
                 <ChevronDown className="w-4 h-4" />
@@ -126,7 +126,7 @@ export function CyberHUDWidget() {
           {/* Interactive Quote Display */}
           <div
             onClick={handleNextQuote}
-            className="p-3 bg-cyan-950/20 hover:bg-cyan-950/40 border border-cyan-500/30 rounded-sm cursor-pointer transition-all group space-y-1.5"
+            className="p-2.5 sm:p-3 bg-cyan-950/20 hover:bg-cyan-950/40 border border-cyan-500/30 rounded-sm cursor-pointer transition-all group space-y-1"
             title="Click to cycle thoughts"
           >
             <div className="flex items-center justify-between text-[9px]">
@@ -147,7 +147,7 @@ export function CyberHUDWidget() {
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="text-cyan-400 hover:underline uppercase font-bold flex items-center gap-1"
+              className="text-cyan-400 hover:underline uppercase font-bold flex items-center gap-1 touch-target"
             >
               <span>{t("DIRECT COMMS →", "KẾT NỐI TRỰC TIẾP →")}</span>
             </a>
@@ -158,17 +158,17 @@ export function CyberHUDWidget() {
         /* Collapsed Floating Pill */
         <button
           onClick={() => setIsOpen(true)}
-          className="group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#080d18]/90 hover:bg-[#0c1424] border border-cyan-500/40 hover:border-cyan-400 text-white backdrop-blur-xl shadow-[0_4px_25px_rgba(0,0,0,0.6),0_0_15px_rgba(6,182,212,0.25)] transition-all duration-300 hover:scale-105"
+          className="group flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#080d18]/90 hover:bg-[#0c1424] border border-cyan-500/40 hover:border-cyan-400 text-white backdrop-blur-xl shadow-[0_4px_25px_rgba(0,0,0,0.6),0_0_15px_rgba(6,182,212,0.25)] transition-all duration-300 hover:scale-105 touch-target"
         >
-          <PixelBot size={16} color="#06b6d4" className="group-hover:rotate-12 transition-transform" />
-          <div className="flex items-center gap-2 text-[11px] font-bold">
+          <PixelBot size={16} color="#06b6d4" className="group-hover:rotate-12 transition-transform shrink-0" />
+          <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] font-bold">
             <span className="text-cyan-300">TYSON_SYS</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           </div>
           <span className="text-[10px] text-slate-400 hidden sm:inline font-mono">
             {currentTime}
           </span>
-          <ChevronUp className="w-3.5 h-3.5 text-cyan-400 group-hover:-translate-y-0.5 transition-transform" />
+          <ChevronUp className="w-3.5 h-3.5 text-cyan-400 group-hover:-translate-y-0.5 transition-transform shrink-0" />
         </button>
       )}
     </aside>
