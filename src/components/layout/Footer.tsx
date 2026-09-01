@@ -28,16 +28,16 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-black text-white border-t border-white/20 font-sans">
+    <footer className="relative bg-[#04060a] text-white border-t border-white/20 font-sans">
       <div className="max-w-7xl mx-auto px-6 sm:px-14 py-20 space-y-16">
         
         {/* Top Monogram & Dispatch Row */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 border-b border-white/15 pb-12">
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-black border border-white/20 flex items-center justify-center text-white shadow-xl">
+              <div className="w-10 h-10 bg-black border border-blue-500/30 flex items-center justify-center text-white shadow-xl">
                 <svg
-                  className="w-5 h-5 text-amber-400"
+                  className="w-5 h-5 text-cyan-400"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -49,13 +49,13 @@ export function Footer() {
                 </svg>
               </div>
               <h3 className="text-2xl font-serif font-bold text-white tracking-tight">
-                {profileData.fullName}
+                {profileData.fullName} ({profileData.preferredName})
               </h3>
             </div>
             <p className="text-xs text-slate-300 font-mono max-w-md">
               {t(
-                "Autonomous AI Architect & Full-Stack Systems Builder. Aligning incentives through shared upside and deterministic execution.",
-                "Kiến trúc sư AI & Kỹ sư phát triển hệ thống toàn diện. Gắn kết lợi ích qua chia sẻ giá trị và thực thi chuẩn xác."
+                "AI Engineer · Full-Stack Developer · AI Consultant · Educator. Engineering real software and empowering builders.",
+                "Kỹ Sư AI · Lập Trình Viên Full-Stack · Tư Vấn AI · Giảng Dạy. Kiến tạo phần mềm thực tế và đồng hành cùng người học."
               )}
             </p>
           </div>
@@ -65,10 +65,10 @@ export function Footer() {
 
             <a
               href={`mailto:${contactInfo.email}`}
-              className="px-4 py-2 bg-white/5 border border-white/15 rounded-sm hover:border-amber-400 text-slate-300 hover:text-white transition-colors flex items-center gap-2"
+              className="px-3.5 py-2 bg-white/5 border border-white/15 rounded-sm hover:border-cyan-400 text-slate-300 hover:text-white transition-colors flex items-center gap-2 text-[11px] max-w-full"
             >
-              <Mail className="w-3.5 h-3.5 text-amber-400" />
-              <span>{contactInfo.email}</span>
+              <Mail className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+              <span className="truncate">{contactInfo.email}</span>
             </a>
 
             <button
@@ -84,32 +84,32 @@ export function Footer() {
         {/* Navigation Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 font-mono text-xs">
           <div className="space-y-3">
-            <span className="text-amber-400 font-bold uppercase tracking-widest text-[10px]">
-              {t("NAVIGATION", "ĐIỀU HƯỚNG")}
+            <span className="text-cyan-400 font-bold uppercase tracking-widest text-[10px]">
+              {t("NARRATIVE & WORK", "CÂU CHUYỆN & DỰ ÁN")}
             </span>
             <ul className="space-y-2 text-slate-300">
-              <li><Link href="#about" className="hover:text-white">{t("The Philosophy", "Triết Lý")}</Link></li>
-              <li><Link href="#what-i-do" className="hover:text-white">{t("Capabilities", "Năng Lực")}</Link></li>
-              <li><Link href="#projects" className="hover:text-white">{t("The Work", "Dự Án")}</Link></li>
-              <li><Link href="#services" className="hover:text-white">{t("Services & Terms", "Dịch Vụ")}</Link></li>
+              <li><Link href="#intro" className="hover:text-white">{t("My Story", "Câu Chuyện")}</Link></li>
+              <li><Link href="#chief-of-agents" className="hover:text-white">{t("Chief of Agents", "Chief of Agents")}</Link></li>
+              <li><Link href="#not-limited" className="hover:text-white">{t("Not Limited Mission", "Sứ Mệnh Not Limited")}</Link></li>
+              <li><Link href="#projects" className="hover:text-white">{t("Selected Projects", "Dự Án Tiêu Biểu")}</Link></li>
             </ul>
           </div>
 
           <div className="space-y-3">
-            <span className="text-amber-400 font-bold uppercase tracking-widest text-[10px]">
-              {t("SYSTEM LAB", "HỆ THỐNG LAB")}
+            <span className="text-blue-400 font-bold uppercase tracking-widest text-[10px]">
+              {t("SERVICES & LEARNING", "DỊCH VỤ & GIẢNG DẠY")}
             </span>
             <ul className="space-y-2 text-slate-300">
-              <li><Link href="#how-i-build" className="hover:text-white">{t("Pipeline Spec", "Quy Trình Xây Dựng")}</Link></li>
-              <li><Link href="#teaching" className="hover:text-white">{t("The Academy", "Học Viện Builder")}</Link></li>
-              <li><Link href="#experience" className="hover:text-white">{t("Chronology", "Kinh Nghiệm")}</Link></li>
-              <li><Link href="#tech-stack" className="hover:text-white">{t("Technical Armory", "Công Nghệ")}</Link></li>
+              <li><Link href="#what-i-do" className="hover:text-white">{t("What I Do", "Năng Lực Chuyên Môn")}</Link></li>
+              <li><Link href="#services" className="hover:text-white">{t("For Businesses", "Dành Cho Doanh Nghiệp")}</Link></li>
+              <li><Link href="#teaching" className="hover:text-white">{t("Learn With Tyson", "Học Cùng Mình")}</Link></li>
+              <li><Link href="#for-recruiters" className="hover:text-white">{t("For Recruiters", "Dành Cho Tuyển Dụng")}</Link></li>
             </ul>
           </div>
 
           <div className="space-y-3">
-            <span className="text-amber-400 font-bold uppercase tracking-widest text-[10px]">
-              {t("TRANSMISSION", "KẾT NỐI")}
+            <span className="text-violet-400 font-bold uppercase tracking-widest text-[10px]">
+              {t("CONNECT", "KẾT NỐI")}
             </span>
             <ul className="space-y-2 text-slate-300">
               {socialLinks.map((s) => (
@@ -129,12 +129,12 @@ export function Footer() {
           </div>
 
           <div className="space-y-3">
-            <span className="text-amber-400 font-bold uppercase tracking-widest text-[10px]">
+            <span className="text-emerald-400 font-bold uppercase tracking-widest text-[10px]">
               {t("DOCUMENTS", "TÀI LIỆU")}
             </span>
             <ul className="space-y-2 text-slate-300">
-              <li><Link href="/cv" className="hover:text-white">{t("Curriculum Vitae (PDF)", "Hồ sơ CV (PDF)")}</Link></li>
-              <li><Link href="#contact" className="hover:text-white">{t("Partnership Inquiries", "Yêu Cầu Hợp Tác")}</Link></li>
+              <li><Link href="/cv" className="hover:text-white">{t("Curriculum Vitae (ATS-PDF)", "Hồ sơ CV (Chuẩn ATS)")}</Link></li>
+              <li><Link href="#contact" className="hover:text-white">{t("Direct Inquiry Transmission", "Gửi Yêu Cầu Hợp Tác")}</Link></li>
             </ul>
           </div>
         </div>
@@ -144,9 +144,8 @@ export function Footer() {
           <div>
             © {new Date().getFullYear()} Tran Thai Son (Tyson). {t("All rights reserved.", "Đã đăng ký bản quyền.")}
           </div>
-          <div className="flex items-center gap-4 text-[10px]">
-            <span>LAT: 10.8231° N, LON: 106.6297° E</span>
-            <span>{"//"} DETERMINISTIC REASONING</span>
+          <div className="flex items-center gap-4 text-[10px] text-cyan-400 font-bold">
+            <span>{t("BUILD · LEARN · HELP · KEEP GOING", "XÂY DỰNG · HỌC HỎI · GIÚP ĐỠ · KHÔNG NGỪNG VƯƠN TỚI")}</span>
           </div>
         </div>
       </div>

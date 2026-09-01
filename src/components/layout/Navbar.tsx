@@ -15,11 +15,14 @@ export function Navbar() {
   const { t } = useLanguage();
 
   const classicalNavItems = [
-    { label: t("THE PHILOSOPHY", "TRIẾT LÝ"), href: "#about" },
-    { label: t("THE WORK", "DỰ ÁN"), href: "#projects" },
-    { label: t("THE SERVICES", "DỊCH VỤ"), href: "#services" },
-    { label: t("THE ACADEMY", "ĐÀO TẠO"), href: "#teaching" },
-    { label: t("QUESTIONS", "CÂU HỎI"), href: "#contact" },
+    { label: t("STORY", "CÂU CHUYỆN"), href: "/#intro" },
+    { label: t("CHIEF OF AGENTS", "HỆ THỐNG"), href: "/#chief-of-agents" },
+    { label: t("WORK", "DỰ ÁN"), href: "/#projects" },
+    { label: t("SERVICES", "DỊCH VỤ"), href: "/#services" },
+    { label: t("TEACHING", "GIẢNG DẠY"), href: "/#teaching" },
+    { label: t("RECRUITERS", "TUYỂN DỤNG"), href: "/#for-recruiters" },
+    { label: t("CV", "HỒ SƠ"), href: "/cv" },
+    { label: t("CONTACT", "LIÊN HỆ"), href: "/#contact" },
   ];
 
   React.useEffect(() => {
@@ -39,23 +42,23 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-print",
         isScrolled
-          ? "bg-[#060a12]/90 backdrop-blur-xl border-b border-white/15 py-3"
+          ? "bg-[#06080e]/90 backdrop-blur-xl border-b border-white/15 py-3"
           : "bg-transparent py-4 sm:py-6"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
-        {/* Left: Neoclassical Obsidian Brand Box */}
+        {/* Left: Brand Identity Box */}
         <Link
           href="/"
           className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
         >
-          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black border border-white/20 flex items-center justify-center text-white shadow-xl group-hover:scale-105 transition-transform">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 bg-black border border-blue-500/30 flex items-center justify-center text-white shadow-xl group-hover:scale-105 transition-transform">
             <svg
-              className="w-5 h-5 text-amber-400"
+              className="w-5 h-5 text-cyan-400"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
@@ -66,19 +69,19 @@ export function Navbar() {
             <span className="font-serif tracking-widest text-sm text-white font-bold uppercase">
               TYSON TRAN
             </span>
-            <span className="text-[9px] font-mono tracking-widest text-slate-300 uppercase">
-              {t("AI ARCHITECT", "KIẾN TRÚC SƯ AI")}
+            <span className="text-[9px] font-mono tracking-widest text-cyan-300 uppercase">
+              {t("AI ENGINEER · FULL-STACK DEV", "KỸ SƯ AI · FULL-STACK")}
             </span>
           </div>
         </Link>
 
-        {/* Center: Classical Uppercase Spaced Navigation */}
-        <nav className="hidden lg:flex items-center gap-7 text-[11px] font-mono tracking-widest text-slate-200">
+        {/* Center: Spaced Navigation */}
+        <nav className="hidden xl:flex items-center gap-6 text-[11px] font-mono tracking-widest text-slate-200">
           {classicalNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="hover:text-white transition-colors duration-150 relative py-1 hover:underline underline-offset-8"
+              className="hover:text-cyan-300 transition-colors duration-150 relative py-1 hover:underline underline-offset-8"
             >
               {item.label}
             </Link>
@@ -91,10 +94,10 @@ export function Navbar() {
 
           <div className="hidden sm:flex items-center gap-4">
             <Link
-              href="#contact"
-              className="px-5 py-2.5 rounded-sm bg-white hover:bg-slate-200 text-black text-[11px] font-mono tracking-widest uppercase font-bold shadow-lg transition-all flex items-center gap-2"
+              href="/#contact"
+              className="px-5 py-2.5 rounded-sm bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white text-[11px] font-mono tracking-widest uppercase font-bold shadow-lg shadow-blue-500/20 transition-all flex items-center gap-2"
             >
-              <span>{t("APPLY", "HỢP TÁC")}</span>
+              <span>{t("WORK WITH ME", "HỢP TÁC")}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -103,7 +106,7 @@ export function Navbar() {
           <button
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
-            className="lg:hidden p-2 rounded-sm bg-black/80 border border-white/20 text-white"
+            className="xl:hidden p-2 rounded-sm bg-black/80 border border-white/20 text-white"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -112,8 +115,8 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden max-w-7xl mx-auto px-4 mt-3">
-          <div className="p-6 bg-black/95 border border-white/20 rounded-md backdrop-blur-2xl space-y-4 font-mono text-xs tracking-widest text-slate-200">
+        <div className="xl:hidden max-w-7xl mx-auto px-4 mt-3">
+          <div className="p-6 bg-black/95 border border-blue-500/30 rounded-md backdrop-blur-2xl space-y-4 font-mono text-xs tracking-widest text-slate-200">
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <span className="text-slate-400">{t("SELECT LANGUAGE", "CHỌN NGÔN NGỮ")}</span>
               <LanguageToggle />
@@ -124,18 +127,18 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block py-2 border-b border-white/10 hover:text-white"
+                className="block py-2 border-b border-white/10 hover:text-cyan-300"
               >
                 {item.label}
               </Link>
             ))}
             <div className="pt-2">
               <Link
-                href="#contact"
+                href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block w-full py-3 text-center bg-white text-black font-bold uppercase rounded-sm"
+                className="block w-full py-3 text-center bg-blue-500 text-white font-bold uppercase rounded-sm shadow-lg"
               >
-                {t("REQUEST PARTNERSHIP →", "YÊU CẦU HỢP TÁC →")}
+                {t("WORK WITH TYSON →", "HỢP TÁC CÙNG MÌNH →")}
               </Link>
             </div>
           </div>

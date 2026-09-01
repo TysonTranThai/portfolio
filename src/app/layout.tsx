@@ -77,6 +77,10 @@ export const metadata: Metadata = {
   },
 };
 
+import { FloatingPixelDecorations } from "@/components/ui/FloatingPixelDecorations";
+import { InteractivePixelCanvas } from "@/components/ui/InteractivePixelCanvas";
+import { CyberHUDWidget } from "@/components/ui/CyberHUDWidget";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -124,9 +128,12 @@ export default function RootLayout({
           <LanguageProvider>
             <ToastProvider>
               <div className="relative flex min-h-screen flex-col bg-[#070b14]">
+                <InteractivePixelCanvas />
+                <FloatingPixelDecorations />
                 <Navbar />
-                <main className="flex-1">{children}</main>
+                <main className="flex-1 relative z-10">{children}</main>
                 <Footer />
+                <CyberHUDWidget />
               </div>
             </ToastProvider>
           </LanguageProvider>

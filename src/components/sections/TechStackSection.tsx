@@ -3,20 +3,24 @@
 import * as React from "react";
 import { skillsData } from "@/data/skills";
 import { Cpu, Code2, Layers, Terminal, Wrench } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function TechStackSection() {
+  const { language, t } = useLanguage();
+  const isVi = language === "vi";
+
   const getCategoryConfig = (category: string) => {
     if (category.includes("AI")) {
       return { icon: Cpu, color: "text-amber-400" };
     }
-    if (category.includes("Languages")) {
+    if (category.includes("Software") || category.includes("Phần Mềm")) {
       return { icon: Code2, color: "text-cyan-400" };
     }
-    if (category.includes("Frameworks")) {
-      return { icon: Layers, color: "text-emerald-400" };
-    }
-    if (category.includes("Infrastructure")) {
+    if (category.includes("Infrastructure") || category.includes("Hạ Tầng")) {
       return { icon: Terminal, color: "text-amber-400" };
+    }
+    if (category.includes("Data") || category.includes("Dữ Liệu")) {
+      return { icon: Layers, color: "text-emerald-400" };
     }
     return { icon: Wrench, color: "text-rose-400" };
   };
@@ -28,29 +32,32 @@ export function TechStackSection() {
         {/* Section Header */}
         <div className="space-y-4 mb-16 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">
-            <span>{"// THE TECHNICAL ARMORY"}</span>
+            <span>{t("// THE TECHNICAL ARMORY", "// CÔNG NGHỆ & KỸ NĂNG CHUYÊN MÔN")}</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
-            Tools of the craft.
+            {t("Tools of the craft.", "Vũ khí công nghệ & kỹ năng thực chiến.")}
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
-            An honest breakdown of the languages, frameworks, inference engines, and cloud infrastructure we command in production.
+            {t(
+              "An honest breakdown of the languages, frameworks, inference engines, and cloud infrastructure we command in production.",
+              "Bảng phân loại trung thực về ngôn ngữ, framework, mô hình AI và hạ tầng đám mây được sử dụng trong các hệ thống thực tế."
+            )}
           </p>
         </div>
 
         {/* Legend */}
         <div className="flex flex-wrap items-center gap-4 mb-12 text-xs font-mono">
-          <span className="text-slate-400 font-bold uppercase tracking-wider">PROFICIENCY CONTRACT:</span>
+          <span className="text-slate-400 font-bold uppercase tracking-wider">{t("PROFICIENCY LEVEL:", "MỨC ĐỘ THÀNH THẠO:")}</span>
           <span className="px-3 py-1 bg-amber-400/10 text-amber-400 border border-amber-400/30 rounded-sm font-semibold">
-            ● Experienced (Daily Production)
+            ● {t("Experienced (Daily Production)", "Thành Thạo (Dùng Hàng Ngày)")}
           </span>
           <span className="px-3 py-1 bg-cyan-400/10 text-cyan-400 border border-cyan-400/30 rounded-sm font-semibold">
-            ● Working Knowledge (Production Capable)
+            ● {t("Working Knowledge (Production Capable)", "Vận Dụng Tốt (Đạt Chuẩn Chạy Thật)")}
           </span>
           <span className="px-3 py-1 bg-white/5 text-slate-300 border border-white/15 rounded-sm">
-            ● Exploring (Active R&amp;D)
+            ● {t("Exploring (Active R&D)", "Đang Nghiên Cứu & Thử Nghiệm")}
           </span>
         </div>
 
@@ -58,6 +65,8 @@ export function TechStackSection() {
           {skillsData.map((category, idx) => {
             const config = getCategoryConfig(category.category);
             const Icon = config.icon;
+            const categoryName = isVi && category.categoryVi ? category.categoryVi : category.category;
+
             return (
               <div
                 key={category.category}
@@ -67,7 +76,7 @@ export function TechStackSection() {
                   <div className="flex items-center gap-3">
                     <Icon className={`w-5 h-5 ${config.color}`} />
                     <h3 className="font-serif font-bold text-lg text-white group-hover:text-amber-300 transition-colors">
-                      {category.category}
+                      {categoryName}
                     </h3>
                   </div>
                   <span className="text-xs font-serif font-bold text-amber-400 font-mono">
@@ -83,7 +92,9 @@ export function TechStackSection() {
                     >
                       <span className="font-bold text-white text-xs">{skill.name}</span>
                       <span className="text-[10px] text-slate-400 uppercase tracking-widest">
-                        {skill.level}
+                        {isVi
+                          ? (skill.level === "Experienced" ? "Thành Thạo" : skill.level === "Working Knowledge" ? "Vận Dụng Tốt" : skill.level)
+                          : skill.level}
                       </span>
                     </div>
                   ))}

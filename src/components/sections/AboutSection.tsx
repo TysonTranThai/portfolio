@@ -14,7 +14,7 @@ export function AboutSection() {
       subtitle: t("Pay for outcomes, not billable hours", "Chi trả cho kết quả thực tế, không tính giờ"),
       desc: t(
         "Traditional agencies sell time and junior headcount. We align our incentives directly with your business growth — taking compensation through performance equity, rev-share, or milestone deliveries.",
-        "Các agency truyền thống bán thời gian và nhân sự trung cấp. Chúng tôi liên kết trực tiếp lợi ích với sự tăng trưởng của bạn — nhận thù lao qua chia sẻ doanh thu, cổ phần hiệu suất hoặc nghiệm thu mốc hoàn thành."
+        "Các agency truyền thống bán thời gian và nhân sự trung cấp. Mình gắn kết trực tiếp lợi ích với sự tăng trưởng của bạn — nhận thù lao qua chia sẻ doanh thu, cổ phần hiệu suất hoặc nghiệm thu mốc hoàn thành."
       ),
       metric: "0% Retainer Bloat",
       icon: Sparkles,
@@ -25,7 +25,7 @@ export function AboutSection() {
       subtitle: t("Beyond simple ChatGPT wrappers", "Vượt xa các ứng dụng bọc ChatGPT đơn giản"),
       desc: t(
         "We build multi-agent orchestration pipelines that execute complex multi-step workflows, retrieve real-time vectorized knowledge, and self-correct with deterministic tool use.",
-        "Chúng tôi phát triển các chuỗi điều phối đa tác tử AI (multi-agent) xử lý quy trình phức tạp nhiều bước, truy xuất tri thức vector hóa theo thời gian thực và tự sửa lỗi chính xác."
+        "Mình phát triển các chuỗi điều phối đa tác tử AI (multi-agent) xử lý quy trình phức tạp nhiều bước, truy xuất tri thức vector hóa theo thời gian thực và tự sửa lỗi chính xác."
       ),
       metric: "< 12ms Tool Dispatch",
       icon: Terminal,
@@ -47,7 +47,7 @@ export function AboutSection() {
       subtitle: t("10x implementation velocity with strict rigor", "Tốc độ triển khai gấp 10 lần với kỷ luật nghiêm ngặt"),
       desc: t(
         "We pilot AI coding agents with rigorous interface contracts, exhaustive test suites, and strict modularity — shipping production apps in days that traditionally take quarters.",
-        "Chúng tôi điều phối các AI coding agent dựa trên hợp đồng giao diện chặt chẽ, bộ kiểm thử toàn diện và cấu trúc module — bàn giao sản phẩm sau vài ngày thay vì hàng quý."
+        "Mình điều phối các AI coding agent dựa trên hợp đồng giao diện chặt chẽ, bộ kiểm thử toàn diện và cấu trúc module — bàn giao sản phẩm sau vài ngày thay vì hàng quý."
       ),
       metric: "10x Delivery Velocity",
       icon: ShieldCheck,
@@ -71,7 +71,7 @@ export function AboutSection() {
           <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
             {t(
               "Most agencies charge for hours spent sitting in meetings. We build mission-critical systems that generate revenue, cut operational burn, and scale autonomously.",
-              "Đa số đơn vị tính phí theo giờ họp và nhân sự. Chúng tôi xây dựng các hệ thống cốt lõi tạo ra doanh thu, cắt giảm chi phí vận hành và tự động hóa tăng trưởng."
+              "Đa số đơn vị tính phí theo giờ họp và nhân sự. Mình xây dựng các hệ thống cốt lõi tạo ra doanh thu, cắt giảm chi phí vận hành và tự động hóa tăng trưởng."
             )}
           </p>
         </div>

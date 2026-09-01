@@ -1,190 +1,279 @@
 import { WorkflowStep } from "@/types";
 
-export const howIBuildSteps: WorkflowStep[] = [
+export const clientWorkflowSteps: WorkflowStep[] = [
   {
     step: "01",
     number: "Phase 1",
-    title: "Idea & Requirements Deconstruction",
-    subtitle: "Define the core problem with absolute clarity before writing code",
+    numberVi: "Giai Đoạn 1",
+    title: "Discover & Workflow Mapping",
+    titleVi: "Khảo Sát & Lập Sơ Đồ Quy Trình",
+    subtitle: "Understand the human, the business, and the true operational bottleneck",
+    subtitleVi: "Thấu hiểu con người, bối cảnh kinh doanh và điểm nghẽn vận hành thực tế",
     description:
-      "Every great build starts with sharp requirements. I break down product ideas into user stories, operational constraints, core data models, and non-negotiables, eliminating ambiguity early.",
-    outputs: ["Product brief", "User journey flows", "Feature scope boundary"],
+      "Every engagement begins with deep listening. I map your actual daily workflows, isolate repetitive friction points, and identify where AI or automation creates measurable business leverage.",
+    descriptionVi:
+      "Mọi dự án đều bắt đầu từ việc lắng nghe sâu sắc. Mình trực tiếp vẽ sơ đồ quy trình làm việc thực tế hàng ngày, bóc tách các điểm nghẽn tốn thời gian và xác định chính xác vị trí AI tạo ra đòn bẩy kinh doanh đo lường được.",
+    outputs: ["Operational friction audit", "AI feasibility assessment", "Clear boundary of scope"],
+    outputsVi: ["Báo cáo đánh giá điểm nghẽn vận hành", "Phân tích tính khả thi ứng dụng AI", "Ranh giới phạm vi công việc rõ ràng"],
   },
   {
     step: "02",
     number: "Phase 2",
-    title: "Research & Tool Selection",
-    subtitle: "Identify the most pragmatic stack and open-source foundations",
+    numberVi: "Giai Đoạn 2",
+    title: "Research & Pragmatic Stack Selection",
+    titleVi: "Nghiên Cứu & Lựa Chọn Công Nghệ Thực Tế",
+    subtitle: "Select the most cost-effective models, APIs, and architecture",
+    subtitleVi: "Lựa chọn mô hình AI, API và kiến trúc tối ưu chi phí nhất",
     description:
-      "I evaluate available APIs, model capabilities, database schemas, and battle-tested libraries. The objective is never to reinvent the wheel, but to assemble high-leverage primitives.",
-    outputs: ["Technology stack matrix", "API feasibility assessment", "Third-party dependency plan"],
+      "I evaluate available LLMs (proprietary vs. self-hosted open-weight), database requirements, and third-party integrations to design a resilient, low-maintenance architecture without unnecessary bloat.",
+    descriptionVi:
+      "Mình đánh giá kỹ lưỡng các mô hình AI phù hợp (API thương mại so với tự dựng mã nguồn mở), yêu cầu cơ sở dữ liệu và tích hợp bên thứ ba để thiết kế hệ thống bền bỉ, dễ bảo trì và không bị dư thừa chi phí.",
+    outputs: ["Technical architecture specification", "Model & tool cost estimate", "Security & data privacy plan"],
+    outputsVi: ["Tài liệu đặc tả kiến trúc kỹ thuật", "Bảng ước tính chi phí mô hình & công cụ", "Kế hoạch bảo mật & an toàn dữ liệu"],
   },
   {
     step: "03",
     number: "Phase 3",
-    title: "Architectural Planning & Specs",
-    subtitle: "Draft comprehensive system instructions and interface contracts",
+    numberVi: "Giai Đoạn 3",
+    title: "Rigorous System Specifications",
+    titleVi: "Lập Đặc Tả Hệ Thống Chuẩn Mực",
+    subtitle: "Draft explicit interface contracts before touching code",
+    subtitleVi: "Xác lập hợp đồng interface và schema dữ liệu trước khi viết code",
     description:
-      "Before orchestrating AI coding agents, I create structured markdown specifications (`.cursorrules`, API schemas, component trees). This gives AI agents exact guardrails and eliminates hallucinations.",
-    outputs: ["Interface specifications", "Data schema diagrams", "Agent system prompts & rules"],
+      "Before orchestrating AI agents or writing code, I draft structured markdown specifications and type schemas. This eliminates ambiguities, prevents hallucinations, and establishes exact expectations.",
+    descriptionVi:
+      "Trước khi điều phối tác tử AI hay viết code, mình lập các tài liệu đặc tả markdown có cấu trúc và schema kiểu dữ liệu. Điều này giúp loại bỏ hoàn toàn sự mơ hồ, ngăn chặn lỗi ảo giác của AI và đảm bảo bàn giao đúng kỳ vọng.",
+    outputs: ["TypeScript data schemas", "API endpoint contracts", "Agent prompt guidelines"],
+    outputsVi: ["Cấu trúc kiểu dữ liệu TypeScript", "Hợp đồng điểm cuối API", "Bộ chỉ dẫn prompt chi tiết cho Agent"],
   },
   {
     step: "04",
     number: "Phase 4",
-    title: "Agentic Build & Vibe Coding",
-    subtitle: "High-velocity implementation with AI coding agents and human steering",
+    numberVi: "Giai Đoạn 4",
+    title: "Agentic Build & High-Velocity Assembly",
+    subtitle: "High-speed implementation with human steering and clean modularity",
+    subtitleVi: "Phát triển thần tốc cùng AI với sự kiểm soát chặt chẽ của kỹ sư",
     description:
-      "I leverage modern AI coding agents (Claude Code, Cursor, Antigravity) to write clean, modular code at 10x speed. As the pilot, I direct architecture, manage state, and ensure strict modularity.",
-    outputs: ["Production-ready frontend & backend", "Clean modular codebase", "Centralized data structures"],
+      "I leverage modern AI coding agents to write clean, modular full-stack code at 10x velocity. As the lead architect, I manage state boundaries, test every component, and ensure code quality.",
+    descriptionVi:
+      "Mình chỉ huy các tác tử AI viết mã nguồn full-stack dạng module, sạch sẽ với tốc độ gấp 10 lần. Đóng vai trò kiến trúc sư trưởng, mình quản lý ranh giới dữ liệu, kiểm thử từng thành phần và đảm bảo chất lượng code cao nhất.",
+    outputs: ["Working frontend interfaces", "Production backend & database", "Secure API integrations"],
+    outputsVi: ["Giao diện người dùng hoàn chỉnh", "Hệ thống backend & database tối ưu", "Kết nối API bảo mật"],
   },
   {
     step: "05",
     number: "Phase 5",
-    title: "Rigorous Testing & Verification",
-    subtitle: "Verify every boundary condition, error state, and edge case",
+    numberVi: "Giai Đoạn 5",
+    title: "Edge-Case Testing & Hardening",
+    titleVi: "Kiểm Thử Trường Hợp Biên & Gia Cố Bảo Mật",
+    subtitle: "Verify error handling, guardrails, and real-world failure modes",
+    subtitleVi: "Kiểm tra xử lý lỗi, rào chắn an toàn và các tình huống sự cố thực tế",
     description:
-      "AI code requires ruthless verification. I test error handling, rate limits, responsive layouts across devices, and performance bottlenecks to ensure production reliability.",
-    outputs: ["Zero TypeScript/lint errors", "Cross-browser responsive checks", "Resilient error boundaries"],
+      "I test error states, rate limit fallback mechanisms, prompt injection guardrails, and cross-device responsiveness to ensure the system never breaks under unexpected user input.",
+    descriptionVi:
+      "Mình kiểm tra các trạng thái lỗi, cơ chế chuyển đổi dự phòng khi quá tải hạn mức, rào chắn chống prompt injection và khả năng hiển thị đa thiết bị để đảm bảo hệ thống luôn hoạt động ổn định trước mọi tình huống bất ngờ.",
+    outputs: ["Resilient error boundaries", "Strict anti-hallucination checks", "Zero TypeScript/lint errors"],
+    outputsVi: ["Ranh giới bắt lỗi tự phục hồi", "Cơ chế chống thông tin sai lệch", "Không còn lỗi cú pháp hay kiểu dữ liệu"],
   },
   {
     step: "06",
     number: "Phase 6",
-    title: "Cloud Deployment & Hardening",
-    subtitle: "Ship to production with CI/CD, SSL, and monitoring",
+    numberVi: "Giai Đoạn 6",
+    title: "Deployment & Production Launch",
+    titleVi: "Triển Khai & Ra Mắt Bản Hoạt Động Thật",
+    subtitle: "Ship to production with automated CI/CD, SSL, and monitoring",
+    subtitleVi: "Đưa lên môi trường chạy thật với CI/CD tự động, SSL và giám sát 24/7",
     description:
-      "I deploy applications to production platforms (Vercel, VPS, Supabase, Cloudflare) with automated continuous integration, custom domains, HTTPS certificates, and security headers.",
-    outputs: ["Live production URL", "Automated CI/CD pipelines", "Uptime & performance monitoring"],
+      "I deploy the solution to production environments (Vercel, private Linux VPS, Supabase, Cloudflare) with automated continuous integration, custom domains, HTTPS certificates, and health monitoring.",
+    descriptionVi:
+      "Mình đưa giải pháp lên môi trường sản xuất (Vercel, máy chủ Linux VPS riêng, Supabase, Cloudflare) với quy trình tích hợp liên tục tự động, gắn tên miền riêng, chứng chỉ bảo mật HTTPS và giám sát hệ thống liên tục.",
+    outputs: ["Live production deployment", "Automated CI/CD pipelines", "Operational monitoring & alert channels"],
+    outputsVi: ["Hệ thống chạy thật trên internet", "Quy trình triển khai CI/CD tự động", "Kênh thông báo & cảnh báo vận hành"],
   },
   {
     step: "07",
     number: "Phase 7",
-    title: "Telemetry & Rapid Iteration",
-    subtitle: "Refine based on real telemetry, user metrics, and feedback loops",
+    numberVi: "Giai Đoạn 7",
+    title: "Feedback & Continuous Iteration",
+    titleVi: "Lắng Nghe Phản Hồi & Tối Ưu Liên Tục",
+    subtitle: "Refine based on actual usage metrics and business performance",
+    subtitleVi: "Tinh chỉnh dựa trên chỉ số sử dụng thực tế và hiệu quả kinh doanh",
     description:
-      "Deployment is just the starting line. I monitor real-world performance, user drop-offs, and operational bottlenecks, rolling out rapid enhancements and optimizations.",
-    outputs: ["User feedback triage", "Performance optimizations", "Iterative feature upgrades"],
-  },
-];
-
-export const clientWorkflowSteps: WorkflowStep[] = [
-  {
-    step: "01",
-    number: "Step 01",
-    title: "Discovery & Alignment",
-    subtitle: "Understanding your bottleneck and desired outcome",
-    description:
-      "We jump on a focused discovery call to unpack your existing workflow, business goals, and technical bottlenecks. I determine feasibility and propose high-leverage solutions.",
-    outputs: ["Clear scope document", "Defined milestones & deliverables", "Fixed timeline and cost estimate"],
-  },
-  {
-    step: "02",
-    number: "Step 02",
-    title: "Technical Planning",
-    subtitle: "Designing the system architecture and data flow",
-    description:
-      "I map out the entire technical strategy: chosen AI models, database structures, webhook triggers, security boundaries, and integration touchpoints.",
-    outputs: ["System architecture blueprint", "Data flow diagram", "API contract agreements"],
-  },
-  {
-    step: "03",
-    number: "Step 03",
-    title: "Interactive Prototype",
-    subtitle: "Rapid proof-of-concept to validate mechanics",
-    description:
-      "Within days, I build a functional, interactive prototype or sandbox test of the core AI agent / automation logic. This lets you see the solution in action before full buildout.",
-    outputs: ["Working POC demo", "Early stakeholder feedback loop", "Scope fine-tuning"],
-  },
-  {
-    step: "04",
-    number: "Step 04",
-    title: "Production Engineering",
-    subtitle: "Implementing the complete robust solution",
-    description:
-      "I engineer the full application, agent workflows, backend integrations, and user interfaces with strict adherence to clean code, security standards, and high performance.",
-    outputs: ["Full-featured web application or pipeline", "Integrations with your tools (CRM/Email/DB)", "Administrative controls"],
-  },
-  {
-    step: "05",
-    number: "Step 05",
-    title: "Stress Testing & Verification",
-    subtitle: "Testing edge cases and eliminating failure modes",
-    description:
-      "We run rigorous tests across failure scenarios, rate limits, invalid user inputs, and stress conditions to ensure the system is completely resilient.",
-    outputs: ["Comprehensive test passes", "Error fallback verification", "User acceptance validation"],
-  },
-  {
-    step: "06",
-    number: "Step 06",
-    title: "Deployment & Team Handover",
-    subtitle: "Launching to live environments and training your team",
-    description:
-      "I deploy the solution to your production infrastructure, configure custom domains, set up automated monitoring, and walk your team through operating the system.",
-    outputs: ["Live production deployment", "Video walkthrough / documentation", "Full repository ownership"],
-  },
-  {
-    step: "07",
-    number: "Step 07",
-    title: "Continuous Iteration & Support",
-    subtitle: "Post-launch tuning and proactive maintenance",
-    description:
-      "I stay close post-launch to monitor error rates, review performance logs, and push iterative improvements as your business scales.",
-    outputs: ["Post-launch warranty support", "Performance log reviews", "Ongoing advisory retainers if needed"],
+      "Software isn't finished on launch day. I observe real-world usage data, collect team feedback, optimize prompt performance, and iterate to maximize commercial return.",
+    descriptionVi:
+      "Phần mềm không kết thúc vào ngày ra mắt. Mình theo dõi dữ liệu sử dụng thực tế, lắng nghe phản hồi của người dùng, tối ưu tốc độ/chi phí prompt và liên tục nâng cấp để mang lại giá trị thương mại lớn nhất.",
+    outputs: ["User feedback review", "Prompt latency & cost tuning", "Continuous support & feature expansions"],
+    outputsVi: ["Tổng hợp phản hồi người dùng", "Tối ưu hóa độ trễ & chi phí prompt", "Hỗ trợ đồng hành & mở rộng tính năng"],
   },
 ];
 
 export const studentWorkflowSteps: WorkflowStep[] = [
   {
     step: "01",
-    number: "Step 01",
-    title: "Understand Your Vision",
-    subtitle: "Identify what you actually want to build",
+    number: "Stage 1",
+    numberVi: "Bước 1",
+    title: "Understand the Goal",
+    titleVi: "Xác Định Rõ Mục Tiêu",
+    subtitle: "Choose a meaningful project you genuinely care about building",
+    subtitleVi: "Chọn một dự án cụ thể, có ý nghĩa mà bạn thực sự hào hứng muốn làm",
     description:
-      "Instead of starting with generic exercises, we identify a real project, portfolio app, or startup idea that excites you. We break it into achievable milestones.",
-    outputs: ["Personalized learning goal", "Project scope blueprint", "Milestone timeline"],
+      "Learning happens through building things that excite you. We start by defining a concrete project idea — whether a custom AI agent, a personal SaaS tool, or an interactive web application.",
+    descriptionVi:
+      "Chúng ta chỉ học nhanh nhất khi bắt tay vào làm những thứ mình thực sự đam mê. Chúng ta bắt đầu bằng việc chọn một ý tưởng rõ ràng — có thể là một tác tử AI, một công cụ SaaS hay một ứng dụng web.",
+    outputs: ["Crystal-clear project scope", "Defined target user & problem", "Architecture blueprint sketch"],
+    outputsVi: ["Mục tiêu dự án rõ ràng", "Chân dung người dùng & bài toán cần giải", "Phác thảo sơ đồ kiến trúc ban đầu"],
   },
   {
     step: "02",
-    number: "Step 02",
-    title: "Targeted Concept Learning",
-    subtitle: "Learn only the concepts you need, right when you need them",
+    number: "Stage 2",
+    numberVi: "Bước 2",
+    title: "Learn the Core Mechanics",
+    titleVi: "Hiểu Bản Chất & Cơ Chế Vận Hành",
+    subtitle: "Demystify how software, APIs, and AI models actually work",
+    subtitleVi: "Làm sáng tỏ cách phần mềm, API và mô hình AI thực sự hoạt động",
     description:
-      "No boring 50-hour syntax courses. We teach you the fundamental mental models of web architecture, APIs, and AI prompt engineering on a just-in-time basis.",
-    outputs: ["Core mental models", "Key terminology demystified", "Tooling environment configured"],
+      "We walk through the underlying concepts: client vs. server, databases, REST APIs, and how AI coding agents process instructions. No boring theory — only practical fundamentals.",
+    descriptionVi:
+      "Chúng ta cùng đi qua các khái niệm bản chất: máy khách và máy chủ, cơ sở dữ liệu, REST API và cách AI hiểu chỉ dẫn. Không có lý thuyết suông — chỉ tập trung vào nền tảng thực chiến.",
+    outputs: ["Mental model of modern web stacks", "Understanding of API calls & data flow", "Prompt engineering principles"],
+    outputsVi: ["Mô hình tư duy về kiến trúc web hiện đại", "Hiểu rõ luồng gọi API và luồng dữ liệu", "Nguyên tắc kỹ nghệ câu lệnh prompt"],
   },
   {
     step: "03",
-    number: "Step 03",
-    title: "Build Together Live",
-    subtitle: "Pair programming and AI agent orchestration",
+    number: "Stage 3",
+    numberVi: "Bước 3",
+    title: "Spec-Driven Vibe Coding",
+    titleVi: "Lập Trình Vibe Coding Theo Đặc Tả",
+    subtitle: "Master the workflow of piloting AI coding agents effectively",
+    subtitleVi: "Làm chủ quy trình chỉ huy tác tử lập trình AI hiệu quả",
     description:
-      "We screen-share and build the application together. You learn how to prompt AI coding agents effectively, structure components, and connect databases with hands-on practice.",
-    outputs: ["Working codebase from Day 1", "Hands-on experience with AI coding tools", "Git commits on your GitHub"],
+      "I teach you how to write clear specifications (`.cursorrules`, interface files) and direct AI coding tools (Claude Code, Cursor, Antigravity) so you build cleanly without getting stuck in errors.",
+    descriptionVi:
+      "Mình hướng dẫn bạn cách viết tài liệu đặc tả chuẩn (`.cursorrules`, file interface) và cách điều khiển công cụ lập trình AI (Claude Code, Cursor, Antigravity) để code sạch sẽ mà không bị kẹt lỗi.",
+    outputs: ["Structured `.cursorrules` file", "Architecture specification document", "High-velocity development setup"],
+    outputsVi: ["File cấu hình `.cursorrules` chuẩn", "Tài liệu đặc tả kiến trúc phần mềm", "Môi trường phát triển tốc độ cao"],
   },
   {
     step: "04",
-    number: "Step 04",
-    title: "Systematic Debugging",
-    subtitle: "Master the art of troubleshooting and fixing errors",
+    number: "Stage 4",
+    numberVi: "Bước 4",
+    title: "Hands-On Implementation",
+    titleVi: "Trực Tiếp Cùng Nhau Thực Hành",
+    subtitle: "Pair-program in real-time to build your application step-by-step",
+    subtitleVi: "Lập trình cặp trong thời gian thực để xây dựng ứng dụng từng bước",
     description:
-      "Errors happen to every developer. I teach you how to read terminal stack traces, isolate root causes, and guide AI agents to fix bugs without getting stuck.",
-    outputs: ["Debugging problem-solving toolkit", "Log analysis skills", "Self-reliance when encountering errors"],
+      "We write code together. You learn how to structure folders, create components, connect databases, and steer AI assistants through multi-file edits with complete control.",
+    descriptionVi:
+      "Chúng ta sẽ cùng viết code. Bạn sẽ học cách tổ chức thư mục, tạo component, kết nối cơ sở dữ liệu và chỉ đạo AI chỉnh sửa nhiều file một cách chủ động và kiểm soát hoàn toàn.",
+    outputs: ["Modular React/Next.js components", "Connected database backend", "Working software prototype"],
+    outputsVi: ["Các component React/Next.js dạng module", "Kết nối cơ sở dữ liệu backend", "Bản mẫu phần mềm hoạt động trơn tru"],
   },
   {
     step: "05",
-    number: "Step 05",
-    title: "Deploy to the World",
-    subtitle: "Putting your live project on the internet",
+    number: "Stage 5",
+    numberVi: "Bước 5",
+    title: "Debugging & Problem Solving",
+    titleVi: "Kỹ Năng Gỡ Lỗi & Tự Tìm Giải Pháp",
+    subtitle: "Learn how to diagnose errors and fix issues independently",
+    subtitleVi: "Học cách đọc lỗi và tự giải quyết sự cố một cách độc lập",
     description:
-      "We deploy your application to production (Vercel/Supabase) with a custom domain and shareable link. You now have a real product to show users, employers, or clients.",
-    outputs: ["Live public URL", "Polished GitHub repository", "Portfolio case study writeup"],
+      "When bugs occur, we don't panic. I teach you how to read console logs, isolate root causes, and prompt AI agents systematically to diagnose and resolve errors.",
+    descriptionVi:
+      "Khi gặp lỗi, chúng ta không hoang mang. Mình hướng dẫn bạn cách đọc nhật ký bảng điều khiển (console log), cô lập nguyên nhân gốc rễ và chỉ đạo AI từng bước để sửa lỗi triệt để.",
+    outputs: ["Debugging methodology & log analysis", "Unit/integration testing checks", "Resilient error handling"],
+    outputsVi: ["Phương pháp luận gỡ lỗi & phân tích log", "Kiểm thử các trường hợp dữ liệu", "Cơ chế xử lý lỗi an toàn"],
   },
   {
     step: "06",
-    number: "Step 06",
-    title: "Independent Mastery",
-    subtitle: "Building the capability to create without me",
+    number: "Stage 6",
+    numberVi: "Bước 6",
+    title: "Public Production Deployment",
+    titleVi: "Triển Khai Đưa Dự Án Lên Mạng Thật",
+    subtitle: "Deploy your project to the live internet with your own domain",
+    subtitleVi: "Đưa dự án lên internet với tên miền riêng của chính bạn",
     description:
-      "The ultimate goal is your independence. You finish the program with the confidence, tools, and mental frameworks to plan and build any project on your own.",
-    outputs: ["Lifelong builder mindset", "Reusable starter templates", "Self-sufficient development capability"],
+      "We push your code to GitHub, connect it to Vercel or cloud hosting, set up environment variables securely, and connect a custom domain so you can share your work with the world.",
+    descriptionVi:
+      "Chúng ta đưa mã nguồn lên GitHub, kết nối với Vercel hoặc máy chủ đám mây, cấu hình biến môi trường an toàn và gắn tên miền riêng để bạn tự hào chia sẻ sản phẩm với bạn bè và nhà tuyển dụng.",
+    outputs: ["Live public production URL", "Clean GitHub repository portfolio", "SSL security & domain config"],
+    outputsVi: ["Đường dẫn trang web chạy thật công khai", "Kho mã nguồn GitHub chuẩn chỉ cho CV", "Cấu hình bảo mật SSL & tên miền"],
+  },
+  {
+    step: "07",
+    number: "Stage 7",
+    numberVi: "Bước 7",
+    title: "Independent Builder Graduation",
+    titleVi: "Tốt Nghiệp & Tự Chủ Hoàn Toàn",
+    subtitle: "Graduate with the repeatable methodology to build anything on your own",
+    subtitleVi: "Tốt nghiệp với phương pháp luận chuẩn mực để tự tay làm bất cứ điều gì",
+    description:
+      "The ultimate objective is 100% independence. You leave with a proven, repeatable framework to ideate, plan, build, debug, and ship any future software project on your own.",
+    descriptionVi:
+      "Mục tiêu cao nhất là sự tự chủ 100%. Bạn kết thúc khóa học với một bộ khung phương pháp luận đã được kiểm chứng để tự mình lên ý tưởng, lập kế hoạch, viết code, sửa lỗi và xuất bản mọi sản phẩm tương lai.",
+    outputs: ["Complete developer self-sufficiency", "Repeatable vibe coding playbook", "Confidence to ship future ideas"],
+    outputsVi: ["Khả năng tự chủ hoàn toàn của một builder", "Cẩm nang Vibe Coding có thể tái sử dụng", "Sự tự tin biến mọi ý tưởng thành sản phẩm"],
+  },
+];
+
+export const personalWorkflowSteps: WorkflowStep[] = [
+  {
+    step: "01",
+    number: "Step 1",
+    numberVi: "Bước 1",
+    title: "Idea & Curiosity Spark",
+    titleVi: "Ý Tưởng & Tia Sáng Đam Mê",
+    subtitle: "Identify a real problem, friction point, or emerging technology",
+    subtitleVi: "Xác định một vấn đề thực tế, điểm nghẽn hàng ngày hoặc công nghệ mới",
+    description:
+      "Every personal project starts with curiosity: testing a new open-weight LLM, solving a daily developer bottleneck, or creating an accessible tool for the community.",
+    descriptionVi:
+      "Mọi dự án cá nhân đều bắt nguồn từ sự tò mò: thử nghiệm một mô hình AI mã nguồn mở mới, giải quyết điểm nghẽn lập trình hàng ngày hoặc tạo ra công cụ hữu ích cho cộng đồng.",
+    outputs: ["Core problem hypothesis", "Initial mental model", "Target outcome"],
+    outputsVi: ["Giả thuyết vấn đề cốt lõi", "Mô hình tư duy ban đầu", "Kết quả đầu ra kỳ vọng"],
+  },
+  {
+    step: "02",
+    number: "Step 2",
+    numberVi: "Bước 2",
+    title: "Rapid Experimentation",
+    titleVi: "Thử Nghiệm Nhanh",
+    subtitle: "Build small prototypes to test feasibility and model limits",
+    subtitleVi: "Xây dựng bản mẫu nhỏ để kiểm chứng tính khả thi và giới hạn mô hình",
+    description:
+      "Quick, experiential exploration. I test APIs, measure token latencies, experiment with prompt structures, and prove the core technical concept before full architecture.",
+    descriptionVi:
+      "Khám phá qua thực hành nhanh chóng. Mình kiểm thử các API, đo đạc độ trễ token, thử nghiệm cấu trúc prompt và chứng minh tính khả thi kỹ thuật trước khi xây dựng toàn diện.",
+    outputs: ["Minimal viable experiment", "Feasibility proof", "Key architectural findings"],
+    outputsVi: ["Bản thử nghiệm tối thiểu", "Chứng minh tính khả thi", "Các phát hiện kiến trúc quan trọng"],
+  },
+  {
+    step: "03",
+    number: "Step 3",
+    numberVi: "Bước 3",
+    title: "Spec & System Build",
+    titleVi: "Đặc Tả & Xây Dựng Hệ Thống",
+    subtitle: "Architect clean schemas and assemble the full system",
+    subtitleVi: "Thiết kế schema dữ liệu sạch và lắp ráp toàn bộ hệ thống",
+    description:
+      "Transforming the prototype into a structured system with TypeScript interfaces, modular components, and automated state management using AI agent orchestration.",
+    descriptionVi:
+      "Chuyển hóa bản mẫu thành hệ thống chuẩn mực với interface TypeScript, component dạng module và quản lý trạng thái tự động thông qua điều phối tác tử AI.",
+    outputs: ["Modular repository architecture", "Typed interface schemas", "Automated deployment pipeline"],
+    outputsVi: ["Cấu trúc repository dạng module", "Schema interface chuẩn kiểu dữ liệu", "Quy trình triển khai tự động"],
+  },
+  {
+    step: "04",
+    number: "Step 4",
+    numberVi: "Bước 4",
+    title: "Ship, Test & Iterate",
+    titleVi: "Xuất Bản, Kiểm Thử & Hoàn Thiện",
+    subtitle: "Deploy live, gather telemetry, and continually improve",
+    subtitleVi: "Triển khai chạy thật, thu thập thông số và liên tục nâng cấp",
+    description:
+      "Releasing the project publicly, observing real user interactions, analyzing performance, and pushing updates continuously.",
+    descriptionVi:
+      "Xuất bản dự án công khai, theo dõi trải nghiệm người dùng thực tế, phân tích hiệu năng và liên tục cập nhật phiên bản mới.",
+    outputs: ["Live public system", "Telemetry metrics & logs", "Continuous enhancement cycle"],
+    outputsVi: ["Hệ thống chạy thật trên internet", "Bảng theo dõi thông số & nhật ký", "Chu kỳ nâng cấp sản phẩm liên tục"],
   },
 ];
