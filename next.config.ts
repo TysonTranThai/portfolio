@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
     ? {
         output: "export" as const,
         basePath: `/${repo}`,
-        assetPrefix: `/${repo}/`,
         images: { unoptimized: true },
       }
     : {}),

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, FileText, ChevronDown, Cpu, Layers, Terminal, GraduationCap } from "lucide-react";
 import { FloatingObject } from "@/components/world/FloatingObject";
+import meCutout from "../../../public/images/me-cutout.png";
 import {
   RetroGameboy,
   SpecNotebook,
@@ -298,7 +299,7 @@ export function HeroSection() {
 
             {/* Tyson's Portrait Cutout */}
             <Image
-              src="/images/me-cutout.png"
+              src={meCutout}
               alt="Tran Thai Son (Tyson) — AI Engineer & Full-Stack Developer"
               fill
               priority
