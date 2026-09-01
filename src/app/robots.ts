@@ -2,7 +2,7 @@ export const dynamic = "force-static";
 
 import { MetadataRoute } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tysontranthai.github.io/portfolio";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tysontranthai.site";
 
 export default function robots(): MetadataRoute.Robots {
   return {

@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Tran Thai Son (Tyson)" }],
   creator: "Tran Thai Son",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://tysontranthai.github.io/portfolio",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://tysontranthai.site",
   ),
   openGraph: {
     type: "website",
