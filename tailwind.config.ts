@@ -37,6 +37,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
+        serif: ["var(--font-serif)", "Instrument Serif", "Georgia", "serif"],
       },
       boxShadow: {
         glow: "0 0 30px -5px rgba(56, 189, 248, 0.15)",
@@ -46,11 +47,17 @@ const config: Config = {
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "float-slow": "float 6s ease-in-out infinite",
+        "float-gentle": "floatGentle 4s ease-in-out infinite",
+        "spin-slow": "spin 20s linear infinite",
       },
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-6px)" },
+        },
+        floatGentle: {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "50%": { transform: "translateY(-10px) rotate(2deg)" },
         },
       },
     },
