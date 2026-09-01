@@ -15,6 +15,7 @@ import {
 import { howIBuildSteps } from "@/data/workflows";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
+import { TiltCard } from "@/components/ui/TiltCard";
 import { cn } from "@/lib/utils";
 
 export function HowIBuildSection() {
@@ -44,7 +45,7 @@ export function HowIBuildSection() {
   const activeStep = howIBuildSteps[activeStepIndex];
 
   return (
-    <section id="how-i-build" className="py-20 md:py-28 relative">
+    <section id="how-i-build" className="py-24 md:py-32 relative bg-surface-100/30 dark:bg-surface-950/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           badge="Engineering Philosophy"
@@ -53,7 +54,7 @@ export function HowIBuildSection() {
         />
 
         {/* Step Selector Ribbon */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 mb-10">
           {howIBuildSteps.map((step, idx) => {
             const Icon = getStepIcon(idx);
             const isActive = activeStepIndex === idx;
@@ -62,17 +63,22 @@ export function HowIBuildSection() {
                 key={step.step}
                 onClick={() => setActiveStepIndex(idx)}
                 className={cn(
-                  "p-3 rounded-2xl border text-left transition-all duration-200 flex flex-col justify-between select-none",
+                  "p-3.5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between select-none relative group",
                   isActive
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-lg scale-102"
-                    : "bg-white dark:bg-surface-100 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-surface-300/40 hover:bg-slate-50 dark:hover:bg-surface-200"
+                    ? "bg-slate-950 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-xl scale-102"
+                    : "bg-white/80 dark:bg-surface-100/80 text-slate-700 dark:text-slate-300 border-slate-200/90 dark:border-surface-300/40 hover:bg-slate-50 dark:hover:bg-surface-200"
                 )}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[11px] font-mono font-bold opacity-70">
+                  <span className="text-[10px] font-mono font-bold opacity-75">
                     {step.step}
                   </span>
-                  <Icon className={cn("w-4 h-4", isActive ? "text-sky-400 dark:text-sky-600" : "text-slate-400")} />
+                  <Icon
+                    className={cn(
+                      "w-4 h-4 transition-transform group-hover:scale-110",
+                      isActive ? "text-sky-400 dark:text-sky-600" : "text-slate-400"
+                    )}
+                  />
                 </div>
                 <div className="text-xs font-bold truncate">
                   {step.title.split(" ")[0]}
@@ -82,11 +88,12 @@ export function HowIBuildSection() {
           })}
         </div>
 
-        {/* Active Stage Detailed Card */}
-        <div className="rounded-3xl bg-white dark:bg-surface-100 border border-slate-200/80 dark:border-surface-300/50 p-6 sm:p-10 shadow-xl backdrop-blur-md relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/5 dark:bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        {/* Active Stage Detailed TiltCard */}
+        <TiltCard
+          glowColor="rgba(56, 189, 248, 0.2)"
+          className="p-8 sm:p-12 shadow-2xl"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left description */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-3">
@@ -94,7 +101,7 @@ export function HowIBuildSection() {
                   {activeStep.number}
                 </Badge>
                 <span className="text-xs font-mono text-slate-400 dark:text-slate-500">
-                  Pipeline Stage {activeStepIndex + 1} of {howIBuildSteps.length}
+                  Pipeline Phase {activeStepIndex + 1} of {howIBuildSteps.length}
                 </span>
               </div>
 
@@ -102,7 +109,7 @@ export function HowIBuildSection() {
                 {activeStep.title}
               </h3>
 
-              <p className="text-sm sm:text-base font-medium text-sky-600 dark:text-sky-400">
+              <p className="text-sm sm:text-base font-semibold text-sky-600 dark:text-sky-400">
                 {activeStep.subtitle}
               </p>
 
@@ -110,15 +117,16 @@ export function HowIBuildSection() {
                 {activeStep.description}
               </p>
 
-              <div className="pt-4 border-t border-slate-100 dark:border-surface-200">
-                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
-                  Concrete Stage Deliverables
+              <div className="pt-5 border-t border-slate-100 dark:border-surface-200/80">
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-sky-500" />
+                  <span>Concrete Phase Deliverables</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {activeStep.outputs.map((out, i) => (
                     <span
                       key={i}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium bg-slate-100 dark:bg-surface-200 text-slate-800 dark:text-slate-200 rounded-lg border border-slate-200/60 dark:border-surface-300/40"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-slate-100 dark:bg-surface-200 text-slate-800 dark:text-slate-200 rounded-xl border border-slate-200/60 dark:border-surface-300/40"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                       <span>{out}</span>
@@ -130,16 +138,16 @@ export function HowIBuildSection() {
 
             {/* Right Terminal / Blueprint visual preview */}
             <div className="lg:col-span-5">
-              <div className="rounded-2xl bg-slate-950 text-slate-100 p-5 font-mono text-xs shadow-2xl border border-slate-800 space-y-3">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-[11px] text-slate-400">
-                  <span className="flex items-center gap-1.5 text-emerald-400">
+              <div className="rounded-3xl bg-slate-950 text-slate-100 p-6 font-mono text-xs shadow-2xl border border-slate-800 space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800 text-[11px] text-slate-400">
+                  <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    STAGE_PIPELINE_EXECUTION
+                    AGENTIC_PIPELINE_EXECUTION
                   </span>
-                  <span>STEP_{activeStep.step}</span>
+                  <span>PHASE_{activeStep.step}</span>
                 </div>
 
-                <div className="space-y-2 text-slate-300">
+                <div className="space-y-2.5 text-slate-300">
                   <div>
                     <span className="text-sky-400 font-bold">&gt; MODE: </span>
                     <span>Spec-Driven Agentic Engineering</span>
@@ -154,13 +162,18 @@ export function HowIBuildSection() {
                   </div>
                 </div>
 
-                <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800/80 text-[11px] text-slate-400 leading-relaxed">
+                <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-[11px] text-slate-400 leading-relaxed">
                   {"// Principle: The human engineer maintains absolute architectural clarity and verification boundaries, while AI agents accelerate raw implementation."}
+                </div>
+
+                <div className="flex items-center justify-between pt-1 text-[10px] text-slate-500">
+                  <span>STATUS: READY</span>
+                  <span className="text-sky-400">CYCLE: ITERATIVE</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </TiltCard>
       </div>
     </section>
   );

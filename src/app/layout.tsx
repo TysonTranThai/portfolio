@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ToastProvider } from "@/components/ui/Toast";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { profileData } from "@/data/profile";
@@ -22,8 +23,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfbfd" },
-    { media: "(prefers-color-scheme: dark)", color: "#08090d" },
+    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
+    { media: "(prefers-color-scheme: dark)", color: "#050608" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -108,7 +109,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-background text-foreground selection:bg-sky-500/20 selection:text-sky-600 dark:selection:text-sky-300 antialiased font-sans">
+      <body className="min-h-screen bg-background text-foreground selection:bg-sky-500/25 selection:text-sky-600 dark:selection:text-sky-300 antialiased font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -116,6 +117,7 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <ToastProvider>
+            <AmbientGlow />
             <div className="relative flex min-h-screen flex-col">
               <Navbar />
               <main className="flex-1">{children}</main>

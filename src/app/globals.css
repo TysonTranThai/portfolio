@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --background: #fbfbfd;
-    --foreground: #0f172a;
+    --background: #f8fafc;
+    --foreground: #090d16;
     --surface-50: #ffffff;
-    --surface-100: #f8fafc;
-    --surface-200: #f1f5f9;
-    --surface-300: #e2e8f0;
+    --surface-100: #f1f5f9;
+    --surface-200: #e2e8f0;
+    --surface-300: #cbd5e1;
     --surface-800: #1e293b;
     --surface-900: #0f172a;
     --surface-950: #020617;
@@ -21,20 +21,20 @@
   }
 
   .dark {
-    --background: #08090d;
+    --background: #050608;
     --foreground: #f8fafc;
-    --surface-50: #0f1117;
-    --surface-100: #131620;
-    --surface-200: #1a1e2c;
-    --surface-300: #262c3e;
-    --surface-800: #333a52;
+    --surface-50: #0c0e14;
+    --surface-100: #11141d;
+    --surface-200: #181d2a;
+    --surface-300: #232a3d;
+    --surface-800: #323d57;
     --surface-900: #475569;
-    --surface-950: #040507;
+    --surface-950: #020305;
     --primary: #38bdf8;
     --primary-hover: #7dd3fc;
     --primary-muted: rgba(56, 189, 248, 0.12);
-    --border-subtle: #1e2333;
-    --border-glass: rgba(255, 255, 255, 0.08);
+    --border-subtle: #1a2030;
+    --border-glass: rgba(255, 255, 255, 0.09);
   }
 
   html {
@@ -51,54 +51,93 @@
   }
 }
 
-/* Glassmorphism & Custom Accents */
+/* Glassmorphism & ThreeUI Style Panels */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .dark .glass-panel {
-  background: rgba(15, 17, 23, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(12, 14, 20, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .card-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-hover:hover {
-  transform: translateY(-3px);
-  border-color: rgba(56, 189, 248, 0.3);
-  box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 25px -5px rgba(56, 189, 248, 0.15);
 }
 
 .dark .card-hover:hover {
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 30px -10px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 25px 50px -18px rgba(0, 0, 0, 0.7), 0 0 35px -8px rgba(56, 189, 248, 0.22);
 }
 
-/* Ambient glow backgrounds */
+/* Ambient Background Grid & Dot Patterns */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Ambient Lighting Mesh */
 .ambient-mesh {
   background-image: 
-    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.06) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.04) 0px, transparent 50%);
+    radial-gradient(at 10% 10%, rgba(56, 189, 248, 0.09) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 60%, rgba(16, 185, 129, 0.05) 0px, transparent 55%);
 }
 
 .dark .ambient-mesh {
   background-image: 
-    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.09) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.06) 0px, transparent 50%);
+    radial-gradient(at 10% 10%, rgba(56, 189, 248, 0.16) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(99, 102, 241, 0.14) 0px, transparent 50%),
+    radial-gradient(at 50% 60%, rgba(16, 185, 129, 0.08) 0px, transparent 55%);
+}
+
+/* ThreeUI Animated Beam / Gradient Border */
+.beam-border {
+  position: relative;
+}
+
+.beam-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399, #38bdf8);
+  background-size: 300% 100%;
+  animation: beamAnimation 6s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes beamAnimation {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -106,19 +145,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.3);
+  background: rgba(148, 163, 184, 0.25);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.5);
-}
-
-/* Code highlight chips */
-.code-badge {
-  font-family: var(--font-mono), monospace;
-  font-size: 0.8125rem;
-  letter-spacing: -0.01em;
+  background: rgba(148, 163, 184, 0.45);
 }
 
 /* Print Styles for CV page */
