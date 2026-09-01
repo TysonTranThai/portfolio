@@ -1,258 +1,190 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import {
   ExternalLink,
-  BookOpen,
   CheckCircle2,
-  Sparkles,
+  FileCode2,
+  Layers,
+  ArrowRight,
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import { projectsData } from "@/data/projects";
 import { caseStudiesData } from "@/data/caseStudies";
-import { ProjectCategory } from "@/types";
-import { Tabs, TabItem } from "@/components/ui/Tabs";
+import { Project, CaseStudy } from "@/types";
 import { Modal } from "@/components/ui/Modal";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function ProjectsSection() {
-  const [activeCategory, setActiveCategory] = React.useState<ProjectCategory>("All");
-  const [selectedCaseStudyId, setSelectedCaseStudyId] = React.useState<string | null>(null);
+  const [selectedCaseStudy, setSelectedCaseStudy] = React.useState<CaseStudy | null>(null);
+  const { t } = useLanguage();
 
-  const categories: ProjectCategory[] = [
-    "All",
-    "AI",
-    "Software",
-    "Automation",
-    "Infrastructure",
-    "Business",
-    "Education",
-  ];
-
-  const categoryTabs: TabItem[] = categories.map((cat) => ({
-    id: cat,
-    label: cat,
-    count:
-      cat === "All"
-        ? projectsData.length
-        : projectsData.filter((p) => p.category.includes(cat)).length,
-  }));
-
-  const filteredProjects =
-    activeCategory === "All"
-      ? projectsData
-      : projectsData.filter((p) => p.category.includes(activeCategory));
-
-  const activeCaseStudy = caseStudiesData.find(
-    (cs) => cs.id === selectedCaseStudyId || cs.slug === selectedCaseStudyId
-  );
+  const handleOpenCaseStudy = (project: Project) => {
+    if (project.caseStudyId) {
+      const found = caseStudiesData.find((cs) => cs.id === project.caseStudyId);
+      if (found) {
+        setSelectedCaseStudy(found);
+        return;
+      }
+    }
+  };
 
   return (
-    <section id="projects" className="py-28 md:py-36 relative bg-[#060910] text-white border-t border-white/15">
+    <section id="projects" className="py-28 md:py-36 relative bg-[#06080e] text-white border-t border-white/15">
       <div className="max-w-7xl mx-auto px-6 sm:px-16">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div className="space-y-3 max-w-2xl">
-            <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">
-              {"// THE WORK & SELECTED ARCHITECTURES"}
-            </span>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white">
-              Engineered with precision.
-            </h2>
-            <p className="text-sm sm:text-base text-slate-300 font-sans">
-              Autonomous multi-agent systems, local model routing gateways, and full-stack software built for production.
-            </p>
+        <div className="space-y-4 mb-20 max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">
+            <span>{t("// THE WORK & SELECTED ARCHITECTURES", "// CÁC DỰ ÁN & HỆ THỐNG TIÊU BIỂU")}</span>
           </div>
 
-          {/* Filter Tabs */}
-          <div className="shrink-0 font-mono">
-            <Tabs
-              tabs={categoryTabs}
-              activeTab={activeCategory}
-              onChange={(tabId) => setActiveCategory(tabId as ProjectCategory)}
-            />
-          </div>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+            {t("Engineered for real-world impact.", "Kiến tạo vì giá trị thực tiễn.")}
+          </h2>
+
+          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+            {t(
+              "Every project listed represents a production system built with rigorous interface specifications, deterministic error recovery, and measurable ROI.",
+              "Mỗi dự án đều là một hệ thống thực chiến được xây dựng với đặc tả chuẩn mực, khả năng tự sửa lỗi và mang lại hiệu quả đo lường được."
+            )}
+          </p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {filteredProjects.map((project, idx) => (
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projectsData.map((project, idx) => (
             <div
               key={project.id}
-              className="flex flex-col justify-between p-8 sm:p-10 bg-black/70 border border-white/15 hover:border-amber-400/50 rounded-sm shadow-2xl transition-all duration-300 group"
+              className="flex flex-col justify-between p-8 sm:p-10 bg-black/60 border border-white/15 hover:border-amber-400/50 rounded-sm shadow-xl transition-all duration-300 group"
             >
-              <div className="space-y-6">
-                {/* Top Number Plate */}
+              <div className="space-y-5">
+                {/* Header Plate */}
                 <div className="flex items-center justify-between border-b border-white/15 pb-4">
-                  <span className="text-2xl sm:text-3xl font-serif font-bold text-amber-400">
+                  <span className="text-xs font-serif font-bold text-amber-400 font-mono">
                     N° 0{idx + 1}
                   </span>
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    {project.category.map((cat) => (
-                      <span
-                        key={cat}
-                        className="px-2.5 py-0.5 text-[10px] font-mono tracking-wider bg-white/5 border border-white/15 text-slate-300 uppercase"
-                      >
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
+                  <span className="text-[10px] font-mono tracking-widest px-2 py-0.5 rounded-sm bg-white/5 border border-white/10 text-slate-300 uppercase">
+                    {project.status}
+                  </span>
                 </div>
 
-                {/* Title & Role */}
-                <div className="space-y-1.5">
-                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white group-hover:text-amber-300 transition-colors">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-white group-hover:text-amber-300 transition-colors">
                     {project.title}
                   </h3>
-                  <div className="text-xs font-mono text-amber-400">
-                    {project.role} {"//"} {project.year}
-                  </div>
-                  <p className="text-sm text-slate-300 font-sans leading-relaxed pt-2">
+                  <p className="text-xs font-mono text-amber-400 mt-1 uppercase tracking-wider font-semibold">
+                    {project.role} · {project.year}
+                  </p>
+                  <p className="text-xs text-slate-300 leading-relaxed font-sans pt-2">
                     {project.description}
                   </p>
                 </div>
 
-                {/* Problem & Solution */}
-                {project.problem && project.solution && (
-                  <div className="p-4 bg-white/5 border border-white/10 rounded-sm space-y-2 text-xs font-sans">
-                    <div>
-                      <span className="font-bold text-amber-400 font-mono">PROBLEM: </span>
-                      <span className="text-slate-300">{project.problem}</span>
-                    </div>
-                    <div>
-                      <span className="font-bold text-cyan-400 font-mono">SOLUTION: </span>
-                      <span className="text-slate-300">{project.solution}</span>
+                {/* Problem & Solution Tablets */}
+                {project.problem && (
+                  <div className="space-y-2 text-xs font-sans border-t border-white/10 pt-3">
+                    <div className="p-3 rounded-sm bg-white/5 border border-white/10 space-y-1">
+                      <span className="font-mono text-[10px] text-amber-400 font-bold uppercase tracking-wider block">
+                        {t("PROBLEM STATEMENT:", "VẤN ĐỀ ĐẶT RA:")}
+                      </span>
+                      <p className="text-slate-300 leading-relaxed text-[11px]">
+                        {project.problem}
+                      </p>
                     </div>
                   </div>
                 )}
 
-                {/* Tech Chips */}
-                <div className="flex flex-wrap gap-1.5 pt-2 font-mono">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 text-[11px] bg-white/5 text-slate-300 border border-white/10"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                {/* Highlights */}
+                <div className="space-y-2 font-sans text-xs">
+                  <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-400">
+                    {t("DELIVERABLES & OUTCOMES:", "KẾT QUẢ & BÀN GIAO:")}
+                  </div>
+                  <ul className="space-y-1 text-slate-300">
+                    {project.highlights.slice(0, 3).map((h, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                        <span className="text-[11px] leading-relaxed">{h}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-6 mt-6 border-t border-white/15 flex items-center justify-between gap-4 font-mono text-xs">
-                <div>
-                  {project.caseStudyId && (
-                    <button
-                      onClick={() => setSelectedCaseStudyId(project.caseStudyId!)}
-                      className="inline-flex items-center gap-1.5 font-bold text-amber-400 hover:text-amber-300 tracking-wider uppercase underline underline-offset-4"
-                    >
-                      <BookOpen className="w-3.5 h-3.5" />
-                      <span>CASE STUDY</span>
-                    </button>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-2">
-                  {project.githubUrl && project.githubUrl.startsWith("http") ? (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 text-slate-400 hover:text-white bg-white/5 border border-white/15 transition-colors"
-                      title="View Repository"
-                    >
-                      <GithubIcon className="w-4 h-4" />
-                    </a>
-                  ) : null}
-
-                  {project.liveUrl && project.liveUrl.startsWith("http") ? (
+              {/* Action Bar */}
+              <div className="pt-6 mt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+                <div className="flex items-center gap-3">
+                  {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-black font-bold uppercase tracking-wider hover:bg-slate-200 transition-colors shadow-md"
+                      className="inline-flex items-center gap-1 text-slate-300 hover:text-white transition-colors uppercase text-[11px] font-bold"
                     >
-                      <span>LIVE SYSTEM</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>LIVE</span>
+                      <ExternalLink className="w-3 h-3" />
                     </a>
-                  ) : (
-                    <span className="text-[11px] font-mono text-slate-500 uppercase tracking-widest">
-                      [PRODUCTION_SYSTEM]
-                    </span>
+                  )}
+
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-slate-300 hover:text-white transition-colors uppercase text-[11px] font-bold"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>CODE</span>
+                    </a>
                   )}
                 </div>
+
+                {project.caseStudyId && (
+                  <button
+                    onClick={() => handleOpenCaseStudy(project)}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-black font-bold uppercase text-[11px] rounded-sm hover:bg-slate-200 transition-colors shadow-md"
+                  >
+                    <span>{t("CASE STUDY", "CHI TIẾT")}</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
+                )}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Case Study Modal */}
-        {activeCaseStudy && (
+        {/* Case Study Modal Drawer */}
+        {selectedCaseStudy && (
           <Modal
-            isOpen={Boolean(selectedCaseStudyId)}
-            onClose={() => setSelectedCaseStudyId(null)}
-            title={activeCaseStudy.title}
+            isOpen={Boolean(selectedCaseStudy)}
+            onClose={() => setSelectedCaseStudy(null)}
+            title={selectedCaseStudy.title}
             maxWidth="3xl"
           >
             <div className="space-y-6 text-sm text-slate-300 font-sans">
-              <div className="p-4 bg-amber-950/30 border border-amber-500/30 text-xs text-amber-300 font-mono flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>
-                  <strong>{activeCaseStudy.clientOrProject}</strong> {"//"} {activeCaseStudy.summary}
-                </span>
-              </div>
-
-              {activeCaseStudy.heroMetrics && (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono">
-                  {activeCaseStudy.heroMetrics.map((m, i) => (
-                    <div key={i} className="p-3.5 bg-black border border-white/15 text-center">
-                      <div className="text-xl font-serif font-bold text-amber-400">
-                        {m.value}
-                      </div>
-                      <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
-                        {m.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <div>
-                <h4 className="font-serif font-bold text-white mb-1.5 text-base">
-                  Problem Context
-                </h4>
-                <p className="leading-relaxed text-slate-200">{activeCaseStudy.problem}</p>
+              <div className="p-4 bg-amber-950/30 border border-amber-500/30 text-xs text-amber-300 font-mono flex items-center justify-between">
+                <span>{selectedCaseStudy.clientOrProject}</span>
+                <span>{selectedCaseStudy.goal}</span>
               </div>
 
               <div>
                 <h4 className="font-serif font-bold text-white mb-1.5 text-base">
-                  Architecture Telemetry
+                  {t("The Problem", "Vấn Đề")}
                 </h4>
-                <p className="leading-relaxed text-slate-200">{activeCaseStudy.architecture.overview}</p>
-                {activeCaseStudy.architecture.diagramSummary && (
-                  <div className="p-4 mt-3 bg-black text-emerald-300 font-mono text-xs overflow-x-auto border border-emerald-500/30">
-                    {activeCaseStudy.architecture.diagramSummary}
-                  </div>
-                )}
+                <p className="leading-relaxed text-slate-200">{selectedCaseStudy.problem}</p>
               </div>
 
               <div>
                 <h4 className="font-serif font-bold text-white mb-2 text-base">
-                  Challenges &amp; Solutions
+                  {t("System Architecture", "Kiến Trúc Hệ Thống")}
                 </h4>
-                <div className="space-y-3">
-                  {activeCaseStudy.challengesAndSolutions.map((cs, i) => (
-                    <div
-                      key={i}
-                      className="p-4 bg-black border border-white/15 text-xs space-y-1.5 font-sans"
-                    >
-                      <div className="font-semibold text-amber-400 font-mono">
-                        CHALLENGE: {cs.challenge}
-                      </div>
-                      <div className="text-slate-300">
-                        SOLUTION: {cs.solution}
-                      </div>
+                <p className="leading-relaxed text-slate-200 mb-3">{selectedCaseStudy.architecture.overview}</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  {selectedCaseStudy.architecture.components.map((comp, idx) => (
+                    <div key={idx} className="p-3 bg-black border border-white/10 rounded-sm flex items-center gap-2">
+                      <Layers className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span>{comp}</span>
                     </div>
                   ))}
                 </div>
@@ -260,25 +192,32 @@ export function ProjectsSection() {
 
               <div>
                 <h4 className="font-serif font-bold text-white mb-2 text-base">
-                  Verified Outcomes
+                  {t("Key Implementation Steps", "Các Bước Triển Khai Chính")}
                 </h4>
-                <ul className="space-y-2 text-xs font-sans">
-                  {activeCaseStudy.results.map((r, i) => (
-                    <li key={i} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="leading-relaxed text-slate-200">{r}</span>
+                <ul className="space-y-1.5 text-xs text-slate-300">
+                  {selectedCaseStudy.implementationSteps.map((step, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <FileCode2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                      <span>{step}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="pt-4 border-t border-white/15 flex justify-end font-mono">
+              <div className="pt-4 border-t border-white/15 flex items-center justify-between font-mono">
                 <button
-                  onClick={() => setSelectedCaseStudyId(null)}
-                  className="px-5 py-2 bg-white text-black font-bold uppercase text-xs"
+                  onClick={() => setSelectedCaseStudy(null)}
+                  className="px-4 py-2 bg-white/10 text-white text-xs uppercase"
                 >
-                  Close Case Study
+                  {t("Close", "Đóng")}
                 </button>
+                <Link
+                  href="#contact"
+                  onClick={() => setSelectedCaseStudy(null)}
+                  className="px-5 py-2 bg-white text-black font-bold text-xs uppercase"
+                >
+                  {t("Discuss Similar Architecture →", "Thảo Luận Dự Án Tương Tự →")}
+                </Link>
               </div>
             </div>
           </Modal>

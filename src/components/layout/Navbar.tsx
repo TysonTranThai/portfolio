@@ -4,20 +4,23 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { LanguageToggle } from "./LanguageToggle";
 import { cn } from "@/lib/utils";
-
-const classicalNavItems = [
-  { label: "THE PHILOSOPHY", href: "#about" },
-  { label: "THE WORK", href: "#projects" },
-  { label: "THE SERVICES", href: "#services" },
-  { label: "THE ACADEMY", href: "#teaching" },
-  { label: "QUESTIONS", href: "#contact" },
-];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const classicalNavItems = [
+    { label: t("THE PHILOSOPHY", "TRIẾT LÝ"), href: "#about" },
+    { label: t("THE WORK", "DỰ ÁN"), href: "#projects" },
+    { label: t("THE SERVICES", "DỊCH VỤ"), href: "#services" },
+    { label: t("THE ACADEMY", "ĐÀO TẠO"), href: "#teaching" },
+    { label: t("QUESTIONS", "CÂU HỎI"), href: "#contact" },
+  ];
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -47,9 +50,8 @@ export function Navbar() {
           className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
         >
           <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black border border-white/20 flex items-center justify-center text-white shadow-xl group-hover:scale-105 transition-transform">
-            {/* Minimalist Drop / Monogram Glyph */}
             <svg
-              className="w-5 h-5 text-white"
+              className="w-5 h-5 text-amber-400"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -65,16 +67,16 @@ export function Navbar() {
               TYSON TRAN
             </span>
             <span className="text-[9px] font-mono tracking-widest text-slate-300 uppercase">
-              AI ARCHITECT
+              {t("AI ARCHITECT", "KIẾN TRÚC SƯ AI")}
             </span>
           </div>
         </Link>
 
-        {/* Center / Right: Classical Uppercase Spaced Navigation */}
+        {/* Center: Classical Uppercase Spaced Navigation */}
         <nav className="hidden lg:flex items-center gap-7 text-[11px] font-mono tracking-widest text-slate-200">
           {classicalNavItems.map((item) => (
             <Link
-              key={item.label}
+              key={item.href}
               href={item.href}
               className="hover:text-white transition-colors duration-150 relative py-1 hover:underline underline-offset-8"
             >
@@ -83,34 +85,43 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Right CTA Button: Obsidian Capsule */}
-        <div className="hidden sm:flex items-center gap-4">
-          <Link
-            href="#contact"
-            className="px-5 py-2.5 rounded-sm bg-black hover:bg-slate-900 text-white text-[11px] font-mono tracking-widest uppercase border border-white/25 shadow-lg hover:border-white/50 transition-all flex items-center gap-2"
-          >
-            <span>APPLY</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+        {/* Right Utilities: Language Switcher + CTA Button */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          <LanguageToggle />
 
-        {/* Mobile Toggle Button */}
-        <button
-          onClick={() => setMobileMenuOpen((prev) => !prev)}
-          aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
-          className="lg:hidden p-2 rounded-sm bg-black/80 border border-white/20 text-white"
-        >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+          <div className="hidden sm:flex items-center gap-4">
+            <Link
+              href="#contact"
+              className="px-5 py-2.5 rounded-sm bg-white hover:bg-slate-200 text-black text-[11px] font-mono tracking-widest uppercase font-bold shadow-lg transition-all flex items-center gap-2"
+            >
+              <span>{t("APPLY", "HỢP TÁC")}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          {/* Mobile Toggle Button */}
+          <button
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
+            className="lg:hidden p-2 rounded-sm bg-black/80 border border-white/20 text-white"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden max-w-7xl mx-auto px-4 mt-3">
           <div className="p-6 bg-black/95 border border-white/20 rounded-md backdrop-blur-2xl space-y-4 font-mono text-xs tracking-widest text-slate-200">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <span className="text-slate-400">{t("SELECT LANGUAGE", "CHỌN NGÔN NGỮ")}</span>
+              <LanguageToggle />
+            </div>
+
             {classicalNavItems.map((item) => (
               <Link
-                key={item.label}
+                key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className="block py-2 border-b border-white/10 hover:text-white"
@@ -124,7 +135,7 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="block w-full py-3 text-center bg-white text-black font-bold uppercase rounded-sm"
               >
-                REQUEST PARTNERSHIP →
+                {t("REQUEST PARTNERSHIP →", "YÊU CẦU HỢP TÁC →")}
               </Link>
             </div>
           </div>

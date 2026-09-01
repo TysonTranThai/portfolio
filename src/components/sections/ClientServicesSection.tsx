@@ -19,9 +19,11 @@ import {
 import { servicesData } from "@/data/services";
 import { ClientService } from "@/types";
 import { Modal } from "@/components/ui/Modal";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function ClientServicesSection() {
   const [selectedService, setSelectedService] = React.useState<ClientService | null>(null);
+  const { t } = useLanguage();
 
   const getServiceConfig = (id: string, index: number) => {
     switch (id) {
@@ -89,15 +91,18 @@ export function ClientServicesSection() {
         {/* Section Header */}
         <div className="space-y-4 mb-16 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">
-            <span>{"// THE SERVICES & TERMS"}</span>
+            <span>{t("// THE SERVICES & TERMS", "// DỊCH VỤ & ĐIỀU KHOẢN HỢP TÁC")}</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
-            Architectural capabilities &amp; shared upside.
+            {t("Architectural capabilities & shared upside.", "Năng lực kiến trúc & chia sẻ giá trị gia tăng.")}
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
-            Partner with us to engineer custom autonomous AI agents, automate enterprise workflows, deploy private inference infrastructure, or ship production software.
+            {t(
+              "Partner with us to engineer custom autonomous AI agents, automate enterprise workflows, deploy private inference infrastructure, or ship production software.",
+              "Hợp tác phát triển hệ thống AI Agent tự động, tối ưu hóa quy trình doanh nghiệp, triển khai hạ tầng suy luận riêng biệt hoặc xây dựng phần mềm hoàn chỉnh."
+            )}
           </p>
         </div>
 
@@ -136,7 +141,7 @@ export function ClientServicesSection() {
 
                   <div className="space-y-1.5 pt-1 font-mono">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-amber-400">
-                      KEY DELIVERABLES:
+                      {t("KEY DELIVERABLES:", "BÀN GIAO CHÍNH:")}
                     </div>
                     <ul className="space-y-1 text-xs text-slate-300 font-sans">
                       {service.deliverables.slice(0, 3).map((del, i) => (
@@ -154,14 +159,14 @@ export function ClientServicesSection() {
                     onClick={() => setSelectedService(service)}
                     className="font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider underline underline-offset-4"
                   >
-                    SPECS →
+                    {t("SPECS →", "ĐẶC TẢ →")}
                   </button>
 
                   <Link
                     href="#contact"
                     className="px-3.5 py-1.5 bg-white text-black font-bold uppercase tracking-wider text-[11px] rounded-sm hover:bg-slate-200 transition-colors shadow-md"
                   >
-                    INQUIRE
+                    {t("INQUIRE", "TƯ VẤN")}
                   </Link>
                 </div>
               </div>
@@ -185,14 +190,14 @@ export function ClientServicesSection() {
 
               <div>
                 <h4 className="font-serif font-bold text-white mb-1.5 text-base">
-                  Scope Overview
+                  {t("Scope Overview", "Tổng Quan Phạm Vi")}
                 </h4>
                 <p className="leading-relaxed text-slate-200">{selectedService.description}</p>
               </div>
 
               <div>
                 <h4 className="font-serif font-bold text-white mb-2 text-base">
-                  Deliverables Contract
+                  {t("Deliverables Contract", "Hợp Đồng Bàn Giao")}
                 </h4>
                 <ul className="space-y-2 text-xs">
                   {selectedService.deliverables.map((item, i) => (
@@ -208,7 +213,7 @@ export function ClientServicesSection() {
                 <div className="p-4 bg-black border border-white/15">
                   <div className="flex items-center gap-1.5 font-mono font-bold text-amber-400 text-xs mb-2">
                     <Users className="w-3.5 h-3.5" />
-                    <span>WHO THIS IS FOR</span>
+                    <span>{t("WHO THIS IS FOR", "ĐỐI TƯỢNG PHÙ HỢP")}</span>
                   </div>
                   <ul className="space-y-1.5 text-xs text-slate-300">
                     {selectedService.targetAudience.map((target, i) => (
@@ -220,17 +225,17 @@ export function ClientServicesSection() {
                 <div className="p-4 bg-black border border-white/15">
                   <div className="flex items-center gap-1.5 font-mono font-bold text-amber-400 text-xs mb-2">
                     <Clock className="w-3.5 h-3.5" />
-                    <span>DELIVERY TIMELINE</span>
+                    <span>{t("DELIVERY TIMELINE", "THỜI GIAN TRIỂN KHAI")}</span>
                   </div>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    {selectedService.timelineGuide || "1–3 weeks depending on architecture scope"}
+                    {selectedService.timelineGuide || (t("1–3 weeks depending on architecture scope", "1–3 tuần tùy quy mô kiến trúc"))}
                   </p>
                 </div>
               </div>
 
               <div>
                 <h4 className="font-serif font-bold text-white mb-2 text-base">
-                  Example Use Cases
+                  {t("Example Use Cases", "Trường Hợp Ứng Dụng")}
                 </h4>
                 <ul className="space-y-1.5 text-xs text-slate-300">
                   {selectedService.exampleUseCases.map((useCase, i) => (
@@ -247,7 +252,7 @@ export function ClientServicesSection() {
                   onClick={() => setSelectedService(null)}
                   className="px-4 py-2 bg-white/10 text-white text-xs uppercase"
                 >
-                  Close
+                  {t("Close", "Đóng")}
                 </button>
                 <Link
                   href="#contact"

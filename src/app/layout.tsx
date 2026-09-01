@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, EB_Garamond, Cinzel } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ToastProvider } from "@/components/ui/Toast";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { profileData } from "@/data/profile";
@@ -120,13 +121,15 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange={false}
         >
-          <ToastProvider>
-            <div className="relative flex min-h-screen flex-col bg-[#070b14]">
-              <Navbar />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
-          </ToastProvider>
+          <LanguageProvider>
+            <ToastProvider>
+              <div className="relative flex min-h-screen flex-col bg-[#070b14]">
+                <Navbar />
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </div>
+            </ToastProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

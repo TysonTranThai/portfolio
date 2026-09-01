@@ -4,9 +4,11 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, FileText, ChevronDown } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function HeroSection() {
   const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+  const { t } = useLanguage();
 
   React.useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -99,21 +101,24 @@ export function HeroSection() {
                 <strong className="font-semibold underline decoration-amber-400/40 underline-offset-8">
                   tyson
                 </strong>{" "}
-                makes you appear.
+                {t("makes you appear.", "kiến tạo vị thế của bạn.")}
               </h1>
             </div>
 
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-white tracking-tight leading-[1.1]">
-              Not an agency on the clock,
+              {t("Not an agency on the clock,", "Không phải đơn vị tính giờ,")}
             </h2>
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-white tracking-tight leading-[1.1]">
-              a partner in the upside.
+              {t("a partner in the upside.", "mà là đối tác chia sẻ giá trị.")}
             </h2>
           </div>
 
           {/* Subtitle & Value Proposition */}
           <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans max-w-xl">
-            We build custom software, autonomous AI agents, and private model infrastructure, rank them where customers search, and take our pay as a share of the revenue it earns. No retainers, no hours: if you don’t grow, we don’t get paid.
+            {t(
+              "We build custom software, autonomous AI agents, and private model infrastructure, rank them where customers search, and take our pay as a share of the revenue it earns. No retainers, no hours: if you don’t grow, we don’t get paid.",
+              "Chúng tôi phát triển phần mềm độc quyền, hệ thống AI Agent tự vận hành và hạ tầng mô hình riêng biệt — liên kết lợi nhuận trực tiếp với kết quả kinh doanh. Không phí duy trì vô bổ: bạn không tăng trưởng, chúng tôi không nhận thù lao."
+            )}
           </p>
 
           {/* Action Buttons */}
@@ -122,7 +127,7 @@ export function HeroSection() {
               href="#contact"
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-sm bg-white hover:bg-slate-200 text-black text-xs sm:text-sm font-mono tracking-widest uppercase font-bold shadow-2xl transition-all group"
             >
-              <span>Request partnership</span>
+              <span>{t("Request partnership", "Yêu cầu hợp tác")}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
 
@@ -130,7 +135,7 @@ export function HeroSection() {
               href="#projects"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-sm bg-black/60 hover:bg-black/80 text-white text-xs sm:text-sm font-mono tracking-widest uppercase border border-white/25 backdrop-blur-md transition-all"
             >
-              <span>Inspect The Work</span>
+              <span>{t("Inspect The Work", "Xem các dự án")}</span>
             </Link>
 
             <Link
@@ -138,7 +143,7 @@ export function HeroSection() {
               className="inline-flex items-center gap-2 px-4 py-3.5 rounded-sm text-slate-300 hover:text-white text-xs font-mono tracking-widest uppercase transition-all"
             >
               <FileText className="w-4 h-4" />
-              <span>CV (PDF)</span>
+              <span>{t("CV (PDF)", "Hồ sơ CV (PDF)")}</span>
             </Link>
           </div>
         </div>
@@ -178,13 +183,13 @@ export function HeroSection() {
             {/* Floating Telemetry Badge 1 (Top Left) */}
             <div className="absolute -top-2 -left-6 sm:-left-10 px-3.5 py-1.5 rounded-sm bg-black/80 border border-white/20 backdrop-blur-xl font-mono text-[10px] text-amber-400 shadow-2xl flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
-              <span>AI_ARCHITECT // OPERATOR</span>
+              <span>{t("AI_ARCHITECT // OPERATOR", "KIẾN_TRÚC_SƯ_AI // VẬN_HÀNH")}</span>
             </div>
 
             {/* Floating Telemetry Badge 2 (Bottom Right) */}
             <div className="absolute bottom-8 -right-4 sm:-right-8 px-3.5 py-1.5 rounded-sm bg-black/80 border border-white/20 backdrop-blur-xl font-mono text-[10px] text-emerald-400 shadow-2xl flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span>vLLM_INFRA · ACTIVE</span>
+              <span>{t("vLLM_INFRA · ACTIVE", "HẠ_TẦNG_vLLM · HOẠT_ĐỘNG")}</span>
             </div>
           </div>
         </div>
@@ -197,7 +202,10 @@ export function HeroSection() {
         <div className="flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <span className="tracking-widest uppercase">
-            OPERATING AT THE AI FRONTIER // GLOBALLY AVAILABLE
+            {t(
+              "OPERATING AT THE AI FRONTIER // GLOBALLY AVAILABLE",
+              "TIÊN PHONG CÔNG NGHỆ AI // SẴN SÀNG TOÀN CẦU"
+            )}
           </span>
         </div>
 
@@ -205,7 +213,7 @@ export function HeroSection() {
           href="#about"
           className="hidden sm:inline-flex items-center gap-2 hover:text-white transition-colors uppercase tracking-widest text-[11px]"
         >
-          <span>THE PHILOSOPHY</span>
+          <span>{t("THE PHILOSOPHY", "TRIẾT LÝ")}</span>
           <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
         </a>
       </div>
