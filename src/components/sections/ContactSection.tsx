@@ -12,9 +12,8 @@ import {
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon, TwitterXIcon, TelegramIcon } from "@/components/ui/Icons";
 import { contactInfo, socialLinks } from "@/data/socials";
-import { profileData } from "@/data/profile";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Card } from "@/components/ui/Card";
+import { TiltCard } from "@/components/ui/TiltCard";
 import { Button } from "@/components/ui/Button";
 import { useToast } from "@/components/ui/Toast";
 
@@ -57,10 +56,10 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-surface-100/50 dark:bg-surface-950/50 relative">
+    <section id="contact" className="py-24 md:py-32 bg-computational-grid relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          badge="Initiate Contact"
+          badge="Initiate Transmission"
           title="Let's Build Something Exceptional"
           subtitle="Whether you need an AI agent, a full-stack web application, operational automation, or 1-on-1 vibe coding mentorship — I'm ready to collaborate."
         />
@@ -68,28 +67,31 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Direct channels & context (Left 5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <Card className="p-6 sm:p-8 bg-white dark:bg-surface-100 space-y-6">
-              <div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  Direct Communication
+            <TiltCard
+              glowColor="rgba(16, 185, 129, 0.2)"
+              className="p-8 bg-slate-950/80 dark:bg-surface-100/80 border border-white/10 space-y-6"
+            >
+              <div className="border-b border-white/10 pb-4">
+                <span className="text-xs font-mono text-emerald-400 font-bold uppercase">
+                  DIRECT_COMMUNICATION_CHANNEL
+                </span>
+                <h3 className="text-xl font-bold text-white font-sans mt-1">
+                  Connect Directly
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Reach out directly or use the inquiry form.
-                </p>
               </div>
 
               {/* Email quick card */}
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-surface-200 border border-slate-200/80 dark:border-surface-300/40 space-y-2">
-                <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                  Primary Email
+              <div className="p-4 rounded-2xl bg-black/60 border border-white/10 space-y-2">
+                <div className="text-[10px] font-mono font-semibold uppercase tracking-wider text-slate-400">
+                  PRIMARY_ENDPOINT
                 </div>
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-mono font-bold text-slate-900 dark:text-white truncate">
+                  <span className="text-sm font-mono font-bold text-emerald-400 truncate">
                     {contactInfo.email}
                   </span>
                   <button
                     onClick={handleCopyEmail}
-                    className="p-1.5 rounded-lg bg-white dark:bg-surface-100 hover:bg-slate-100 dark:hover:bg-surface-300 text-slate-600 dark:text-slate-300 transition-colors shadow-sm shrink-0"
+                    className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 transition-colors shadow-sm shrink-0"
                     title="Copy Email"
                   >
                     <Copy className="w-4 h-4" />
@@ -98,37 +100,38 @@ export function ContactSection() {
               </div>
 
               {/* Status & Timezone */}
-              <div className="space-y-2 text-xs text-slate-600 dark:text-slate-300">
+              <div className="space-y-2.5 text-xs text-slate-300 font-mono">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="font-semibold text-slate-900 dark:text-slate-100">
-                    Status:
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="font-bold text-white">
+                    STATUS:
                   </span>
-                  <span>{profileData.availability.status} (Q3/Q4 Active)</span>
+                  <span className="text-emerald-400">ONLINE (Accepting Q3/Q4)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                  <span>Timezone: {contactInfo.timezone}</span>
+                  <Clock className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                  <span>TIMEZONE: {contactInfo.timezone}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                  <span>Response: {contactInfo.responseExpectation}</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>RESPONSE_TIME: {contactInfo.responseExpectation}</span>
                 </div>
               </div>
 
               {/* Social Channels */}
-              <div className="pt-4 border-t border-slate-100 dark:border-surface-200/60">
-                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3">
-                  Online Profiles &amp; Chat
+              <div className="pt-4 border-t border-white/10">
+                <div className="text-[10px] font-mono font-semibold uppercase tracking-wider text-slate-400 mb-3">
+                  ONLINE_PROFILES
                 </div>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-2 font-mono">
                   {socialLinks.map((s) => (
                     <a
                       key={s.platform}
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl bg-slate-50 dark:bg-surface-200/60 hover:bg-slate-100 dark:hover:bg-surface-200 border border-slate-200/60 dark:border-surface-300/40 flex items-center gap-2 text-xs font-medium text-slate-800 dark:text-slate-200 transition-colors"
+                      aria-label={`Visit Tyson's ${s.platform}`}
+                      className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center gap-2 text-xs text-slate-300 hover:text-white transition-colors"
                     >
                       {renderSocialIcon(s.platform)}
                       <span className="truncate">{s.platform}</span>
@@ -136,78 +139,81 @@ export function ContactSection() {
                   ))}
                 </div>
               </div>
-            </Card>
+            </TiltCard>
           </div>
 
           {/* Interactive Inquiry Router (Right 7 cols) */}
           <div className="lg:col-span-7">
-            <Card className="p-6 sm:p-8 bg-white dark:bg-surface-100">
+            <TiltCard
+              glowColor="rgba(16, 185, 129, 0.2)"
+              className="p-8 bg-slate-950/80 dark:bg-surface-100/80 border border-white/10"
+            >
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                    Send an Inquiry
+                <div className="border-b border-white/10 pb-4">
+                  <span className="text-xs font-mono text-emerald-400 font-bold uppercase">
+                    INQUIRY_ROUTER
+                  </span>
+                  <h3 className="text-xl font-bold text-white font-sans mt-1">
+                    Send Project Brief / Application
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Select your objective to customize the inquiry routing.
-                  </p>
                 </div>
 
                 {/* Objective Selector Tabs */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono">
                   <button
                     type="button"
                     onClick={() => setInquiryType("client")}
-                    className={`p-3 rounded-xl border text-left transition-all ${
+                    className={`p-3 rounded-2xl border text-left transition-all ${
                       inquiryType === "client"
-                        ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-md"
-                        : "bg-slate-50 dark:bg-surface-200 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-surface-300 hover:bg-slate-100"
+                        ? "bg-white text-slate-950 border-emerald-400 shadow-md font-bold"
+                        : "bg-white/5 text-slate-300 border-white/10 hover:bg-white/10"
                     }`}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <Briefcase className="w-4 h-4 text-sky-400" />
-                      <span className="text-xs font-bold">Client Project</span>
+                      <Briefcase className="w-4 h-4 text-emerald-600" />
+                      <span className="text-xs">Client Project</span>
                     </div>
-                    <p className="text-[10px] opacity-75 line-clamp-1">AI, Apps, Automation</p>
+                    <p className="text-[10px] opacity-75 line-clamp-1 font-sans">AI &amp; Automation</p>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setInquiryType("student")}
-                    className={`p-3 rounded-xl border text-left transition-all ${
+                    className={`p-3 rounded-2xl border text-left transition-all ${
                       inquiryType === "student"
-                        ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-md"
-                        : "bg-slate-50 dark:bg-surface-200 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-surface-300 hover:bg-slate-100"
+                        ? "bg-white text-slate-950 border-emerald-400 shadow-md font-bold"
+                        : "bg-white/5 text-slate-300 border-white/10 hover:bg-white/10"
                     }`}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <GraduationCap className="w-4 h-4 text-emerald-400" />
-                      <span className="text-xs font-bold">Student Mentorship</span>
+                      <GraduationCap className="w-4 h-4 text-emerald-600" />
+                      <span className="text-xs">Mentorship</span>
                     </div>
-                    <p className="text-[10px] opacity-75 line-clamp-1">Learn Vibe Coding</p>
+                    <p className="text-[10px] opacity-75 line-clamp-1 font-sans">Learn Vibe Coding</p>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setInquiryType("collaborator")}
-                    className={`p-3 rounded-xl border text-left transition-all col-span-2 sm:col-span-1 ${
+                    className={`p-3 rounded-2xl border text-left transition-all col-span-2 sm:col-span-1 ${
                       inquiryType === "collaborator"
-                        ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-md"
-                        : "bg-slate-50 dark:bg-surface-200 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-surface-300 hover:bg-slate-100"
+                        ? "bg-white text-slate-950 border-emerald-400 shadow-md font-bold"
+                        : "bg-white/5 text-slate-300 border-white/10 hover:bg-white/10"
                     }`}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <Users className="w-4 h-4 text-purple-400" />
-                      <span className="text-xs font-bold">Collaborate</span>
+                      <Users className="w-4 h-4 text-purple-600" />
+                      <span className="text-xs">Collaborate</span>
                     </div>
-                    <p className="text-[10px] opacity-75 line-clamp-1">Build Together</p>
+                    <p className="text-[10px] opacity-75 line-clamp-1 font-sans">Build Together</p>
                   </button>
                 </div>
 
                 {/* Form Fields */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                      Your Name *
+                    <label className="text-xs font-mono font-semibold text-slate-300">
+                      YOUR_NAME *
                     </label>
                     <input
                       type="text"
@@ -215,13 +221,13 @@ export function ContactSection() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Alex Morgan"
-                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-surface-200 border border-slate-200 dark:border-surface-300 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm"
+                      className="w-full px-4 py-3 bg-black/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                      Email Address *
+                    <label className="text-xs font-mono font-semibold text-slate-300">
+                      EMAIL_ADDRESS *
                     </label>
                     <input
                       type="email"
@@ -229,14 +235,14 @@ export function ContactSection() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="alex@company.com"
-                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-surface-200 border border-slate-200 dark:border-surface-300 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm"
+                      className="w-full px-4 py-3 bg-black/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                    Project Goals / What You&apos;d Like to Build
+                <div className="space-y-1.5 font-sans">
+                  <label className="text-xs font-mono font-semibold text-slate-300">
+                    PROJECT_GOALS_OR_INQUIRY_DETAILS
                   </label>
                   <textarea
                     rows={4}
@@ -244,18 +250,18 @@ export function ContactSection() {
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder={
                       inquiryType === "client"
-                        ? "Describe your system requirements, timeline, or current automation bottlenecks..."
+                        ? "Describe your system requirements, architecture goals, or timeline..."
                         : inquiryType === "student"
-                        ? "Tell me what application or idea you want to build and your current experience level..."
-                        : "Tell me about the project, venture, or partnership idea..."
+                        ? "Tell me what application or idea you want to build..."
+                        : "Tell me about the venture or partnership idea..."
                     }
-                    className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-surface-200 border border-slate-200 dark:border-surface-300 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm resize-none"
+                    className="w-full px-4 py-3 bg-black/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm resize-none"
                   />
                 </div>
 
                 <div className="flex items-center justify-between pt-2">
-                  <span className="text-[11px] text-slate-500 dark:text-slate-400">
-                    Direct routing to <span className="font-mono">{contactInfo.email}</span>
+                  <span className="text-[11px] font-mono text-slate-500">
+                    ROUTING: <span className="text-emerald-400">{contactInfo.email}</span>
                   </span>
 
                   <Button
@@ -263,12 +269,13 @@ export function ContactSection() {
                     size="md"
                     type="submit"
                     rightIcon={<ArrowRight className="w-4 h-4" />}
+                    className="font-mono text-xs font-bold uppercase shadow-xl"
                   >
-                    Send Inquiry
+                    Send Transmission
                   </Button>
                 </div>
               </form>
-            </Card>
+            </TiltCard>
           </div>
         </div>
       </div>

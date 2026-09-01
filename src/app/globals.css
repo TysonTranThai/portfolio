@@ -13,28 +13,78 @@
     --surface-800: #1e293b;
     --surface-900: #0f172a;
     --surface-950: #020617;
-    --primary: #0284c7;
-    --primary-hover: #0369a1;
-    --primary-muted: #e0f2fe;
+    
+    /* Theme Accents (Default Editorial Lime / Cyber Emerald) */
+    --accent: #10b981;
+    --accent-hover: #059669;
+    --accent-glow: rgba(16, 185, 129, 0.18);
+    --accent-text: #065f46;
+    
     --border-subtle: #e2e8f0;
     --border-glass: rgba(0, 0, 0, 0.08);
   }
 
   .dark {
-    --background: #050608;
+    --background: #05070a;
     --foreground: #f8fafc;
-    --surface-50: #0c0e14;
-    --surface-100: #11141d;
-    --surface-200: #181d2a;
-    --surface-300: #232a3d;
-    --surface-800: #323d57;
+    --surface-50: #090c12;
+    --surface-100: #0e121a;
+    --surface-200: #151b26;
+    --surface-300: #1e2636;
+    --surface-800: #334155;
     --surface-900: #475569;
-    --surface-950: #020305;
-    --primary: #38bdf8;
-    --primary-hover: #7dd3fc;
-    --primary-muted: rgba(56, 189, 248, 0.12);
-    --border-subtle: #1a2030;
+    --surface-950: #020407;
+    
+    --accent: #10b981;
+    --accent-hover: #34d399;
+    --accent-glow: rgba(16, 185, 129, 0.25);
+    --accent-text: #6ee7b7;
+    
+    --border-subtle: #1a2230;
     --border-glass: rgba(255, 255, 255, 0.09);
+  }
+
+  /* Curated Theme Accent Tokens */
+  [data-theme-accent="emerald"] {
+    --accent: #10b981;
+    --accent-hover: #34d399;
+    --accent-glow: rgba(16, 185, 129, 0.25);
+    --accent-text: #10b981;
+  }
+
+  [data-theme-accent="lime"] {
+    --accent: #ccff00;
+    --accent-hover: #b3e600;
+    --accent-glow: rgba(204, 255, 0, 0.25);
+    --accent-text: #ccff00;
+  }
+
+  [data-theme-accent="cyan"] {
+    --accent: #06b6d4;
+    --accent-hover: #22d3ee;
+    --accent-glow: rgba(6, 182, 212, 0.25);
+    --accent-text: #06b6d4;
+  }
+
+  [data-theme-accent="violet"] {
+    --accent: #8b5cf6;
+    --accent-hover: #a78bfa;
+    --accent-glow: rgba(139, 92, 246, 0.25);
+    --accent-text: #8b5cf6;
+  }
+
+  [data-theme-accent="ember"] {
+    --accent: #f43f5e;
+    --accent-hover: #fb7185;
+    --accent-glow: rgba(244, 63, 94, 0.25);
+    --accent-text: #f43f5e;
+  }
+
+  [data-theme-accent="graphite"] {
+    --accent: #94a3b8;
+    --accent-hover: #cbd5e1;
+    --accent-glow: rgba(148, 163, 184, 0.25);
+    --accent-text: #f8fafc;
   }
 
   html {
@@ -51,76 +101,72 @@
   }
 }
 
-/* Glassmorphism & ThreeUI Style Panels */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.dark .glass-panel {
-  background: rgba(12, 14, 20, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+/* Editorial & AI Lab Structural Panels */
+.hud-panel {
+  background: rgba(9, 12, 18, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.card-hover {
+.light .hud-panel {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card-editorial {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card-hover:hover {
+.card-editorial:hover {
   transform: translateY(-4px);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 25px -5px rgba(56, 189, 248, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px var(--accent-glow);
 }
 
-.dark .card-hover:hover {
-  box-shadow: 0 25px 50px -18px rgba(0, 0, 0, 0.7), 0 0 35px -8px rgba(56, 189, 248, 0.22);
+/* Computational Matrix Grid Background */
+.bg-computational-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
-/* Ambient Background Grid & Dot Patterns */
-.bg-grid-pattern {
-  background-size: 40px 40px;
+.light .bg-computational-grid {
   background-image: 
     linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
 
-.dark .bg-grid-pattern {
+/* Ambient Lighting Cones */
+.ambient-lab-glow {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    radial-gradient(at 10% 10%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+    radial-gradient(at 90% 15%, rgba(6, 182, 212, 0.10) 0px, transparent 50%),
+    radial-gradient(at 50% 60%, rgba(204, 255, 0, 0.05) 0px, transparent 55%);
 }
 
-/* Ambient Lighting Mesh */
-.ambient-mesh {
+.light .ambient-lab-glow {
   background-image: 
-    radial-gradient(at 10% 10%, rgba(56, 189, 248, 0.09) 0px, transparent 50%),
-    radial-gradient(at 90% 10%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
-    radial-gradient(at 50% 60%, rgba(16, 185, 129, 0.05) 0px, transparent 55%);
+    radial-gradient(at 10% 10%, rgba(16, 185, 129, 0.06) 0px, transparent 50%),
+    radial-gradient(at 90% 15%, rgba(6, 182, 212, 0.05) 0px, transparent 50%),
+    radial-gradient(at 50% 60%, rgba(204, 255, 0, 0.03) 0px, transparent 55%);
 }
 
-.dark .ambient-mesh {
-  background-image: 
-    radial-gradient(at 10% 10%, rgba(56, 189, 248, 0.16) 0px, transparent 50%),
-    radial-gradient(at 90% 10%, rgba(99, 102, 241, 0.14) 0px, transparent 50%),
-    radial-gradient(at 50% 60%, rgba(16, 185, 129, 0.08) 0px, transparent 55%);
-}
-
-/* ThreeUI Animated Beam / Gradient Border */
-.beam-border {
+/* Animated HUD Beam Border */
+.hud-beam-border {
   position: relative;
 }
 
-.beam-border::before {
+.hud-beam-border::before {
   content: "";
   position: absolute;
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399, #38bdf8);
+  background: linear-gradient(90deg, #10b981, #06b6d4, #ccff00, #10b981);
   background-size: 300% 100%;
   animation: beamAnimation 6s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -134,23 +180,18 @@
   100% { background-position: 300% 50%; }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.25);
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.45);
+/* Monospace Scanline Overlay (Subtle) */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
 }
 
 /* Print Styles for CV page */
@@ -165,7 +206,8 @@
   nav,
   footer,
   .command-menu-trigger,
-  .theme-toggle-button {
+  .theme-toggle-button,
+  .theme-accent-picker {
     display: none !important;
   }
 

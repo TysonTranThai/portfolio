@@ -3,47 +3,54 @@
 import * as React from "react";
 import {
   ArrowRight,
+  Terminal,
   Cpu,
   Layers,
   GraduationCap,
-  Terminal,
-  Briefcase,
   FileText,
   Copy,
+  Activity,
+  ShieldCheck,
 } from "lucide-react";
-import { profileData } from "@/data/profile";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { HeroBackground } from "@/components/3d/HeroBackground";
 import { useToast } from "@/components/ui/Toast";
 
-type CommandKey = "whoami" | "capabilities" | "stack" | "contact";
+type CommandKey = "whoami" | "capabilities" | "telemetry" | "stack" | "contact";
 
 const commandOutputs: Record<CommandKey, string[]> = {
   whoami: [
-    "Tran Thai Son (Tyson) — AI Systems Builder & Educator",
-    "Specialization: Multi-agent architectures, autonomous pipelines & scalable web apps",
-    "Operating Mode: Spec-driven agentic engineering with strict verification",
-    "Location: Vietnam · Available Globally (Remote)",
+    "OPERATOR: Tran Thai Son (Tyson) // AI Systems Builder & Educator",
+    "SPECIALIZATION: Autonomous Agents, RAG Pipelines & Model Gateways",
+    "METHODOLOGY: Spec-Driven Vibe Coding with Deterministic Verification",
+    "LOCATION: Vietnam · Available Globally for Strategic Projects",
   ],
   capabilities: [
-    "✓ Autonomous AI Agents & Tool-Calling Workflows",
-    "✓ Retrieval-Augmented Generation (RAG) & Vector Databases",
-    "✓ Self-Hosted LLMs & Local Inference (vLLM, Ollama, Qwen)",
-    "✓ High-Performance Web Apps (Next.js 15, React 19, TypeScript)",
-    "✓ 1-on-1 AI-Assisted Vibe Coding Mentorship",
+    "✓ Autonomous AI Agents with Multi-Step Tool Contracts",
+    "✓ Retrieval-Augmented Generation (RAG) & Vector Enclaves",
+    "✓ Self-Hosted LLMs on Dedicated Linux VPS (vLLM, Ollama, Qwen)",
+    "✓ Scalable Full-Stack Web Applications (Next.js 15, TypeScript)",
+    "✓ 1-on-1 Practical AI-Assisted Vibe Coding Mentorship",
+  ],
+  telemetry: [
+    "AI_SYSTEMS: ONLINE (Multi-Model Mesh)",
+    "AUTOMATION_PIPELINES: ACTIVE (24/7 Operations)",
+    "INFRASTRUCTURE: RUNNING (vLLM Cluster on Ubuntu VPS)",
+    "LATENCY: ~8ms (Edge Prerendered)",
+    "STUDENT_MENTORSHIP: ACCEPTING (Q3/Q4 Cohort)",
   ],
   stack: [
-    "Languages: TypeScript, Python, SQL, Modern JavaScript",
-    "AI & LLMs: OpenAI API, Claude, vLLM, Ollama, Model Routing Gateways",
-    "Cloud & DevOps: Linux (Ubuntu), Docker, Nginx Reverse Proxy, Supabase, Vercel",
-    "Architecture: Clean component isolation, REST/WebSockets, pgvector",
+    "LANGUAGES: TypeScript, Python, SQL, Modern JavaScript",
+    "AI_ENGINEERING: OpenAI, Claude 3.5, vLLM, Ollama, Model Routers",
+    "CLOUD_INFRA: Linux (Ubuntu), Docker, Nginx Reverse Proxy, Supabase, Vercel",
+    "ARCHITECTURE: Clean Module Decoupling, WebSockets, pgvector",
   ],
   contact: [
-    "Email: tysontran.builds@gmail.com",
-    "Telegram: @tysontran",
-    "Status: Accepting Q3/Q4 Client Projects & 1-on-1 Mentorship Mentees",
-    "Response Time: Typically under 12 hours",
+    "EMAIL: tysontran.builds@gmail.com",
+    "TELEGRAM: @tysontran",
+    "STATUS: Ready to review new client briefs & mentee applications",
+    "RESPONSE_WINDOW: Under 12 Hours",
   ],
 };
 
@@ -75,121 +82,124 @@ export function HeroSection() {
 
   const handleCopyOutput = () => {
     navigator.clipboard.writeText(commandOutputs[activeCommand].join("\n"));
-    showToast("Terminal output copied to clipboard!");
+    showToast("Telemetry copied to clipboard!");
   };
 
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden bg-grid-pattern">
-      {/* 3D WebGL Background Canvas */}
+    <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden bg-computational-grid ambient-lab-glow">
+      {/* 3D WebGL Neural Background Canvas */}
       <HeroBackground />
 
-      {/* Ambient Lighting Cones */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-sky-500/10 dark:bg-sky-500/20 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[450px] h-[350px] bg-indigo-500/10 dark:bg-indigo-500/20 blur-[110px] rounded-full pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          {/* Availability Beacon Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/80 dark:bg-surface-100/80 border border-slate-200/90 dark:border-surface-300/60 backdrop-blur-xl shadow-sm hover:border-sky-500/40 transition-colors">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-            </span>
-            <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">
-              {profileData.availability.label}
-            </span>
-            <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-surface-300" />
-            <span className="text-[11px] font-mono text-sky-600 dark:text-sky-400">
-              GMT+7 · Global Remote
-            </span>
-          </div>
-
-          {/* Main Hero Title & Positioning */}
-          <div className="space-y-5">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.08]">
-              <span className="block bg-clip-text text-transparent bg-gradient-to-b from-slate-900 via-slate-800 to-slate-600 dark:from-white dark:via-slate-100 dark:to-slate-400">
-                {profileData.positioning}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          {/* Left Column: Bold Editorial Headline & Positioning (from Option C) */}
+          <div className="lg:col-span-7 space-y-6 text-left">
+            {/* Status Beacon Bar */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-white/10 backdrop-blur-xl text-xs font-mono">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-            </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed">
-              {profileData.heroLead}
-            </p>
-          </div>
+              <span className="text-slate-300 font-medium">
+                TRAN THAI SON (TYSON)
+              </span>
+              <span className="text-slate-600">·</span>
+              <span className="text-emerald-400 font-semibold">
+                SYSTEMS_ONLINE
+              </span>
+            </div>
 
-          {/* Discipline Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-1">
-            <Badge variant="cyan" size="md" className="backdrop-blur-md">
-              <Cpu className="w-3.5 h-3.5" />
-              <span>AI Agents &amp; Model Gateways</span>
-            </Badge>
-            <Badge variant="violet" size="md" className="backdrop-blur-md">
-              <Layers className="w-3.5 h-3.5" />
-              <span>Full-Stack Architecture</span>
-            </Badge>
-            <Badge variant="success" size="md" className="backdrop-blur-md">
-              <Terminal className="w-3.5 h-3.5" />
-              <span>Self-Hosted VPS Infrastructure</span>
-            </Badge>
-            <Badge variant="default" size="md" className="backdrop-blur-md">
-              <GraduationCap className="w-3.5 h-3.5" />
-              <span>AI Vibe Coding Educator</span>
-            </Badge>
-          </div>
+            {/* Massive Editorial Headline */}
+            <div className="space-y-3">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-[0.95]">
+                ENGINEERING <br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-lime-400">
+                  AUTONOMOUS AI
+                </span> <br />
+                &amp; SYSTEMS.
+              </h1>
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl font-normal leading-relaxed">
+                Young builder architecting intelligent multi-agent pipelines, full-stack software products, and self-hosted infrastructure — while teaching builders modern vibe coding.
+              </p>
+            </div>
 
-          {/* Primary CTA Cluster */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-3">
-            <div className="beam-border rounded-xl">
+            {/* Discipline Badges */}
+            <div className="flex flex-wrap items-center gap-2 pt-1 font-mono text-xs">
+              <Badge variant="cyan" size="md">
+                <Cpu className="w-3.5 h-3.5" />
+                <span>AI Agents</span>
+              </Badge>
+              <Badge variant="violet" size="md">
+                <Layers className="w-3.5 h-3.5" />
+                <span>Full-Stack Web</span>
+              </Badge>
+              <Badge variant="success" size="md">
+                <Terminal className="w-3.5 h-3.5" />
+                <span>vLLM / VPS Compute</span>
+              </Badge>
+              <Badge variant="default" size="md">
+                <GraduationCap className="w-3.5 h-3.5" />
+                <span>Builder Mentorship</span>
+              </Badge>
+            </div>
+
+            {/* Action CTA Cluster */}
+            <div className="flex flex-wrap items-center gap-3 pt-3">
+              <div className="hud-beam-border rounded-xl">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  href="#contact"
+                  rightIcon={<ArrowRight className="w-4 h-4" />}
+                  className="font-mono text-xs font-bold uppercase shadow-xl"
+                >
+                  Work With Me
+                </Button>
+              </div>
               <Button
-                variant="primary"
+                variant="secondary"
                 size="lg"
-                href="#contact"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
-                className="shadow-xl"
+                href="#projects"
+                className="font-mono text-xs font-bold uppercase"
               >
-                Work With Me
+                Inspect Portfolio
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                href="/cv"
+                leftIcon={<FileText className="w-4 h-4" />}
+                className="font-mono text-xs"
+              >
+                Download CV (PDF)
               </Button>
             </div>
-            <Button
-              variant="secondary"
-              size="lg"
-              href="#projects"
-              leftIcon={<Briefcase className="w-4 h-4" />}
-            >
-              Explore Selected Work
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              href="/cv"
-              leftIcon={<FileText className="w-4 h-4" />}
-            >
-              Download CV (PDF)
-            </Button>
           </div>
 
-          {/* Interactive Live Developer Terminal */}
-          <div className="pt-8 max-w-2xl mx-auto text-left">
-            <div className="rounded-3xl bg-slate-950/95 dark:bg-surface-950/95 border border-slate-800/90 dark:border-surface-300/40 shadow-2xl backdrop-blur-2xl p-5 overflow-hidden transition-all duration-300 hover:border-sky-500/40 group">
-              {/* Window Bar */}
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800/80">
+          {/* Right Column: Dark AI Lab Interactive Terminal & HUD (from Option D) */}
+          <div className="lg:col-span-5">
+            <div className="rounded-3xl bg-slate-950/95 border border-white/15 p-6 shadow-2xl backdrop-blur-2xl space-y-4 font-mono text-xs transition-all duration-300 hover:border-emerald-500/50 group">
+              {/* Terminal Title Bar */}
+              <div className="flex items-center justify-between pb-3 border-b border-white/10">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-rose-500/80 hover:opacity-100 transition-opacity" />
-                  <div className="w-3 h-3 rounded-full bg-amber-500/80 hover:opacity-100 transition-opacity" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-500/80 hover:opacity-100 transition-opacity" />
-                  <span className="text-xs font-mono text-slate-400 ml-2">
-                    tyson@builder-matrix:~
+                  <div className="w-3 h-3 rounded-full bg-rose-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                  <span className="text-[11px] text-slate-400 ml-2">
+                    tyson@lab-matrix:~
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2 text-[11px] font-mono text-slate-400">
+                <div className="flex items-center gap-2 text-[11px] text-slate-400">
                   <span className="inline-flex items-center gap-1 text-emerald-400">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    LATENCY: 8ms
+                    PING: 8ms
                   </span>
                   <button
                     onClick={handleCopyOutput}
                     className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
-                    title="Copy terminal text"
+                    title="Copy terminal output"
                   >
                     <Copy className="w-3.5 h-3.5" />
                   </button>
@@ -197,14 +207,14 @@ export function HeroSection() {
               </div>
 
               {/* Command Selector Buttons */}
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                {(["whoami", "capabilities", "stack", "contact"] as CommandKey[]).map((cmd) => (
+              <div className="flex flex-wrap gap-1.5">
+                {(["whoami", "capabilities", "telemetry", "stack", "contact"] as CommandKey[]).map((cmd) => (
                   <button
                     key={cmd}
                     onClick={() => setActiveCommand(cmd)}
                     className={`px-2.5 py-1 rounded-lg text-xs font-mono transition-all select-none ${
                       activeCommand === cmd
-                        ? "bg-sky-500 text-white shadow-sm font-bold"
+                        ? "bg-emerald-500 text-black font-bold shadow-md"
                         : "bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-slate-200"
                     }`}
                   >
@@ -214,21 +224,28 @@ export function HeroSection() {
               </div>
 
               {/* Live Terminal Output Window */}
-              <div className="space-y-2 font-mono text-xs sm:text-sm min-h-[110px] bg-slate-950 p-3 rounded-xl border border-slate-900">
-                <div className="flex items-center gap-2 text-slate-400">
+              <div className="space-y-2 font-mono text-xs sm:text-sm min-h-[130px] bg-slate-950 p-4 rounded-2xl border border-white/5">
+                <div className="flex items-center gap-2 text-slate-400 text-xs">
                   <span className="text-emerald-400 font-bold">$</span>
-                  <span className="text-slate-100">{activeCommand}</span>
-                  {isTyping && <span className="inline-block w-2 h-4 bg-sky-400 animate-pulse" />}
+                  <span className="text-white font-bold">{activeCommand}</span>
+                  {isTyping && <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse" />}
                 </div>
 
-                <div className="whitespace-pre-line text-slate-300 text-xs sm:text-sm pl-3 border-l-2 border-slate-800/80 leading-relaxed font-mono">
+                <div className="whitespace-pre-line text-slate-300 text-xs sm:text-sm pl-3 border-l-2 border-emerald-500/40 leading-relaxed font-mono">
                   {typedOutput}
                 </div>
               </div>
 
-              <div className="pt-2 text-[10px] font-mono text-slate-500 flex items-center justify-between">
-                <span>[PROMPT] Click tabs above to execute live developer commands</span>
-                <span className="text-sky-400/80">SYSTEM: OPTIMAL</span>
+              {/* HUD Telemetry Summary Pill */}
+              <div className="p-3 rounded-xl bg-slate-900/90 border border-white/10 flex items-center justify-between text-[11px] text-slate-400">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>CLUSTER: OPTIMAL</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Activity className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>THREADS: 100% HEALTHY</span>
+                </div>
               </div>
             </div>
           </div>
