@@ -15,7 +15,7 @@ import {
   Terminal,
   Zap,
 } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
+import { DiscordIcon, FacebookIcon, GithubIcon, ZaloIcon } from "@/components/ui/Icons";
 import { PixelBot } from "@/components/ui/PixelArtIcons";
 import { CommsAntenna } from "@/components/world/TactileObjects";
 import { contactInfo } from "@/data/socials";
@@ -27,6 +27,8 @@ export function ContactSection() {
   const { t } = useLanguage();
   const [copiedEmail, setCopiedEmail] = React.useState(false);
   const [copiedTelegram, setCopiedTelegram] = React.useState(false);
+  const [copiedZalo, setCopiedZalo] = React.useState(false);
+  const [copiedDiscord, setCopiedDiscord] = React.useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(contactInfo.email);
@@ -40,6 +42,20 @@ export function ContactSection() {
     setCopiedTelegram(true);
     showToast(`${contactInfo.telegram} ${t("copied to clipboard.", "đã lưu vào bộ nhớ tạm.")}`, "success");
     setTimeout(() => setCopiedTelegram(false), 2000);
+  };
+
+  const handleCopyZalo = () => {
+    navigator.clipboard.writeText(contactInfo.zalo);
+    setCopiedZalo(true);
+    showToast(`${contactInfo.zalo} ${t("copied to clipboard.", "đã lưu vào bộ nhớ tạm.")}`, "success");
+    setTimeout(() => setCopiedZalo(false), 2000);
+  };
+
+  const handleCopyDiscord = () => {
+    navigator.clipboard.writeText(contactInfo.discord);
+    setCopiedDiscord(true);
+    showToast(`${contactInfo.discord} ${t("copied to clipboard.", "đã lưu vào bộ nhớ tạm.")}`, "success");
+    setTimeout(() => setCopiedDiscord(false), 2000);
   };
 
   const directChannels = [
@@ -83,17 +99,43 @@ export function ContactSection() {
       badgeColor: "bg-violet-500/10 text-violet-300 border-violet-500/30",
     },
     {
-      id: "linkedin",
-      label: t("LINKEDIN NETWORK", "MẠNG LƯỚI LINKEDIN"),
-      value: "linkedin.com/in/tysontran",
-      subtext: t("Professional networking, verified profile & career updates", "Kết nối nghề nghiệp, hồ sơ chuyên môn & cập nhật mới nhất"),
-      icon: LinkedinIcon,
-      actionText: t("CONNECT ↗", "KẾT NỐI ↗"),
-      onAction: () => window.open("https://linkedin.com/in/tysontran", "_blank"),
-      linkUrl: "https://linkedin.com/in/tysontran",
-      linkText: t("VISIT PROFILE ↗", "XEM PROFILE ↗"),
+      id: "zalo",
+      label: t("ZALO DIRECT", "ZALO TRỰC TIẾP"),
+      value: contactInfo.zalo,
+      subtext: t("Fastest for calls & messages in Vietnam", "Nhanh nhất cho gọi điện & nhắn tin tại Việt Nam"),
+      icon: ZaloIcon,
+      actionText: copiedZalo ? t("COPIED!", "ĐÃ SAO CHÉP!") : t("COPY NUMBER", "SAO CHÉP SỐ"),
+      onAction: handleCopyZalo,
+      linkUrl: contactInfo.zaloUrl,
+      linkText: t("OPEN ZALO ↗", "MỞ ZALO ↗"),
       color: "text-amber-400 border-amber-500/30 hover:border-amber-400/60 bg-amber-950/15",
       badgeColor: "bg-amber-500/10 text-amber-300 border-amber-500/30",
+    },
+    {
+      id: "discord",
+      label: t("DISCORD COMMUNITY", "DISCORD CỘNG ĐỒNG"),
+      value: contactInfo.discord,
+      subtext: t("Chat with the builder community & quick DMs", "Trò chuyện cùng cộng đồng builder & nhắn tin nhanh"),
+      icon: DiscordIcon,
+      actionText: copiedDiscord ? t("COPIED!", "ĐÃ SAO CHÉP!") : t("COPY HANDLE", "SAO CHÉP"),
+      onAction: handleCopyDiscord,
+      linkUrl: "https://discord.com/channels/@me",
+      linkText: t("OPEN DISCORD ↗", "MỞ DISCORD ↗"),
+      color: "text-indigo-400 border-indigo-500/30 hover:border-indigo-400/60 bg-indigo-950/15",
+      badgeColor: "bg-indigo-500/10 text-indigo-300 border-indigo-500/30",
+    },
+    {
+      id: "facebook",
+      label: t("FACEBOOK PROFILE", "FACEBOOK CÁ NHÂN"),
+      value: contactInfo.facebookName,
+      subtext: t("Follow the daily building journey & updates", "Theo dõi hành trình xây dựng & cập nhật hằng ngày"),
+      icon: FacebookIcon,
+      actionText: t("OPEN PROFILE ↗", "MỞ PROFILE ↗"),
+      onAction: () => window.open(contactInfo.facebookUrl, "_blank"),
+      linkUrl: contactInfo.facebookUrl,
+      linkText: t("VISIT PROFILE ↗", "XEM PROFILE ↗"),
+      color: "text-sky-400 border-sky-500/30 hover:border-sky-400/60 bg-sky-950/15",
+      badgeColor: "bg-sky-500/10 text-sky-300 border-sky-500/30",
     },
   ];
 

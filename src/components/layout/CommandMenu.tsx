@@ -17,7 +17,7 @@ import {
   ArrowRight,
   Command,
 } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
+import { FacebookIcon, GithubIcon, ZaloIcon } from "@/components/ui/Icons";
 import { Modal } from "@/components/ui/Modal";
 import { useToast } from "@/components/ui/Toast";
 import { contactInfo, socialLinks } from "@/data/socials";
@@ -124,12 +124,20 @@ export function CommandMenu() {
           icon: GithubIcon,
         },
         {
-          title: "Open LinkedIn Profile",
+          title: "Open Zalo Chat",
           action: () => {
-            window.open(socialLinks.find((s) => s.platform === "LinkedIn")?.url, "_blank");
+            window.open(socialLinks.find((s) => s.platform === "Zalo")?.url, "_blank");
             setIsOpen(false);
           },
-          icon: LinkedinIcon,
+          icon: ZaloIcon,
+        },
+        {
+          title: "Open Facebook Profile",
+          action: () => {
+            window.open(socialLinks.find((s) => s.platform === "Facebook")?.url, "_blank");
+            setIsOpen(false);
+          },
+          icon: FacebookIcon,
         },
       ],
     },

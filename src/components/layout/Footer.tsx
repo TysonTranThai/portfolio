@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { ArrowUp, Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon, TelegramIcon } from "@/components/ui/Icons";
+import { DiscordIcon, FacebookIcon, GithubIcon, TelegramIcon, ZaloIcon } from "@/components/ui/Icons";
 import { profileData } from "@/data/profile";
 import { contactInfo, socialLinks } from "@/data/socials";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -20,8 +20,12 @@ export function Footer() {
     switch (platform.toLowerCase()) {
       case "github":
         return <GithubIcon className="w-3.5 h-3.5" />;
-      case "linkedin":
-        return <LinkedinIcon className="w-3.5 h-3.5" />;
+      case "zalo":
+        return <ZaloIcon className="w-3.5 h-3.5" />;
+      case "discord":
+        return <DiscordIcon className="w-3.5 h-3.5" />;
+      case "facebook":
+        return <FacebookIcon className="w-3.5 h-3.5" />;
       default:
         return <TelegramIcon className="w-3.5 h-3.5" />;
     }
