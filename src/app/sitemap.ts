@@ -3,7 +3,8 @@ export const dynamic = "force-static";
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://tysontran.dev";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://tysontranthai.github.io/portfolio";
 
   return [
     {

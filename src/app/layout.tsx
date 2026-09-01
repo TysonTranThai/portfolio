@@ -61,13 +61,17 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Tran Thai Son (Tyson)" }],
   creator: "Tran Thai Son",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://tysontranthai.github.io/portfolio",
+  ),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://tysontran.dev",
+    url: "/",
     title: `${profileData.preferredName} Tran — AI Builder & Architect`,
     description: profileData.heroLead,
     siteName: `${profileData.preferredName} Tran Portfolio & CV`,
+    images: [{ url: "/images/me-cutout.png", width: 800, height: 1000, alt: "Tran Thai Son (Tyson)" }],
   },
   twitter: {
     card: "summary_large_image",

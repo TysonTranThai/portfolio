@@ -2,12 +2,14 @@ export const dynamic = "force-static";
 
 import { MetadataRoute } from "next";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tysontranthai.github.io/portfolio";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://tysontran.dev/sitemap.xml",
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
