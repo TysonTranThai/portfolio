@@ -2,58 +2,56 @@
 
 import * as React from "react";
 import { skillsData } from "@/data/skills";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { TiltCard } from "@/components/ui/TiltCard";
-import { Badge } from "@/components/ui/Badge";
-import { SkillLevel } from "@/types";
 import { Cpu, Code2, Layers, Terminal, Wrench } from "lucide-react";
 
 export function TechStackSection() {
-  const getLevelVariant = (level: SkillLevel) => {
-    switch (level) {
-      case "Experienced":
-        return "success";
-      case "Working Knowledge":
-        return "cyan";
-      case "Familiar":
-        return "default";
-      case "Exploring":
-        return "violet";
-    }
-  };
-
   const getCategoryConfig = (category: string) => {
     if (category.includes("AI")) {
-      return { icon: Cpu, glow: "rgba(16, 185, 129, 0.25)", color: "text-emerald-400" };
+      return { icon: Cpu, color: "text-amber-400" };
     }
     if (category.includes("Languages")) {
-      return { icon: Code2, glow: "rgba(6, 182, 212, 0.25)", color: "text-cyan-400" };
+      return { icon: Code2, color: "text-cyan-400" };
     }
     if (category.includes("Frameworks")) {
-      return { icon: Layers, glow: "rgba(204, 255, 0, 0.25)", color: "text-lime-400" };
+      return { icon: Layers, color: "text-emerald-400" };
     }
     if (category.includes("Infrastructure")) {
-      return { icon: Terminal, glow: "rgba(16, 185, 129, 0.25)", color: "text-emerald-400" };
+      return { icon: Terminal, color: "text-amber-400" };
     }
-    return { icon: Wrench, glow: "rgba(139, 92, 246, 0.25)", color: "text-violet-400" };
+    return { icon: Wrench, color: "text-rose-400" };
   };
 
   return (
-    <section id="tech-stack" className="py-24 md:py-32 relative bg-computational-grid">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Architecture & Tools"
-          title="Technical Stack &amp; Ecosystem"
-          subtitle="An honest breakdown of the languages, frameworks, AI platforms, and cloud infrastructure I use to build production systems."
-        />
+    <section id="tech-stack" className="py-28 md:py-36 relative bg-[#060910] text-white border-t border-white/15">
+      <div className="max-w-7xl mx-auto px-6 sm:px-16">
+        
+        {/* Section Header */}
+        <div className="space-y-4 mb-16 max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">
+            <span>{"// THE TECHNICAL ARMORY"}</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+            Tools of the craft.
+          </h2>
+
+          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+            An honest breakdown of the languages, frameworks, inference engines, and cloud infrastructure we command in production.
+          </p>
+        </div>
 
         {/* Legend */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-12 text-xs font-mono">
-          <span className="text-slate-400 font-semibold">PROFICIENCY_GUIDE:</span>
-          <Badge variant="success" size="sm">Experienced (Daily Production)</Badge>
-          <Badge variant="cyan" size="sm">Working Knowledge (Production Capable)</Badge>
-          <Badge variant="default" size="sm">Familiar (Lab &amp; Prototype Builds)</Badge>
-          <Badge variant="violet" size="sm">Exploring (Active R&amp;D)</Badge>
+        <div className="flex flex-wrap items-center gap-4 mb-12 text-xs font-mono">
+          <span className="text-slate-400 font-bold uppercase tracking-wider">PROFICIENCY CONTRACT:</span>
+          <span className="px-3 py-1 bg-amber-400/10 text-amber-400 border border-amber-400/30 rounded-sm font-semibold">
+            ● Experienced (Daily Production)
+          </span>
+          <span className="px-3 py-1 bg-cyan-400/10 text-cyan-400 border border-cyan-400/30 rounded-sm font-semibold">
+            ● Working Knowledge (Production Capable)
+          </span>
+          <span className="px-3 py-1 bg-white/5 text-slate-300 border border-white/15 rounded-sm">
+            ● Exploring (Active R&amp;D)
+          </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -61,53 +59,36 @@ export function TechStackSection() {
             const config = getCategoryConfig(category.category);
             const Icon = config.icon;
             return (
-              <TiltCard
+              <div
                 key={category.category}
-                glowColor={config.glow}
-                className="p-8 flex flex-col justify-between bg-slate-950/80 dark:bg-surface-100/80 border border-white/10"
+                className="p-8 bg-black/60 border border-white/15 hover:border-amber-400/50 rounded-sm shadow-xl space-y-6 transition-all duration-300 group"
               >
-                <div className="space-y-4">
-                  <div className="border-b border-white/10 pb-4 flex items-center justify-between">
-                    <div>
-                      <div className="text-xs font-mono text-emerald-400 font-bold">
-                        MODULE_0{idx + 1}
-                      </div>
-                      <h3 className="text-lg font-bold text-white font-sans mt-0.5">
-                        {category.category}
-                      </h3>
-                      <p className="text-xs text-slate-400 font-sans mt-1">
-                        {category.description}
-                      </p>
-                    </div>
-                    <div className="p-2.5 rounded-xl bg-white/5 shrink-0 border border-white/10">
-                      <Icon className={`w-5 h-5 ${config.color}`} />
-                    </div>
+                <div className="flex items-center justify-between border-b border-white/15 pb-4">
+                  <div className="flex items-center gap-3">
+                    <Icon className={`w-5 h-5 ${config.color}`} />
+                    <h3 className="font-serif font-bold text-lg text-white group-hover:text-amber-300 transition-colors">
+                      {category.category}
+                    </h3>
                   </div>
-
-                  <div className="space-y-2.5">
-                    {category.skills.map((skill) => (
-                      <div
-                        key={skill.name}
-                        className="p-3 rounded-2xl bg-black/50 border border-white/5 flex flex-col gap-1 text-left transition-all duration-200 hover:border-emerald-500/40"
-                      >
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="text-xs font-bold text-white font-mono">
-                            {skill.name}
-                          </span>
-                          <Badge variant={getLevelVariant(skill.level)} size="sm" className="font-mono text-[10px]">
-                            {skill.level}
-                          </Badge>
-                        </div>
-                        {skill.notes && (
-                          <span className="text-[11px] text-slate-400 font-sans leading-tight">
-                            {skill.notes}
-                          </span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                  <span className="text-xs font-serif font-bold text-amber-400 font-mono">
+                    N° 0{idx + 1}
+                  </span>
                 </div>
-              </TiltCard>
+
+                <div className="space-y-3 font-mono text-xs">
+                  {category.skills.map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="flex items-center justify-between p-2.5 rounded-sm bg-white/5 border border-white/10 hover:border-white/20 transition-all"
+                    >
+                      <span className="font-bold text-white text-xs">{skill.name}</span>
+                      <span className="text-[10px] text-slate-400 uppercase tracking-widest">
+                        {skill.level}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             );
           })}
         </div>

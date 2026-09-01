@@ -10,13 +10,12 @@ import {
   ArrowLeft,
   Sparkles,
 } from "lucide-react";
-import { GithubIcon, LinkedinIcon, TelegramIcon } from "@/components/ui/Icons";
 import { profileData } from "@/data/profile";
 import { experienceData } from "@/data/experience";
 import { projectsData } from "@/data/projects";
 import { skillsData } from "@/data/skills";
 import { servicesData } from "@/data/services";
-import { contactInfo, socialLinks } from "@/data/socials";
+import { contactInfo } from "@/data/socials";
 import { Button } from "@/components/ui/Button";
 
 export default function CVPage() {
@@ -25,10 +24,10 @@ export default function CVPage() {
   };
 
   return (
-    <div className="min-h-screen py-10 sm:py-16 bg-slate-950 text-white transition-colors font-sans bg-computational-grid">
+    <div className="min-h-screen py-10 sm:py-16 bg-[#060a12] text-white transition-colors font-sans">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top toolbar (hidden on print) */}
-        <div className="no-print mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-900/90 border border-white/10 shadow-xl backdrop-blur-xl font-mono text-xs">
+        <div className="no-print mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-sm bg-black border border-white/20 shadow-xl font-mono text-xs">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
@@ -43,7 +42,7 @@ export default function CVPage() {
               size="sm"
               onClick={handlePrint}
               leftIcon={<Printer className="w-4 h-4" />}
-              className="font-mono text-xs"
+              className="font-mono text-xs rounded-sm border-white/20 text-white"
             >
               Print / Save as PDF
             </Button>
@@ -52,171 +51,122 @@ export default function CVPage() {
               size="sm"
               href="/#contact"
               rightIcon={<Sparkles className="w-3.5 h-3.5" />}
-              className="font-mono text-xs font-bold uppercase"
+              className="font-mono text-xs font-bold uppercase rounded-sm bg-white text-black hover:bg-slate-200"
             >
               Hire Tyson
             </Button>
           </div>
         </div>
 
-        {/* CV Document Container */}
-        <div className="print-container bg-slate-950/90 border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl print:p-0 print:border-none print:shadow-none print:bg-white print:text-black font-sans">
-          {/* Header & Contact */}
-          <header className="border-b border-white/10 pb-8 space-y-4 print:border-black/20">
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+        {/* Printable Paper Document */}
+        <div className="cv-print-area p-8 sm:p-14 rounded-sm bg-black/90 border border-white/20 shadow-2xl space-y-10">
+          {/* Header */}
+          <div className="border-b border-white/15 pb-8 space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <span className="text-xs font-mono text-emerald-400 font-bold uppercase print:text-black">
-                  {"CURRICULUM_VITAE // OPERATOR_PROFILE"}
-                </span>
-                <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight print:text-black mt-1">
+                <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
                   {profileData.fullName}
                 </h1>
-                <div className="text-base font-semibold text-emerald-400 mt-1 print:text-black font-mono">
-                  {profileData.preferredName} Tran · {profileData.title}
+                <div className="text-sm font-mono text-amber-400 mt-1 uppercase tracking-wider font-semibold">
+                  {profileData.title}
                 </div>
-                <div className="text-xs text-slate-400 mt-1 flex items-center gap-1.5 print:text-black font-mono">
-                  <MapPin className="w-3.5 h-3.5" />
+              </div>
+
+              <div className="space-y-1 text-xs font-mono text-slate-300 text-left sm:text-right">
+                <div className="flex items-center sm:justify-end gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-amber-400" />
+                  <a href={`mailto:${contactInfo.email}`} className="hover:underline">
+                    {contactInfo.email}
+                  </a>
+                </div>
+                <div className="flex items-center sm:justify-end gap-1.5 text-slate-400">
+                  <MapPin className="w-3.5 h-3.5 text-amber-400" />
                   <span>{profileData.location} (Remote / Global)</span>
                 </div>
               </div>
-
-              {/* Contact info block */}
-              <div className="space-y-1.5 text-xs text-slate-300 sm:text-right print:text-black font-mono">
-                <div className="flex sm:justify-end items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-emerald-400 print:text-black" />
-                  <span>{contactInfo.email}</span>
-                </div>
-                <div className="flex sm:justify-end items-center gap-1.5">
-                  <GithubIcon className="w-3.5 h-3.5 text-slate-300 print:text-black" />
-                  <span>github.com/{socialLinks.find((s) => s.platform === "GitHub")?.username}</span>
-                </div>
-                <div className="flex sm:justify-end items-center gap-1.5">
-                  <LinkedinIcon className="w-3.5 h-3.5 text-emerald-400 print:text-black" />
-                  <span>linkedin.com/{socialLinks.find((s) => s.platform === "LinkedIn")?.username}</span>
-                </div>
-                <div className="flex sm:justify-end items-center gap-1.5">
-                  <TelegramIcon className="w-3.5 h-3.5 text-cyan-400 print:text-black" />
-                  <span>telegram: {contactInfo.telegram}</span>
-                </div>
-              </div>
             </div>
 
-            {/* Executive Summary */}
-            <div className="pt-2">
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed print:text-black">
-                {profileData.bioParagraphs[0]} {profileData.bioParagraphs[2]}
-              </p>
-            </div>
-          </header>
+            <p className="text-sm text-slate-200 leading-relaxed font-sans pt-2">
+              {profileData.heroLead}
+            </p>
+          </div>
 
-          {/* Core Technical Proficiencies */}
-          <section className="py-6 border-b border-white/10 space-y-3 print:border-black/20">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 print:text-black">
-              {"// TECHNICAL_PROFICIENCIES_&_STACK"}
+          {/* Core Competencies */}
+          <div className="space-y-4">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 border-b border-white/10 pb-1.5">
+              {"// CORE ARCHITECTURAL CAPABILITIES"}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              {skillsData.map((cat) => (
-                <div key={cat.category} className="space-y-1">
-                  <span className="font-bold text-white print:text-black font-mono">
-                    {cat.category}:
-                  </span>{" "}
-                  <span className="text-slate-300 print:text-black">
-                    {cat.skills.map((s) => s.name).join(", ")}
-                  </span>
+              {servicesData.map((svc) => (
+                <div key={svc.id} className="p-3.5 rounded-sm bg-white/5 border border-white/10 space-y-1">
+                  <div className="font-serif font-bold text-white">{svc.title}</div>
+                  <div className="text-slate-300 text-[11px] leading-relaxed font-sans">{svc.tagline}</div>
                 </div>
               ))}
             </div>
-          </section>
+          </div>
 
-          {/* Professional Work & Engineering Experience */}
-          <section className="py-6 border-b border-white/10 space-y-6 print:border-black/20">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 print:text-black">
-              {"// EXPERIENCE_&_BUILD_MILESTONES"}
+          {/* Professional Experience */}
+          <div className="space-y-6">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 border-b border-white/10 pb-1.5">
+              {"// CHRONOLOGICAL RECORD"}
             </h2>
-
             <div className="space-y-6">
-              {experienceData.map((item) => (
-                <div key={item.id} className="space-y-2">
+              {experienceData.map((exp) => (
+                <div key={exp.id} className="space-y-2">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <div>
-                      <span className="text-sm font-bold text-white print:text-black">
-                        {item.role}
-                      </span>{" "}
-                      <span className="text-xs font-mono font-semibold text-emerald-400 print:text-black">
-                        — {item.organizationOrProject}
-                      </span>
+                    <div className="font-serif font-bold text-base text-white">
+                      {exp.role} <span className="font-sans font-normal text-slate-400 text-xs">at</span>{" "}
+                      <span className="text-amber-400 font-mono text-xs">{exp.organizationOrProject}</span>
                     </div>
-                    <span className="text-xs font-mono text-slate-400 print:text-black">
-                      {item.period}
-                    </span>
+                    <div className="text-xs font-mono text-slate-400">{exp.period}</div>
                   </div>
-
-                  <p className="text-xs text-slate-300 leading-relaxed print:text-black">
-                    {item.summary}
-                  </p>
-
-                  <ul className="space-y-1 text-xs text-slate-300 pl-4 list-disc print:text-black">
-                    {item.responsibilities.map((resp, i) => (
-                      <li key={i}>{resp}</li>
+                  <p className="text-xs text-slate-300 font-sans leading-relaxed">{exp.summary}</p>
+                  <ul className="space-y-1 text-xs text-slate-300">
+                    {exp.responsibilities.map((resp, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                        <span>{resp}</span>
+                      </li>
                     ))}
                   </ul>
-
-                  <div className="text-[11px] font-mono text-slate-400 pt-1 print:text-black">
-                    <span className="font-semibold text-emerald-400">Stack:</span> {item.technologies.join(" · ")}
-                  </div>
                 </div>
               ))}
             </div>
-          </section>
+          </div>
 
-          {/* Key Featured Projects */}
-          <section className="py-6 border-b border-white/10 space-y-5 print:border-black/20">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 print:text-black">
-              {"// FEATURED_SYSTEMS_&_PROJECTS"}
+          {/* Featured Software Architecture */}
+          <div className="space-y-4">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 border-b border-white/10 pb-1.5">
+              {"// SELECTED DEPLOYED SYSTEMS"}
             </h2>
-
-            <div className="grid grid-cols-1 gap-4">
-              {projectsData.slice(0, 4).map((p) => (
-                <div key={p.id} className="space-y-1.5">
-                  <div className="flex items-baseline justify-between">
-                    <div className="text-sm font-bold text-white print:text-black">
-                      {p.title} <span className="text-xs font-normal text-slate-400 print:text-black">({p.role})</span>
-                    </div>
-                    <span className="text-xs font-mono text-slate-400 print:text-black">{p.year}</span>
-                  </div>
-                  <p className="text-xs text-slate-300 print:text-black">
-                    {p.description}
-                  </p>
-                  <div className="text-[11px] font-mono text-slate-400 print:text-black">
-                    <span className="font-semibold text-emerald-400">Stack:</span> {p.technologies.join(", ")}
-                  </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {projectsData.slice(0, 4).map((proj) => (
+                <div key={proj.id} className="p-4 rounded-sm bg-white/5 border border-white/10 space-y-2">
+                  <div className="font-serif font-bold text-white text-sm">{proj.title}</div>
+                  <div className="text-xs font-mono text-amber-400">{proj.role}</div>
+                  <p className="text-xs text-slate-300 font-sans leading-relaxed">{proj.description}</p>
                 </div>
               ))}
             </div>
-          </section>
+          </div>
 
-          {/* Client Offerings & Capabilities */}
-          <section className="py-6 border-b border-white/10 space-y-3 print:border-black/20">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 print:text-black">
-              {"// CLIENT_&_MENTORSHIP_CAPABILITIES"}
+          {/* Technical Matrix */}
+          <div className="space-y-4">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 border-b border-white/10 pb-1.5">
+              {"// TECHNICAL STACK"}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300 print:text-black">
-              {servicesData.slice(0, 6).map((s) => (
-                <div key={s.id} className="flex items-start gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 print:text-black shrink-0 mt-0.5" />
-                  <span>
-                    <strong className="text-white print:text-black font-mono">{s.title}:</strong>{" "}
-                    {s.tagline}
-                  </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
+              {skillsData.map((cat) => (
+                <div key={cat.category} className="space-y-1">
+                  <div className="text-amber-400 font-semibold uppercase">{cat.category}</div>
+                  <div className="text-slate-300 text-[11px] leading-relaxed">
+                    {cat.skills.map((s) => s.name).join(" · ")}
+                  </div>
                 </div>
               ))}
             </div>
-          </section>
-
-          {/* Footer note on CV */}
-          <footer className="pt-6 text-center text-xs text-slate-500 print:text-black font-mono">
-            {"// Generated directly from live data architecture at tysontran.dev · Reference verification available upon request"}
-          </footer>
+          </div>
         </div>
       </div>
     </div>

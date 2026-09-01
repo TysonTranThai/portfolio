@@ -6,7 +6,6 @@ import { Copy } from "lucide-react";
 import { GithubIcon, LinkedinIcon, TwitterXIcon, TelegramIcon } from "@/components/ui/Icons";
 import { profileData } from "@/data/profile";
 import { contactInfo, socialLinks } from "@/data/socials";
-import { navigationItems } from "@/data/navigation";
 import { useToast } from "@/components/ui/Toast";
 
 export function Footer() {
@@ -22,83 +21,93 @@ export function Footer() {
   };
 
   const renderSocialIcon = (platform: string) => {
-    if (platform === "GitHub") return <GithubIcon className="w-4 h-4" />;
-    if (platform === "LinkedIn") return <LinkedinIcon className="w-4 h-4" />;
-    if (platform === "Telegram") return <TelegramIcon className="w-4 h-4" />;
-    return <TwitterXIcon className="w-4 h-4" />;
+    if (platform === "GitHub") return <GithubIcon className="w-3.5 h-3.5" />;
+    if (platform === "LinkedIn") return <LinkedinIcon className="w-3.5 h-3.5" />;
+    if (platform === "Telegram") return <TelegramIcon className="w-3.5 h-3.5" />;
+    return <TwitterXIcon className="w-3.5 h-3.5" />;
   };
 
   return (
-    <footer className="bg-slate-950 border-t border-white/10 pt-16 pb-12 transition-colors no-print font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+    <footer className="bg-[#05070d] border-t border-white/15 pt-20 pb-12 transition-colors no-print font-sans text-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/15">
           {/* Identity column */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-white text-slate-950 flex items-center justify-center font-mono font-bold text-xs shadow-md">
+              <div className="w-10 h-10 bg-black border border-white/20 flex items-center justify-center font-serif font-bold text-base text-white shadow-xl">
                 T
               </div>
-              <span className="font-bold text-lg text-white font-mono">
-                {profileData.fullName} {"//"} {profileData.preferredName}
+              <span className="font-serif font-bold text-xl text-white">
+                {profileData.fullName}
               </span>
             </div>
-            <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              AI builder, software developer, and educator. Architecting intelligent multi-agent systems, automation workflows, and hands-on developer education.
+            <p className="text-sm text-slate-300 max-w-sm leading-relaxed font-sans">
+              AI systems builder &amp; software architect. Engineering autonomous multi-agent pipelines, self-hosted LLM infrastructure, and modern software products.
             </p>
-            <div className="flex items-center gap-2 text-xs text-slate-400 pt-1 font-mono">
+            <div className="flex items-center gap-2 text-xs text-amber-400 font-mono pt-1">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>LOCATION: {profileData.location} (REMOTE_GLOBAL)</span>
+              <span>LOCATION: VIETNAM · AVAILABLE GLOBALLY</span>
             </div>
           </div>
 
           {/* Navigation links */}
           <div className="space-y-3 font-mono">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-              {"// EXPLORE"}
+            <h4 className="text-xs font-bold uppercase tracking-widest text-amber-400">
+              {"// NAVIGATION"}
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
-              {navigationItems.slice(0, 5).map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="hover:text-white transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="space-y-2 text-xs text-slate-300">
+              <li>
+                <Link href="#about" className="hover:text-white transition-colors">
+                  The Philosophy
+                </Link>
+              </li>
+              <li>
+                <Link href="#projects" className="hover:text-white transition-colors">
+                  The Work
+                </Link>
+              </li>
+              <li>
+                <Link href="#services" className="hover:text-white transition-colors">
+                  The Services
+                </Link>
+              </li>
+              <li>
+                <Link href="#teaching" className="hover:text-white transition-colors">
+                  The Academy
+                </Link>
+              </li>
+              <li>
+                <Link href="#contact" className="hover:text-white transition-colors">
+                  Questions
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Deep dive links */}
           <div className="space-y-3 font-mono">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-              {"// ARCHITECTURE"}
+            <h4 className="text-xs font-bold uppercase tracking-widest text-amber-400">
+              {"// SPECIFICATIONS"}
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <ul className="space-y-2 text-xs text-slate-300">
               <li>
                 <Link href="/cv" className="flex items-center gap-1.5 hover:text-white transition-colors">
-                  <span>CAT /CV.PDF</span>
+                  <span>PRINT /CV.PDF</span>
                 </Link>
               </li>
               <li>
-                <Link href="/#how-i-build" className="hover:text-white transition-colors">
-                  How I Build (Pipeline)
+                <Link href="#how-i-build" className="hover:text-white transition-colors">
+                  Vibe Coding Pipeline
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="hover:text-white transition-colors">
+                <Link href="#capabilities" className="hover:text-white transition-colors">
+                  System Capabilities
+                </Link>
+              </li>
+              <li>
+                <Link href="#services" className="hover:text-white transition-colors">
                   Client Engineering
-                </Link>
-              </li>
-              <li>
-                <Link href="/#teaching" className="hover:text-white transition-colors">
-                  Mentorship Program
-                </Link>
-              </li>
-              <li>
-                <Link href="/#tech-stack" className="hover:text-white transition-colors">
-                  Technology Stack
                 </Link>
               </li>
             </ul>
@@ -106,20 +115,20 @@ export function Footer() {
 
           {/* Connect & Socials */}
           <div className="space-y-3 font-mono">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-              {"// CONNECT"}
+            <h4 className="text-xs font-bold uppercase tracking-widest text-amber-400">
+              {"// DIRECT TRANSMISSION"}
             </h4>
-            <div className="space-y-2">
+            <div className="space-y-3">
               <button
                 onClick={handleCopyEmail}
-                className="w-full flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 font-mono transition-colors"
+                className="w-full flex items-center justify-between p-3 rounded-sm bg-white/5 hover:bg-white/10 border border-white/15 text-xs text-slate-300 font-mono transition-colors"
                 title="Click to copy email address"
               >
                 <span className="truncate">{contactInfo.email}</span>
-                <Copy className="w-3.5 h-3.5 shrink-0 ml-1 text-emerald-400" />
+                <Copy className="w-3.5 h-3.5 shrink-0 ml-1 text-amber-400" />
               </button>
 
-              <div className="flex items-center gap-2 pt-1">
+              <div className="flex items-center gap-2">
                 {socialLinks.map((social) => (
                   <a
                     key={social.platform}
@@ -127,7 +136,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Visit Tyson's ${social.platform}`}
-                    className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 hover:text-white transition-colors"
+                    className="p-2.5 rounded-sm bg-white/5 hover:bg-white/15 border border-white/15 text-slate-300 hover:text-white transition-colors"
                   >
                     {renderSocialIcon(social.platform)}
                   </a>
@@ -138,16 +147,16 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-mono">
           <div>
-            © {new Date().getFullYear()} Tran Thai Son (Tyson). All rights reserved. Built with Next.js 15, TypeScript &amp; Tailwind.
+            © {new Date().getFullYear()} Tran Thai Son (Tyson). All rights reserved. Neoclassical Cyber-Architectural System.
           </div>
           <button
             onClick={scrollToTop}
             aria-label="Back to top of page"
             className="flex items-center gap-1.5 hover:text-white transition-colors"
           >
-            <span>TOP ↑</span>
+            <span>ASCEND TO TOP ↑</span>
           </button>
         </div>
       </div>

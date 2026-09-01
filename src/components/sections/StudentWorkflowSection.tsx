@@ -2,39 +2,48 @@
 
 import * as React from "react";
 import { studentWorkflowSteps } from "@/data/workflows";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { TiltCard } from "@/components/ui/TiltCard";
 import { CheckCircle2 } from "lucide-react";
 
 export function StudentWorkflowSection() {
   return (
-    <section className="py-24 md:py-32 relative bg-computational-grid">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Learning Roadmap"
-          title="How Learning With Me Works"
-          subtitle="Don't just memorize syntax. Learn how to plan, build, debug, and deploy real software independently using modern AI tools."
-        />
+    <section className="py-28 md:py-36 bg-[#070b14] text-white border-t border-white/15 relative">
+      <div className="max-w-7xl mx-auto px-6 sm:px-16">
+        
+        {/* Section Header */}
+        <div className="space-y-4 mb-16 max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">
+            <span>{"// THE STUDENT LEARNING ROADMAP"}</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+            How learning with us works.
+          </h2>
+
+          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+            Don’t just memorize syntax. Learn how to architect, build, debug, and deploy real software independently using modern AI tools.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {studentWorkflowSteps.map((step, idx) => (
-            <TiltCard
+            <div
               key={step.step}
-              glowColor="rgba(16, 185, 129, 0.2)"
-              className="p-8 bg-slate-950/80 dark:bg-surface-100/80 border border-white/10 flex flex-col justify-between"
+              className="p-8 bg-black/60 border border-white/15 hover:border-amber-400/50 rounded-sm shadow-xl flex flex-col justify-between space-y-6 transition-all group"
             >
               <div className="space-y-3.5">
-                <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                  <span className="text-2xl font-black font-mono text-emerald-400">
+                <div className="flex items-center justify-between border-b border-white/15 pb-3">
+                  <span className="text-2xl font-serif font-bold text-amber-400 font-mono">
                     {step.number}
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400">STAGE_0{idx + 1}</span>
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400">
+                    STAGE 0{idx + 1}
+                  </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white font-sans">
+                <h3 className="text-xl font-serif font-bold text-white group-hover:text-amber-300 transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-xs font-mono font-semibold text-emerald-400">
+                <p className="text-xs font-mono text-amber-400 font-semibold">
                   {step.subtitle}
                 </p>
                 <p className="text-xs text-slate-300 leading-relaxed font-sans">
@@ -42,20 +51,20 @@ export function StudentWorkflowSection() {
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-white/10 font-mono">
-                <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-2">
-                  MILESTONE_TAKEOAWAYS
+              <div className="pt-4 border-t border-white/15 font-mono">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-amber-400 mb-2">
+                  MILESTONE CONTRACT:
                 </div>
-                <ul className="space-y-1 text-xs text-slate-300">
+                <ul className="space-y-1.5 text-xs text-slate-300 font-sans">
                   {step.outputs.map((out, i) => (
-                    <li key={i} className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      <span className="font-sans">{out}</span>
+                    <li key={i} className="flex items-start gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <span>{out}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </TiltCard>
+            </div>
           ))}
         </div>
       </div>

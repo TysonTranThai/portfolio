@@ -13,9 +13,6 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { howIBuildSteps } from "@/data/workflows";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Badge } from "@/components/ui/Badge";
-import { TiltCard } from "@/components/ui/TiltCard";
 import { cn } from "@/lib/utils";
 
 export function HowIBuildSection() {
@@ -45,16 +42,26 @@ export function HowIBuildSection() {
   const activeStep = howIBuildSteps[activeStepIndex];
 
   return (
-    <section id="how-i-build" className="py-24 md:py-32 relative bg-computational-grid">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Engineering Pipeline"
-          title="How I Build: Spec-Driven Vibe Coding"
-          subtitle="Modern software engineering has fundamentally evolved. AI coding agents execute at lightspeed, while I direct system architecture, enforce strict contracts, and verify correctness."
-        />
+    <section id="how-i-build" className="py-28 md:py-36 relative bg-[#06080e] text-white border-t border-white/15">
+      <div className="max-w-7xl mx-auto px-6 sm:px-16">
+        
+        {/* Section Header */}
+        <div className="space-y-4 mb-16 max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">
+            <span>{"// THE ARCHITECTURAL PIPELINE"}</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-white leading-tight">
+            How we build: Spec-Driven Vibe Coding.
+          </h2>
+
+          <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+            AI coding agents execute at machine speed, while we direct system architecture, enforce deterministic tool contracts, and verify production correctness.
+          </p>
+        </div>
 
         {/* Step Selector Ribbon */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 mb-10 font-mono">
           {howIBuildSteps.map((step, idx) => {
             const Icon = getStepIcon(idx);
             const isActive = activeStepIndex === idx;
@@ -63,118 +70,67 @@ export function HowIBuildSection() {
                 key={step.step}
                 onClick={() => setActiveStepIndex(idx)}
                 className={cn(
-                  "p-4 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between select-none relative group font-mono",
+                  "p-4 rounded-sm border text-left transition-all duration-200 flex flex-col justify-between h-28 relative group",
                   isActive
-                    ? "bg-white text-slate-950 border-emerald-400 shadow-xl scale-102 ring-2 ring-emerald-400"
-                    : "bg-slate-950/80 text-slate-300 border-white/10 hover:border-emerald-500/50 hover:bg-slate-900"
+                    ? "bg-amber-400 text-black border-amber-400 font-bold shadow-xl scale-102 z-10"
+                    : "bg-black/60 text-slate-300 border-white/15 hover:border-white/40 hover:bg-white/5"
                 )}
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-[11px] font-bold">
-                    PHASE_{step.step}
+                <div className="flex items-center justify-between w-full">
+                  <span className={cn("text-xs font-serif font-bold", isActive ? "text-black" : "text-amber-400")}>
+                    {step.step}
                   </span>
-                  <Icon
-                    className={cn(
-                      "w-4 h-4 transition-transform group-hover:scale-110",
-                      isActive ? "text-emerald-600" : "text-emerald-400"
-                    )}
-                  />
+                  <Icon className={cn("w-4 h-4", isActive ? "text-black" : "text-slate-400")} />
                 </div>
-                <div className="text-xs font-bold truncate font-sans">
-                  {step.title.split(" ")[0]}
-                </div>
+                <span className="text-[11px] font-sans font-bold uppercase tracking-wider line-clamp-1">
+                  {step.title}
+                </span>
               </button>
             );
           })}
         </div>
 
-        {/* Active Stage Detailed TiltCard */}
-        <TiltCard
-          glowColor="rgba(16, 185, 129, 0.2)"
-          className="p-8 sm:p-12 shadow-2xl bg-slate-950/90 border border-white/10"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left description */}
-            <div className="lg:col-span-7 space-y-4">
-              <div className="flex items-center gap-3">
-                <Badge variant="success" size="md" className="font-mono font-bold">
-                  {activeStep.number}
-                </Badge>
-                <span className="text-xs font-mono text-slate-400">
-                  PIPELINE_STAGE {activeStepIndex + 1} OF {howIBuildSteps.length}
+        {/* Active Stage Blueprint Inspector */}
+        {activeStep && (
+          <div className="p-8 sm:p-12 rounded-sm bg-black/70 border border-white/20 shadow-2xl backdrop-blur-xl space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/15 pb-6 gap-4 font-mono">
+              <div className="space-y-1">
+                <span className="text-xs text-amber-400 font-bold uppercase tracking-widest">
+                  STAGE {stepNumberFormat(activeStep.step)} {"//"} {activeStep.number}
                 </span>
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
+                  {activeStep.title}
+                </h3>
               </div>
-
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-sans">
-                {activeStep.title}
-              </h3>
-
-              <p className="text-sm sm:text-base font-semibold text-emerald-400 font-mono">
-                {activeStep.subtitle}
-              </p>
-
-              <p className="text-sm text-slate-300 leading-relaxed font-sans">
-                {activeStep.description}
-              </p>
-
-              <div className="pt-5 border-t border-white/10">
-                <div className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>PHASE_OUTPUT_CONTRACTS</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {activeStep.outputs.map((out, i) => (
-                    <span
-                      key={i}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono bg-white/5 text-slate-200 rounded-xl border border-white/10"
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      <span>{out}</span>
-                    </span>
-                  ))}
-                </div>
+              <div className="px-4 py-2 bg-white/5 border border-white/15 text-xs text-slate-300 rounded-sm">
+                GOAL: <strong className="text-amber-400">{activeStep.subtitle}</strong>
               </div>
             </div>
 
-            {/* Right Terminal / Blueprint visual preview */}
-            <div className="lg:col-span-5">
-              <div className="rounded-3xl bg-black text-slate-100 p-6 font-mono text-xs shadow-2xl border border-emerald-500/30 space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[11px] text-slate-400">
-                  <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    AGENTIC_PIPELINE_LOOP
-                  </span>
-                  <span>PHASE_{activeStep.step}</span>
-                </div>
+            <p className="text-sm sm:text-base text-slate-200 font-sans leading-relaxed">
+              {activeStep.description}
+            </p>
 
-                <div className="space-y-2.5 text-slate-300">
-                  <div>
-                    <span className="text-emerald-400 font-bold">&gt; MODE: </span>
-                    <span>Spec-Driven Agentic Engineering</span>
-                  </div>
-                  <div>
-                    <span className="text-emerald-400 font-bold">&gt; TARGET: </span>
-                    <span className="text-cyan-300">{activeStep.title}</span>
-                  </div>
-                  <div>
-                    <span className="text-emerald-400 font-bold">&gt; VERIFICATION: </span>
-                    <span className="text-lime-300">Strict Type Safety + End-to-End Probes</span>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-slate-950 border border-white/10 text-[11px] text-slate-400 leading-relaxed">
-                  {"// Human maintains absolute architectural clarity and verification boundaries; AI agents accelerate raw implementation."}
-                </div>
-
-                <div className="flex items-center justify-between pt-1 text-[10px] text-slate-500">
-                  <span>STATUS: HEALTHY</span>
-                  <span className="text-emerald-400">CYCLE: DETERMINISTIC</span>
-                </div>
-              </div>
+            <div className="p-6 bg-white/5 border border-white/10 rounded-sm space-y-3 font-sans text-xs">
+              <span className="font-mono text-amber-400 font-bold uppercase tracking-widest">
+                {"// VERIFIED OUTPUT CONTRACTS"}
+              </span>
+              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-slate-200">
+                {activeStep.outputs.map((out, i) => (
+                  <li key={i} className="flex items-start gap-2 bg-black/40 p-3 rounded-sm border border-white/10">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                    <span>{out}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </TiltCard>
+        )}
       </div>
     </section>
   );
+}
+
+function stepNumberFormat(step: string) {
+  return step.startsWith("0") ? step : `0${step}`;
 }
