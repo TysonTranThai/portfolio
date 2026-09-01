@@ -2,6 +2,7 @@ import { NavItem } from "@/types";
 
 export const navigationItems: NavItem[] = [
   { label: "Home", href: "/#" },
+  { label: "Design Studio", href: "/design-lab", badge: "NEW" },
   { label: "About", href: "/#about" },
   { label: "What I Do", href: "/#what-i-do" },
   { label: "Projects", href: "/#projects" },
